@@ -24,23 +24,50 @@ class Rectangle:
     def __repr__(self):
         return f"Rectangle({self._length},{self.width})"
 
+    def __eq__(self, other):
+        return self._length == other._length and self.width == other.width
+
+    def __ne__(self, other):
+        return self._length != other._length or self.width != other.width
 
 
+    def __add__(self, other):
+        return Rectangle(self._length + other._length, self.width + other.width)
 
 if __name__ == '__main__':
-    r1 = Rectangle(3,2, Point(2,-1))
-    r1._length = 2
+    r1 = Rectangle(3,2)
+    #r1._length = 2
     print(r1)
     print(r1.area())
     print(r1.perimeter())
 
     r1.origin.move(5,5)
 
+
+
+
     r2 = Rectangle(3,2)
     print(r1 == r2)
     print(r1 is r2)
 
-    r2 = r1
-    print(r1 == r2)
-    print(r1 is r2)
+    r3 = r1 + r2
+    print(r3)
+
+    l1 = [1,2,3]
+    l2 = [1,2,3]
+    print(l1 == l2)
+    print(l1 is l2)
+
+
+    # r2 = r1
+    # print(r1 == r2)
+    # print(r1 is r2)
+
+    def toto(self):
+        return 0
+
+    Rectangle.toto = toto
+
+    print(r1.toto())
+
 
