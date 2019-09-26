@@ -51,7 +51,7 @@ class BookDb:
 
     def __init__(self, path):
         self.path = path
-        self.conn = sqlite3.connect(path)
+        self.conn = sqlite3.connect(path, check_same_thread=False)
         self.cursor = self.conn.cursor()
 
     def __del__(self):
