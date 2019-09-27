@@ -6,7 +6,8 @@ class simpleapp_tk(tkinter.Tk):
         tkinter.Tk.__init__(self,parent)
         self.parent = parent
         self.initialize()
-
+        self.db = media.BookDb("data/books.db3")
+        
 
     def initialize(self):
 
@@ -15,7 +16,7 @@ class simpleapp_tk(tkinter.Tk):
         self.entry = tkinter.Entry(self,textvariable=self.entryVariable)
         self.entry.grid(column=0,row=0,sticky='EW')
         self.entry.bind("<Return>", self.OnPressEnter)
-        self.entryVariable.set("Hello")
+        self.entryVariable.set("")
 
         button = tkinter.Button(self,text="Search",
                                 command=self.OnButtonClick)
@@ -35,9 +36,18 @@ class simpleapp_tk(tkinter.Tk):
         self.entry.selection_range(0, tkinter.END)
 
     def OnButtonClick(self):
-        self.labelVariable.set( "Hello " + self.entryVariable.get() + " (button)" )
-        self.entry.focus_set()
-        self.entry.selection_range(0, tkinter.END)
+        try:
+            price = float(self.entryVariable.get())
+            books = list(self.db.getByPrice(price))
+            if len(books) == 0:
+                self.labelVariable.set("No book")
+            else:
+                self.labelVariable.set(books[0].title)
+            self.entry.focus_set()
+            self.entry.selection_range(0, tkinter.END)
+        except ValueError:
+            self.labelVariable.set("Bad price")
+
 
     def OnPressEnter(self,event):
         self.labelVariable.set( "Hello " + self.entryVariable.get() + " (button)" )

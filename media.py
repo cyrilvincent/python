@@ -64,7 +64,7 @@ class BookDb:
         self.cursor.execute(sql)
         # for row in cursor:
         #     yield Book(row[1], row[2], row[0])
-        return (Book(row[1], row[2], row[0]) for row in self.cursor)
+        return (Book(row[2], row[1], row[0]) for row in self.cursor)
 
     def getAll(self):
         return self.getBySql("select * from book")
