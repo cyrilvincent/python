@@ -1,7 +1,7 @@
 import pandas as pd
 import sklearn.linear_model as sklm
 
-data = pd.read_csv('house/house.csv')
+data = pd.read_csv('data/house.csv')
 regr = sklm.LinearRegression()
 X = data["surface"].values.reshape(-1,1)
 y = data["loyer"]
