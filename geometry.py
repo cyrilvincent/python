@@ -32,6 +32,11 @@ class Rectangle:
     def getArea(self):
         return self.width * self._length
 
+class Square(Rectangle):
+
+    def __init__(self, cote, origin=Point()):
+        super().__init__(cote, cote, origin)
+
 
 
 if __name__ == '__main__':
@@ -68,3 +73,5 @@ if __name__ == '__main__':
     r3 = Rectangle(3,2,Point(4,6))
     r3.origin.moveTo(8,9)
 
+    c1 = Square(2)
+    
