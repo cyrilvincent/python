@@ -44,14 +44,14 @@ model.add(keras.layers.Dropout(0.5))
 model.add(keras.layers.Dense(6))
 model.add(keras.layers.Activation('softmax'))
 
-model.compile(loss='binary_crossentropy',
+model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
 
 model.fit_generator(
         trainGenerator,
         steps_per_epoch=nbSample // batchSize + 1,
-        epochs=10,
+        epochs=20,
         validation_data=validationGenerator,
         validation_steps=validationSize // batchSize + 1
 )
