@@ -2,7 +2,7 @@ import keras
 
 trainset = keras.preprocessing.image.ImageDataGenerator(rescale=1./255)
 validationset = keras.preprocessing.image.ImageDataGenerator(rescale=1./255)
-batchSize = 16
+batchSize = 4
 nbSample = 287
 validationSize = 260
 
@@ -50,10 +50,10 @@ model.compile(loss='categorical_crossentropy',
 
 model.fit_generator(
         trainGenerator,
-        steps_per_epoch=nbSample // batchSize + 1,
-        epochs=20,
+        steps_per_epoch=nbSample // batchSize,
+        epochs=40,
         validation_data=validationGenerator,
-        validation_steps=validationSize // batchSize + 1
+        validation_steps=validationSize // batchSize
 )
 model.save('cnnmodel.h5')
 
