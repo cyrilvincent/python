@@ -7,6 +7,13 @@ def rows_to_dict(cursor):
 conn = sqlite3.connect("data/house.db3")
 cursor = conn.cursor()
 cursor.execute("select * from house")
-for row in rows_to_dict(cursor):
-    print(row["surface"])
+dict = rows_to_dict(cursor)
+
+l = [row["loyer"] / row["surface"] for row in dict]
+print(sum(l) / len(l))
+
 cursor.close()
+
+# Calculer la surface moyenne
+# Calculer le loyer moyen
+# Calculer le loyer/m² moyen
