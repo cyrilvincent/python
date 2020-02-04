@@ -9,7 +9,6 @@ class Media(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def netPrice(self):...
 
-
 class Cd(Media):
 
     def __init__(self, title, price, nbTrack=0):
