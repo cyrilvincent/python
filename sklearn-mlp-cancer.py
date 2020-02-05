@@ -20,8 +20,15 @@ print(y.shape) #569
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(X,y)
 
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaler.fit(X_train)
+
+X_train = scaler.transform(X_train)
+X_test = scaler.transform(X_test)
+
 #model = rf.RandomForestClassifier(n_estimators=100)
-model = neural.MLPClassifier(hidden_layer_sizes=(100,100,100))
+model = neural.MLPClassifier(hidden_layer_sizes=(20,10))
 model.fit(X_train,y_train)
 
 print(model.score(X_test, y_test))
