@@ -1,6 +1,6 @@
 import numpy as np
 
-with np.load("data/mnist/mnist.npz", allow_pickle=True) as f:
+with np.load("data/mnist.npz", allow_pickle=True) as f:
     x_train, y_train = f['x_train'], f['y_train']
     x_test, y_test = f['x_test'], f['y_test']
 
