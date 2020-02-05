@@ -1,6 +1,8 @@
 import pandas as pd
 import sklearn.linear_model as sklm
 import sklearn.neighbors as nn
+import sklearn.ensemble as rf
+
 
 
 from sklearn.datasets import load_breast_cancer
@@ -16,12 +18,14 @@ print(y.shape) #569
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test = train_test_split(X,y)
 
-#regr = sklm.LinearRegression()
-for k in range(2,10):
-    model = nn.KNeighborsClassifier(n_neighbors=k)
-    model.fit(X_train,y_train)
-    print(model.score(X_test, y_test))
-# print(regr.coef_)
-# print(regr.intercept_)
+model = rf.RandomForestClassifier(n_estimators=100)
+model.fit(X_train,y_train)
+
+import pickle
+with open("data/forest.pickle", "wb") as f:
+    pickle.dump(model, f)
+
+print(model.feature_importances_)
+print(model.score(X_test, y_test))
 predict = model.predict(X_test)
 print(predict - y_test)
