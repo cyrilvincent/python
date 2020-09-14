@@ -6,12 +6,13 @@ def is_even(x):
     return x % 2 == 0
 
 def is_prime(x):
-    is_prime = True
+    res = True
     for div in range(2, int(x ** 0.5 + 1)):
         if x % div == 0:
-            is_prime = False
+            res = False
             break
-    return is_prime
+    return res
 
-print(is_even(7))
-print(is_prime(7))
+if __name__ == '__main__':
+    print(is_even(7))
+    print(is_prime(7))
