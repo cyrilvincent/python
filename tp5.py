@@ -47,6 +47,20 @@ def square(l):
 print(inc(l))
 print(square(l))
 
+def map_generic(fn, l):
+    res = []
+    for val in l:
+        res.append(fn(val))
+    return res
+
+print(list(map(lambda x : x ** 2, l)))
+
+res = filter(lambda x : mylib.is_prime(x), l)
+print(list(map(lambda x : x ** 2, res)))
+
+print(list(map(lambda x : x ** 2, filter(lambda x : mylib.is_prime(x), l))))
+
+
 # Créer map_generic
 # Tester map : afficher les carrés de la liste
 # Tester map + filter : afficher les carrés des nombres premiers de la liste
