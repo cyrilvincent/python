@@ -14,3 +14,18 @@ print(a, b, c)
 
 #Faire la fonction min_max_avg(l) qui retourne le mi, max et average en une seule itération codées à la main
 #Tester
+
+def min_max_avg(l):
+    sum = 0
+    min = l[0]
+    max = l[0]
+    for val in l:
+        sum += val
+        if val < min:
+            min = val
+        elif val > max:
+            max = val
+    return min, max, sum / len(l)
+
+min, max,avg = min_max_avg(range(100))
+print(min,max,avg)
