@@ -1,3 +1,5 @@
+import libs.tp3 as mylib
+
 l = range(10)
 
 res= []
@@ -17,4 +19,8 @@ print(intention)
 
 print(list(map(lambda x : x ** 2, filter(lambda x : x % 2 == 0, l))))
 intention = [x ** 2 for x in l if x % 2 == 0]
+print(intention)
+
+
+intention = [x ** 2 for x in l if mylib.is_prime(x)]
 print(intention)
