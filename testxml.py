@@ -12,3 +12,5 @@ doc.documentElement.appendChild(book_node)
 with open("data/books_new.xml","w") as f:
     doc.writexml(f)
 
+
+
