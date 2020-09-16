@@ -13,9 +13,9 @@ class simpleapp_tk(tkinter.Tk):
         self.entry = tkinter.Entry(self,textvariable=self.entryVariable)
         self.entry.grid(column=0,row=0,sticky='EW')
         self.entry.bind("<Return>", self.OnPressEnter)
-        self.entryVariable.set(u"Book id")
+        self.entryVariable.set("Book id")
 
-        button = tkinter.Button(self,text=u"Search",
+        button = tkinter.Button(self,text="Search",
                                 command=self.OnButtonClick)
         button.grid(column=1,row=0)
 
@@ -23,7 +23,7 @@ class simpleapp_tk(tkinter.Tk):
         label = tkinter.Label(self,textvariable=self.labelVariable,
                               anchor="w",fg="white",bg="blue")
         label.grid(column=0,row=1,columnspan=2,sticky='EW')
-        self.labelVariable.set(u"...")
+        self.labelVariable.set("...")
 
         self.grid_columnconfigure(0,weight=1)
         self.resizable(True,False)

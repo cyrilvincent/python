@@ -4,7 +4,7 @@ import media
 app = flask.Flask(__name__)
 
 @app.route("/")
-def index(param):
+def index():
     return f"""<html>
                     <body>
                         <h1>Hello World!</h1>
