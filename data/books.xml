@@ -1,0 +1,4 @@
+<books>
+    <book id ="1" title="Python" price="10.0"/>
+    <book id ="2" title="Numpy" price="20.0"/>
+</books>
