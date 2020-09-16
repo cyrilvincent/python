@@ -22,6 +22,12 @@ class Rectangle:
     def move(self, point):
         self.origin = point
 
+class Square(Rectangle):
+
+    def __init__(self, side=0):
+        #Rectangle.__init__(self, side, side)
+        super().__init__(side, side)
+
 if __name__ == '__main__':
     p1 = Point(4,-3)
     r1 = Rectangle(3,2,p1)
