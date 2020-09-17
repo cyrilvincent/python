@@ -1,5 +1,6 @@
 import csv
 import numpy as np
+import matplotlib.pyplot as plt
 
 with open("data/house.csv") as f:
     loyers = []
@@ -11,5 +12,11 @@ with open("data/house.csv") as f:
 nployers = np.array(loyers)
 npsurfaces = np.array(surfaces)
 
-print(nployers)
-print(np.max(nployers / npsurfaces))
+loyersperm2 = nployers / npsurfaces
+print(np.min(loyersperm2), np.max(loyersperm2),np.mean(loyersperm2),np.std(loyersperm2))
+
+plt.title("Surfaces / Loyers")
+plt.xlabel("Surfaces")
+plt.ylabel("Loyers")
+plt.scatter(npsurfaces, nployers)
+plt.show()
