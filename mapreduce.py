@@ -54,5 +54,12 @@ print(res)
 #     for row in f:
 #         print(row)
 
+dico = {"key1":10,"key2":20}
+for k in dico:
+    print(dico[k])
+
+import collections
+collections.OrderedDict
+
 
 
