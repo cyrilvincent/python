@@ -2,6 +2,7 @@ import unittest
 import drivers
 import numpy
 import config
+import jsonpickle
 
 class DriversTest(unittest.TestCase):
 
@@ -17,3 +18,6 @@ class DriversTest(unittest.TestCase):
         vg.play()
         vg = drivers.VideoGame(eval(config.DRIVER2))
         vg.play()
+        with open("videogame.json","w") as f:
+            json = jsonpickle.encode(vg)
+            f.write(json)
