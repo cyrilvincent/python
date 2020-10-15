@@ -9,6 +9,7 @@ class OpenGL(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def draw(self,x:int,y:int)->None:...
 
+
     @abc.abstractmethod
     def drawLine(self,x1:int,y1:int,x2:int,y2:int)->None:...
 
@@ -22,6 +23,12 @@ class NVidia(OpenGL):
         super().__init__(id,"NVidia")
 
     def draw(self,x:int,y:int):
+        """
+        sfgsdfg
+        :param x:
+        :param y: 
+        :return:
+        """
         print(f"NVidia({x},{y})")
 
     def drawLine(self,x1:int,y1:int,x2:int,y2:int):
