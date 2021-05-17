@@ -31,6 +31,7 @@ a = 2
 b = 3
 a, b = b, a
 
+
 age = input("Entrez votre age: ")
 age_integer = float(age) # int); float(); str()
 print(1 + age_integer)
@@ -38,3 +39,15 @@ s = "toto"
 print(s.upper())
 print(s + " " + str(age_integer))
 print(f"{s} a {age_integer:.0f} ans")
+
+if age_integer < 18 or a == 2:
+    print("Mineur")
+else:
+    pass
+print("toto")
+
+is_true = True
+is_false = False
+print(is_true and is_false)
+result = age_integer < 18
+print(result)
