@@ -1,6 +1,9 @@
 # Faire la fonction is_even(nb) -> bool
 # Faire la fonction is_prime(nb) -> bool
 
+x = 3
+pi = 9
+
 def add(nb, *kargs, **kwargs):
     sum = nb
     for value in kargs:
@@ -27,15 +30,16 @@ def is_prime(nb: int) -> bool:
                 return False
     return True
 
-print(is_even(2))
-print(is_prime(2))
-print(add(1,2,3,4))
-print(add_dico(nb=0, key1 = 0, key2 = 1))
+if __name__ == '__main__':
+    print(is_even(2))
+    print(is_prime(2))
+    print(add(1,2,3,4))
+    print(add_dico(nb=0, key1 = 0, key2 = 1))
 
-# f(x) = x + 1
-def f(x):
-    return x + 1
-# <=>
-f = lambda x : x + 1
+    # f(x) = x + 1
+    def f(x):
+        return x + 1
+    # <=>
+    f = lambda x : x + 1
 
-print(f(3))
+    print(f(3))
