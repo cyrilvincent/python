@@ -2,8 +2,7 @@
 # Tester
 
 def min_max_avg(l):
-    min = l[0]
-    max = l[0]
+    min = max = l[0]
     sum = 0
     for value in l:
         sum += value
@@ -17,3 +16,5 @@ if __name__ == '__main__':
     l1 = [1, 9, 3, 4, 3, 10, 99, 8, 2, 0]
     min, max, avg = min_max_avg(l1)
     print(min, max, avg)
+    mytuple = min_max_avg(l1)
+    print(mytuple)
