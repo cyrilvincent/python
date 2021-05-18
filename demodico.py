@@ -96,3 +96,9 @@ books_db = {
 }
 
 print(books_db["books"][0]["isbn"])
+
+# Afficher l'isbn du 1er livre de la base
+# Afficher tous les titres
+# Afficher tous les livres de O'Reilly Media
+# Afficher tous les livres ayant dans le titre "script" insensible à la casse (in, upper())
+# Afficher le livre ayant le plus de page (intention)
