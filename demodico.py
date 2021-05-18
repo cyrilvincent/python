@@ -101,4 +101,36 @@ print(books_db["books"][0]["isbn"])
 # Afficher tous les titres
 # Afficher tous les livres de O'Reilly Media
 # Afficher tous les livres ayant dans le titre "script" insensible à la casse (in, upper())
-# Afficher le livre ayant le plus de page (intention)
+# Bonus : Afficher le livre ayant le plus de page (intention)
+# Bonus : Ajouter un livre de votre choix par programmation
+
+def search_by_title(title):
+  return [book["title"] for book in books_db["books"] if title.upper() in book["title"].upper()]
+
+# for book in books_db["books"]:
+#   print(book["title"])
+res = [book["title"] for book in books_db["books"]]
+print(res)
+res = [book["title"] for book in books_db["books"] if book["publisher"] == "O'Reilly Media"]
+print(res)
+res = [book["title"] for book in books_db["books"] if "SCRIPT" in book["title"].upper()]
+print(res)
+print(search_by_title("Design"))
+res = [book["pages"] for book in books_db["books"]]
+print(max(res))
+res = [book for book in books_db["books"] if book["pages"] == max(res)]
+print(res)
+
+new_book = {
+      "isbn": "0000000000",
+      "title": "Python",
+      "subtitle": "Python Training",
+      "author": "Moi",
+      "published": "2014-04-07T00:00:00.000Z",
+      "publisher": "CEA",
+      "pages": 99,
+      "description": "Blah blah",
+      "website": "http://www.cea.fr"
+    }
+books_db["books"].append(new_book)
+print(books_db)
