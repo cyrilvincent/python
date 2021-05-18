@@ -14,10 +14,18 @@ l1 = [1,9,3,4,3,10,99,8,2,0]
 res = list(filter(lambda x : x % 2 == 0, l1))
 res = list(map(lambda x: x + 1, res))
 print(res)
+res = [x+ 1 for x in l1 if x % 2 == 0]
+print(res)
 res = list(filter(lambda x : tp4.is_prime(x), l1))
 res = list(map(lambda x: math.sqrt(x), res))
 print(res)
+res = [math.sqrt(x) for x in l1 if tp4.is_prime(x)]
+print(res)
 res = list(map(lambda x: math.sin(x / 10), l1))
 res = list(filter(lambda x : x > 0, res))
+print(res)
+res = [math.sin(x / 10) for x in l1 if math.sin(x / 10) > 0]
+res = [x for x in l1 if math.sin(x / 10) > 0]
+res = [math.sin(x / 10) for x in res]
 print(res)
 print(list(map(lambda x: math.sqrt(x), filter(lambda x : tp4.is_prime(x), l1))))
