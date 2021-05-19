@@ -53,6 +53,7 @@ class Book(Media):
     def __del__(self):
         Book.nb_book -= 1
 
+
 class Cd(Media):
 
     def __init__(self, id, title, price, authors=[], publisher=Publisher(0,""), weight=-1, date=datetime.datetime.now(), nbtrack=0 ):
@@ -66,6 +67,7 @@ class Dvd(Media):
                  date=datetime.datetime.now(), zone=0):
         super().__init__(id, title, price, authors, publisher, weight, date)
         self.zone = zone
+
 
 class Cart:
 
