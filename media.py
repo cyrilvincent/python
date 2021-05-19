@@ -4,6 +4,10 @@ import datetime
 # Vérifier qui si vous modifier la TVA tous les livres ont un TVA modifiée
 # Trouver le moyen de compter les livres le plus simplement possible (nbBook)
 
+# Créer la classe Publisher (id, name, phone, mail, ...)
+# Créer la relation un Book possède 1 publisher
+# Créer un Cart possède * Books, add, remove, get_total_net_price
+
 class Book:
 
     tva = 0.055
