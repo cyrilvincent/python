@@ -18,20 +18,29 @@ class Publisher:
         self.phone = phone
         self.mail = mail
 
+class Media:
 
-class Book:
+    tva = 0.2
 
-    tva = 0.055
-    nb_book = 0
-
-    def __init__(self, isbn, title, price, authors=[], publisher=Publisher(0,""), weight=-1, date=datetime.datetime.now(), nbpage=0 ):
+    def __init__(self, id, title, price, authors=[], publisher=Publisher(0,""), weight=-1, date=datetime.datetime.now()):
         self.publisher = publisher
-        self.isbn = isbn
+        self.id = id
         self.title = title
         self.price = price
         self.authors = authors
         self.weight = weight
         self.date = date
+
+    def net_price(self):
+        return self.price * (1 + Media.tva)
+
+class Book(Media):
+
+    tva = 0.055
+    nb_book = 0
+
+    def __init__(self, isbn, title, price, authors=[], publisher=Publisher(0,""), weight=-1, date=datetime.datetime.now(), nbpage=0 ):
+        super().__init__(isbn, title, price, authors, publisher, weight, date)
         self.nbpage = nbpage
         Book.nb_book += 1
 
@@ -43,6 +52,20 @@ class Book:
 
     def __del__(self):
         Book.nb_book -= 1
+
+class Cd(Media):
+
+    def __init__(self, id, title, price, authors=[], publisher=Publisher(0,""), weight=-1, date=datetime.datetime.now(), nbtrack=0 ):
+        super().__init__(id, title, price, authors, publisher, weight, date)
+        self.nbtrack = nbtrack
+
+
+class Dvd(Media):
+
+    def __init__(self, id, title, price, authors=[], publisher=Publisher(0, ""), weight=-1,
+                 date=datetime.datetime.now(), zone=0):
+        super().__init__(id, title, price, authors, publisher, weight, date)
+        self.zone = zone
 
 class Cart:
 
@@ -98,6 +121,9 @@ if __name__ == '__main__':
     print(f"Cart net price: {cart.total_net_price():.2f}")
     print(f"Cart net price 2: {cart.total_net_price_2():.2f}")
 
+    dvd1 = Dvd("d001", "Godzilla", 10, zone=2)
+    cart.add(dvd1)
+    print(f"Cart net price: {cart.total_net_price():.2f}")
 
     # Destruction
     # En ne faisant rien
