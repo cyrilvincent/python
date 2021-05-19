@@ -31,6 +31,11 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.length + self.width)
 
+class Square(Rectangle):
+
+    def __init__(self, side, coord=Point()):
+        super().__init__(side, side, coord)
+
 if __name__ == '__main__':
     monrectangle = Rectangle(width=2)
     # monrectangle = instance ou l'objet
@@ -46,3 +51,5 @@ if __name__ == '__main__':
     print(r1.area(), r1.perimeter())
     Rectangle.color = "RED"
     print(Rectangle.color)
+    s1 = Square(2)
+    print(s1.area())

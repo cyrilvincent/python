@@ -8,6 +8,8 @@ import datetime
 # Créer la relation un Book possède 1 publisher
 # Créer un Cart possède * Books, add, remove, get_total_net_price
 
+# Cd(nb_track), Dvd(zone) => Media
+
 class Publisher:
 
     def __init__(self, id, name, phone="", mail=""):
