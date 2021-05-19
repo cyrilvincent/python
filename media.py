@@ -6,6 +6,9 @@ import datetime
 
 class Book:
 
+    tva = 0.055
+    nb_book = 0
+
     def __init__(self, isbn, title, price, authors=[], publisher="", weight=-1, date=datetime.datetime.now(), nbpage=0 ):
         self.isbn = isbn
         self.title = title
@@ -15,12 +18,16 @@ class Book:
         self.weight = weight
         self.date = date
         self.nbpage = nbpage
+        Book.nb_book += 1
 
     def net_price(self):
-        return self.price * (1 + 0.055)
+        return self.price * (1 + Book.tva)
 
     def toto(self, a, b):
         pass
+
+    def __del__(self):
+        Book.nb_book -= 1
 
 if __name__ == '__main__':
     b1 = Book("007", "Python", 10.0)
@@ -32,3 +39,18 @@ if __name__ == '__main__':
     b2.toto(1,2)
     # <=>
     Book.toto(b2, 1, 2)
+    Book.tva = 0.06
+    print(b1.net_price())
+    print(Book.nb_book)
+
+    # Destruction
+    # En ne faisant rien
+    # En l'écrasant
+    b1 = b2
+    # En lui affactant None
+    b1 = None
+    # del immédiat
+    # del(b1)
+    print(Book.nb_book)
+    del(b2)
+    print(Book.nb_book)
