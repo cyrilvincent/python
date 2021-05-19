@@ -3,6 +3,8 @@ class Rectangle:
     # COMMENT => méthodes
     # ETANCHEITE de l'objet
 
+    color = "black"
+
     def __init__(self, length=0, width=0):
         self.length = length
         self.width = width
@@ -22,3 +24,5 @@ if __name__ == '__main__':
     r2 = Rectangle(1)
     print(r1.length, r1.width)
     print(r1.area(), r1.perimeter())
+    Rectangle.color = "RED"
+    print(Rectangle.color)
