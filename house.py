@@ -4,6 +4,7 @@ import csv
 import sys
 import pickle
 import xml.dom.minidom as dom
+import json
 
 
 class HouseSuper:
@@ -87,6 +88,24 @@ class HouseXml(HouseSuper):
         with open(self.path, "w") as f:
             doc.writexml(f, addindent="\t", newl="\n" )
 
+class HouseJson(HouseSuper):
+
+    def load(self):
+        with open(self.path) as f:
+            dicos = json.load(f)
+            for row in dicos:
+                self.loyers.append(row["loyer"])
+                self.surfaces.append(row["surface"])
+                self.loyers_per_m2.append(row["loyer"] / row["surface"])
+
+    def save(self):
+        dicos = []
+        for index, value in enumerate(self.loyers):
+            row = {"loyer": value, "surface": self.surfaces[index]}
+            dicos.append(row)
+        with open(self.path, "w") as f:
+            json.dump(dicos, f)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -140,6 +159,19 @@ if __name__ == '__main__':
         else:
             _, _, avg = housexml.compute_loyers_per_m2()
             print(f"{avg:.2f}")
+    elif args.type == "json":
+        housejson = HouseJson(args.path)
+        housejson.load()
+        if args.verbose:
+            min, max, avg = housejson.compute_loyers()
+            print(f"Loyers min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housejson.compute_surfaces()
+            print(f"Surfaces min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housejson.compute_loyers_per_m2()
+            print(f"Loyers par m² min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+        else:
+            _, _, avg = housejson.compute_loyers_per_m2()
+            print(f"{avg:.2f}")
     elif args.type == "csv-pickle":
         housecsv = HouseCsv(args.path)
         housecsv.load()
@@ -156,6 +188,14 @@ if __name__ == '__main__':
         housexml.surfaces = housecsv.surfaces
         housexml.loyers_per_m2 = housecsv.loyers_per_m2
         housexml.save()
+    elif args.type == "csv-json":
+        housecsv = HouseCsv(args.path)
+        housecsv.load()
+        housejson = HouseJson(args.path.replace(".csv", ".json"))
+        housejson.loyers = housecsv.loyers
+        housejson.surfaces = housecsv.surfaces
+        housejson.loyers_per_m2 = housecsv.loyers_per_m2
+        housejson.save()
 
     else:
         print("ERROR bad type")
