@@ -16,7 +16,7 @@ class simpleapp_tk(tkinter.Tk):
         self.entry = tkinter.Entry(self,textvariable=self.entryVariable)
         self.entry.grid(column=0,row=0,sticky='EW')
         self.entry.bind("<Return>", self.OnPressEnter)
-        self.entryVariable.set("Input")
+        self.entryVariable.set("data/house.csv")
 
         button = tkinter.Button(self,text="Search",
                                 command=self.OnButtonClick)
@@ -36,10 +36,11 @@ class simpleapp_tk(tkinter.Tk):
         self.entry.selection_range(0, tkinter.END)
 
     def OnButtonClick(self):
-        
         content = self.entryVariable.get()
-
-        self.labelVariable.set( "Hello" + content + " (button)" )
+        model = house.HouseCsv(content)
+        model.load()
+        min, max, avg = model.compute_loyers_per_m2()
+        self.labelVariable.set( f"Min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}" )
         self.entry.focus_set()
         self.entry.selection_range(0, tkinter.END)
 
