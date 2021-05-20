@@ -1,4 +1,5 @@
 import datetime
+import re
 
 # Gérer la TVA en attribut statique
 # Vérifier qui si vous modifier la TVA tous les livres ont un TVA modifiée
@@ -40,6 +41,9 @@ class Book(Media):
     nb_book = 0
 
     def __init__(self, isbn, title, price, authors=[], publisher=Publisher(0,""), weight=-1, date=datetime.datetime.now(), nbpage=0 ):
+        pattern = r"^\d{3}-\d-\d{4}-\d{4}-\d$"
+        if re.match(pattern, isbn) is None:
+            raise ValueError(f"Bad ISBN: {isbn}")
         super().__init__(isbn, title, price, authors, publisher, weight, date)
         self.nbpage = nbpage
         Book.nb_book += 1
@@ -91,11 +95,11 @@ class Cart:
 
 if __name__ == '__main__':
     p1 = Publisher(1, "ENI")
-    b1 = Book("007", "Python", 10.0, publisher=p1)
+    b1 = Book("978-2-7654-0912-0", "Python", 10.0, publisher=p1)
     print(b1.publisher.name)
     print(f"Le prix est: {b1.net_price():.2f} €")
     print(b1)
-    b2 = Book("008", "Numpy", 20, authors=["Cyril"], date=datetime.datetime(2021,5,19,9,19))
+    b2 = Book("978-2-7654-0912-1", "Numpy", 20, authors=["Cyril"], date=datetime.datetime(2021,5,19,9,19))
 
     b2.publisher = p1
     b2.price *= 1.1
