@@ -6,7 +6,6 @@ import re
 # Répéter la saisie tant que KO
 
 pattern = r"^\d{3}-\d-\d{4}-\d{4}-\d$"
-value = ""
 while True:
     value = input("Saisir un ISBN: ")
     if re.match(pattern, value) is None:
