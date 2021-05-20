@@ -3,6 +3,7 @@ import os
 import csv
 import sys
 import pickle
+import xml.dom.minidom as dom
 
 
 class HouseCsv:
@@ -81,6 +82,51 @@ class HousePickle:
         with open(self.path, "wb") as f:
             pickle.dump((self.loyers, self.surfaces, self.loyers_per_m2), f)
 
+class HouseXml:
+
+    def __init__(self, path):
+        self.path = path
+        self.loyers = []
+        self.surfaces = []
+        self.loyers_per_m2 = []
+
+    def load(self):
+        pass
+
+    def min_max_avg(self, l):
+        min = max = l[0]
+        sum = 0
+        for value in l:
+            sum += value
+            if value < min:
+                min = value
+            elif value > max:
+                max = value
+        return min, max, sum / len(l)
+
+    def compute_loyers(self):
+        return self.min_max_avg(self.loyers)
+
+    def compute_surfaces(self):
+        return self.min_max_avg(self.surfaces)
+
+    def compute_loyers_per_m2(self):
+        return self.min_max_avg(self.loyers_per_m2)
+
+    def save(self):
+        doc = dom.Document()
+        houses_node = doc.createElement("houses")
+        doc.appendChild(houses_node)
+        for index, value in enumerate(self.loyers):
+            house_node = doc.createElement("house")
+            house_node.setAttribute("loyer", str(value))
+            house_node.setAttribute("surface", str(self.surfaces[index]))
+            houses_node.appendChild(house_node)
+        with open(self.path, "w") as f:
+            doc.writexml(f, addindent="\t", newl="\n" )
+
+
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -121,7 +167,7 @@ if __name__ == '__main__':
         else:
             _, _, avg = housepickle.compute_loyers_per_m2()
             print(f"{avg:.2f}")
-    if args.type == "csv-pickle":
+    elif args.type == "csv-pickle":
         housecsv = HouseCsv(args.path)
         housecsv.load()
         housepickle = HousePickle(args.path.replace(".csv", ".pickle"))
@@ -129,6 +175,14 @@ if __name__ == '__main__':
         housepickle.surfaces = housecsv.surfaces
         housepickle.loyers_per_m2 = housecsv.loyers_per_m2
         housepickle.save()
+    elif args.type == "csv-xml":
+        housecsv = HouseCsv(args.path)
+        housecsv.load()
+        housexml = HouseXml(args.path.replace(".csv", ".xml"))
+        housexml.loyers = housecsv.loyers
+        housexml.surfaces = housecsv.surfaces
+        housexml.loyers_per_m2 = housecsv.loyers_per_m2
+        housexml.save()
 
     else:
         print("ERROR bad type")
