@@ -5,7 +5,7 @@ import sys
 import pickle
 import xml.dom.minidom as dom
 import json
-
+import openpyxl
 
 class HouseSuper:
 
@@ -107,6 +107,26 @@ class HouseJson(HouseSuper):
             json.dump(dicos, f)
 
 
+class HouseExcel(HouseSuper):
+
+    def load(self):
+        workbook = openpyxl.load_workbook(self.path)
+        sheet = workbook.worksheets[0]
+        for i in range(2, sheet.max_row):
+            loyer = sheet.cell(i,1).value
+            surface = sheet.cell(i,2).value
+            self.loyers.append(loyer)
+            self.surfaces.append(surface)
+            self.loyers_per_m2.append(loyer / surface)
+        workbook.close()
+
+    def save(self):
+        #TODO load_workbook
+        sheet.cell(1,1).value = 3
+        # save(path)
+        # close
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("path", help="Fichier à ouvrir")
@@ -171,6 +191,19 @@ if __name__ == '__main__':
             print(f"Loyers par m² min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
         else:
             _, _, avg = housejson.compute_loyers_per_m2()
+            print(f"{avg:.2f}")
+    elif args.type == "xlsx":
+        housexl = HouseExcel(args.path)
+        housexl.load()
+        if args.verbose:
+            min, max, avg = housexl.compute_loyers()
+            print(f"Loyers min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housexl.compute_surfaces()
+            print(f"Surfaces min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housexl.compute_loyers_per_m2()
+            print(f"Loyers par m² min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+        else:
+            _, _, avg = housexl.compute_loyers_per_m2()
             print(f"{avg:.2f}")
     elif args.type == "csv-pickle":
         housecsv = HouseCsv(args.path)
