@@ -125,8 +125,8 @@ class HouseExcel(HouseSuper):
         sheet = workbook.worksheets[0]
         for index, value in enumerate(self.loyers):
             sheet.cell(index + 2, 1).value = value
-            sheet.cell(index + 2, 2).value = value
-        workbook.save(self.path.replace(".xslx", "new.xlsx"))
+            sheet.cell(index + 2, 2).value = self.surfaces[index]
+        workbook.save(self.path.replace(".xslx", "_new.xlsx"))
         workbook.close()
 
 
