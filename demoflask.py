@@ -14,11 +14,13 @@ def ping():
 def html():
     loyers = [1000, 2000, 3000]
     surfaces = [50, 100, 200]
-    res = """
+    min = 35
+    res = f"""
     <html>
         <header><title>Python</title></header>
         <body>
             <h1>Hello Python</h1>
+            <p>Min {min}</p>
             <table border="1" width="100%">
                 <tr><td>Loyer</td><td>Surface</td></tr>"""
     for index, value in enumerate(loyers):
