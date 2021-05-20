@@ -15,7 +15,7 @@ class HouseCsv:
 
     def load(self):
         with open(self.path) as f:
-            reader = csv.DictReader(f)
+            reader = csv.DictReader(f, delimiter=self.separator)
             for row in reader:
                 loyer = int(row["loyer"])
                 surface = int(row["surface"])
@@ -69,7 +69,7 @@ if __name__ == '__main__':
             print(f"Loyers par m² min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
         else:
             _, _, avg = housecsv.compute_loyers_per_m2()
-            print(avg)
+            print(f"{avg:.2f}")
     else:
         print("ERROR bad type")
         sys.exit(1)
@@ -79,3 +79,11 @@ if __name__ == '__main__':
     # Uniquement pour --type csv
     # Si verbose afficher min, max, moyenne des surfaces, loyers, loyers par m²
     # Si non verbose moyenne des loyers par m²
+
+    # --type pickle
+    # Faite tourner demofile.py 1 fois
+    # HousePickle
+    # Tester
+    # Bonus : Ajouter la méthode save qui sauvegarde les data dans house.pickle
+    # Bonus : Lire les data depuis HouseCsv et sauvegarder les data depuis HousePickle
+    # Bonus : Reflechir à comment mutualiser HouseCsv et HousePickle
