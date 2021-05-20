@@ -2,6 +2,7 @@ import argparse
 import os
 import csv
 import sys
+import pickle
 
 
 class HouseCsv:
@@ -44,6 +45,43 @@ class HouseCsv:
         return self.min_max_avg(self.loyers_per_m2)
 
 
+class HousePickle:
+
+    def __init__(self, path):
+        self.path = path
+        self.loyers = []
+        self.surfaces = []
+        self.loyers_per_m2 = []
+
+    def load(self):
+        with open(self.path, "rb") as f:
+            self.loyers, self.surfaces, self.loyers_per_m2 = pickle.load(f)
+
+    def min_max_avg(self, l):
+        min = max = l[0]
+        sum = 0
+        for value in l:
+            sum += value
+            if value < min:
+                min = value
+            elif value > max:
+                max = value
+        return min, max, sum / len(l)
+
+    def compute_loyers(self):
+        return self.min_max_avg(self.loyers)
+
+    def compute_surfaces(self):
+        return self.min_max_avg(self.surfaces)
+
+    def compute_loyers_per_m2(self):
+        return self.min_max_avg(self.loyers_per_m2)
+
+    def save(self):
+        with open(self.path, "wb") as f:
+            pickle.dump((self.loyers, self.surfaces, self.loyers_per_m2), f)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("path", help="Fichier à ouvrir")
@@ -70,6 +108,28 @@ if __name__ == '__main__':
         else:
             _, _, avg = housecsv.compute_loyers_per_m2()
             print(f"{avg:.2f}")
+    if args.type == "pickle":
+        housepickle = HousePickle(args.path)
+        housepickle.load()
+        if args.verbose:
+            min, max, avg = housepickle.compute_loyers()
+            print(f"Loyers min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housepickle.compute_surfaces()
+            print(f"Surfaces min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housepickle.compute_loyers_per_m2()
+            print(f"Loyers par m² min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+        else:
+            _, _, avg = housepickle.compute_loyers_per_m2()
+            print(f"{avg:.2f}")
+    if args.type == "csv-pickle":
+        housecsv = HouseCsv(args.path)
+        housecsv.load()
+        housepickle = HousePickle(args.path.replace(".csv", ".pickle"))
+        housepickle.loyers = housecsv.loyers
+        housepickle.surfaces = housecsv.surfaces
+        housepickle.loyers_per_m2 = housecsv.loyers_per_m2
+        housepickle.save()
+
     else:
         print("ERROR bad type")
         sys.exit(1)
