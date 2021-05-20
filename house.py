@@ -6,14 +6,40 @@ import pickle
 import xml.dom.minidom as dom
 
 
-class HouseCsv:
+class HouseSuper:
 
-    def __init__(self, path, separator=","):
+    def __init__(self, path):
         self.path = path
-        self.separator = separator
         self.loyers = []
         self.surfaces = []
         self.loyers_per_m2 = []
+
+    def min_max_avg(self, l):
+        min = max = l[0]
+        sum = 0
+        for value in l:
+            sum += value
+            if value < min:
+                min = value
+            elif value > max:
+                max = value
+        return min, max, sum / len(l)
+
+    def compute_loyers(self):
+        return self.min_max_avg(self.loyers)
+
+    def compute_surfaces(self):
+        return self.min_max_avg(self.surfaces)
+
+    def compute_loyers_per_m2(self):
+        return self.min_max_avg(self.loyers_per_m2)
+
+
+class HouseCsv(HouseSuper):
+
+    def __init__(self, path, separator=","):
+        super().__init__(path)
+        self.separator = separator
 
     def load(self):
         with open(self.path) as f:
@@ -25,93 +51,29 @@ class HouseCsv:
                 self.surfaces.append(surface)
                 self.loyers_per_m2.append(loyer / surface)
 
-    def min_max_avg(self, l):
-        min = max = l[0]
-        sum = 0
-        for value in l:
-            sum += value
-            if value < min:
-                min = value
-            elif value > max:
-                max = value
-        return min, max, sum / len(l)
 
-    def compute_loyers(self):
-        return self.min_max_avg(self.loyers)
-
-    def compute_surfaces(self):
-        return self.min_max_avg(self.surfaces)
-
-    def compute_loyers_per_m2(self):
-        return self.min_max_avg(self.loyers_per_m2)
-
-
-class HousePickle:
-
-    def __init__(self, path):
-        self.path = path
-        self.loyers = []
-        self.surfaces = []
-        self.loyers_per_m2 = []
+class HousePickle(HouseSuper):
 
     def load(self):
         with open(self.path, "rb") as f:
             self.loyers, self.surfaces, self.loyers_per_m2 = pickle.load(f)
 
-    def min_max_avg(self, l):
-        min = max = l[0]
-        sum = 0
-        for value in l:
-            sum += value
-            if value < min:
-                min = value
-            elif value > max:
-                max = value
-        return min, max, sum / len(l)
-
-    def compute_loyers(self):
-        return self.min_max_avg(self.loyers)
-
-    def compute_surfaces(self):
-        return self.min_max_avg(self.surfaces)
-
-    def compute_loyers_per_m2(self):
-        return self.min_max_avg(self.loyers_per_m2)
-
     def save(self):
         with open(self.path, "wb") as f:
             pickle.dump((self.loyers, self.surfaces, self.loyers_per_m2), f)
 
-class HouseXml:
 
-    def __init__(self, path):
-        self.path = path
-        self.loyers = []
-        self.surfaces = []
-        self.loyers_per_m2 = []
+class HouseXml(HouseSuper):
 
     def load(self):
-        pass
-
-    def min_max_avg(self, l):
-        min = max = l[0]
-        sum = 0
-        for value in l:
-            sum += value
-            if value < min:
-                min = value
-            elif value > max:
-                max = value
-        return min, max, sum / len(l)
-
-    def compute_loyers(self):
-        return self.min_max_avg(self.loyers)
-
-    def compute_surfaces(self):
-        return self.min_max_avg(self.surfaces)
-
-    def compute_loyers_per_m2(self):
-        return self.min_max_avg(self.loyers_per_m2)
+        doc = dom.parse(self.path)
+        l = doc.getElementsByTagName("house")
+        for node in l:
+            loyer = int(node.getAttribute("loyer"))
+            surface = int(node.getAttribute("surface"))
+            self.loyers.append(loyer)
+            self.surfaces.append(surface)
+            self.loyers_per_m2.append(loyer / surface)
 
     def save(self):
         doc = dom.Document()
@@ -124,8 +86,6 @@ class HouseXml:
             houses_node.appendChild(house_node)
         with open(self.path, "w") as f:
             doc.writexml(f, addindent="\t", newl="\n" )
-
-
 
 
 if __name__ == '__main__':
@@ -154,7 +114,7 @@ if __name__ == '__main__':
         else:
             _, _, avg = housecsv.compute_loyers_per_m2()
             print(f"{avg:.2f}")
-    if args.type == "pickle":
+    elif args.type == "pickle":
         housepickle = HousePickle(args.path)
         housepickle.load()
         if args.verbose:
@@ -166,6 +126,19 @@ if __name__ == '__main__':
             print(f"Loyers par m² min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
         else:
             _, _, avg = housepickle.compute_loyers_per_m2()
+            print(f"{avg:.2f}")
+    elif args.type == "xml":
+        housexml = HouseXml(args.path)
+        housexml.load()
+        if args.verbose:
+            min, max, avg = housexml.compute_loyers()
+            print(f"Loyers min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housexml.compute_surfaces()
+            print(f"Surfaces min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+            min, max, avg = housexml.compute_loyers_per_m2()
+            print(f"Loyers par m² min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}")
+        else:
+            _, _, avg = housexml.compute_loyers_per_m2()
             print(f"{avg:.2f}")
     elif args.type == "csv-pickle":
         housecsv = HouseCsv(args.path)
@@ -201,3 +174,8 @@ if __name__ == '__main__':
     # Bonus : Ajouter la méthode save qui sauvegarde les data dans house.pickle
     # Bonus : Lire les data depuis HouseCsv et sauvegarder les data depuis HousePickle
     # Bonus : Reflechir à comment mutualiser HouseCsv et HousePickle
+
+    # Inspirez vous de HousePickle pour créer HouseXml
+    # Créer le type xml
+    # Bonus : Créer un héritage : Créer la classe HouseSuper qui contient tous le code en commun
+    # Bonus : Gérer l'héritage dans les 3 classes enfants
