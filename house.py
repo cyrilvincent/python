@@ -121,10 +121,13 @@ class HouseExcel(HouseSuper):
         workbook.close()
 
     def save(self):
-        #TODO load_workbook
-        sheet.cell(1,1).value = 3
-        # save(path)
-        # close
+        workbook = openpyxl.load_workbook(self.path)
+        sheet = workbook.worksheets[0]
+        for index, value in enumerate(self.loyers):
+            sheet.cell(index + 2, 1).value = value
+            sheet.cell(index + 2, 2).value = value
+        workbook.save(self.path.replace(".xslx", "new.xlsx"))
+        workbook.close()
 
 
 if __name__ == '__main__':
