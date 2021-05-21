@@ -1,10 +1,23 @@
 import matplotlib.pyplot as plt
 import math
+import house
 
-# Reprenndre HouseCsv => surfaces, loyers
+model = house.HouseCsv("data/house.csv")
+model.load()
+
+x = model.surfaces
+y = model.loyers
+
+plt.scatter(x, y)
+plt.show()
+
+
+# Reprendre house.HouseCsv => surfaces, loyers
 # x = surfaces
 # y = loyers
 # Nuage de points
+
+
 
 x = range(10)
 y = range(10)
