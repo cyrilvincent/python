@@ -13,14 +13,24 @@ cube = np.asarray(im)
 print(np.mean(cube, axis=2))
 print(cube.shape)
 red = cube[50:-50,50:-50,0]
-print(np.mean(red))
-print(np.std(red))
+mean = np.mean(red)
+std = np.std(red)
+print(mean)
+print(std)
 print(np.median(red))
 print(red.dtype)
 red = red.astype(np.float64)
-red = np.clip(red + 20,0,255)
+red = np.clip(red * 1.2,0,255)
 im2 = Image.fromarray(red).convert("RGB")
 im2.save("data/modified.jpg")
+im3 = Image.fromarray(red.T).convert("RGB")
+im3.save("data/transpose.jpg")
+
+fnorm = lambda x: ((x - mean) / std) * 63.75 + 127.5
+cube = cube.astype(np.float64)
+imnorm = np.clip(fnorm(cube), 0, 255).astype(np.uint8)
+im4 = Image.fromarray(imnorm).convert("RGB")
+im4.save("data/norm.jpg")
 
 # Charger une image en cube np
 # Effectuer une transposée
