@@ -14,7 +14,11 @@ scaler.fit(x)
 x = scaler.transform(x)
 
 np.random.seed(0)
-xtrain, xtest, ytrain, ytest = ms.train_test_split(x,y,train_size=0.8, test_size=0.2)
+xtrain, xtest, ytrain, ytest = ms.train_test_split(x,y,train_size=0.08, test_size=0.02)
+
+# array = np.random.rand(100)
+# truefalse = array[array > 0.5]
+# y[truefalse]
 
 model = nn.MLPClassifier(hidden_layer_sizes=(30,20))
 model.fit(xtrain, ytrain)
