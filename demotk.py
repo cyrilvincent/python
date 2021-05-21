@@ -37,15 +37,23 @@ class simpleapp_tk(tkinter.Tk):
 
     def OnButtonClick(self):
         content = self.entryVariable.get()
+        try:
+            model = house.HouseCsv(content)
+            model.load()
+            min, max, avg = model.compute_loyers_per_m2()
+            self.labelVariable.set( f"Min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}" )
+        except:
+            self.labelVariable.set("Erreur")
+        self.entry.focus_set()
+        self.entry.selection_range(0, tkinter.END)
+
+    def OnPressEnter(self,event):
+        content = self.entryVariable.get()
         model = house.HouseCsv(content)
         model.load()
         min, max, avg = model.compute_loyers_per_m2()
         self.labelVariable.set( f"Min: {min:.0f}, max: {max:.0f}, avg: {avg:.1f}" )
         self.entry.focus_set()
-        self.entry.selection_range(0, tkinter.END)
-
-    def OnPressEnter(self,event):
-        self.labelVariable.set( "Hello" + " (ENTER)" )
         self.entry.selection_range(0, tkinter.END)
 
 if __name__ == "__main__":
