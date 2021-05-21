@@ -20,3 +20,5 @@ delta = 1
 print(diff[diff > delta])
 print(dataframe.VM[diff > delta])
 print(dataframe.VT[diff > delta].values)
+
+diff.to_excel("data/diff.xlsx")
