@@ -1,5 +1,12 @@
 from PIL import Image
 import numpy as np
+import os
+
+# for i in range(10):
+#     path = f"data/lans{i}.jpg"
+# for file in os.listdir("data"):
+#     if file.endswith(".jpg"):
+#         Image.open(file)
 
 im = Image.open("data/lans.jpg")
 cube = np.asarray(im)
