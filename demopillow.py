@@ -12,7 +12,7 @@ im = Image.open("data/lans.jpg")
 cube = np.asarray(im)
 print(np.mean(cube, axis=2))
 print(cube.shape)
-red = cube[50:-50,50:-50,0]
+red = cube[:,:,0]
 mean = np.mean(red)
 std = np.std(red)
 print(mean)
