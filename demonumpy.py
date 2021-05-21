@@ -1,4 +1,6 @@
 import numpy as np
+import house
+import matplotlib.pyplot as plt
 
 a1 = np.array([1.0,2,3])
 a2 = np.array([4,5,6], dtype=np.float64)
@@ -27,11 +29,43 @@ for v in res:
     print(v)
 
 np.nan # Not a Number
+
+mat1 = np.array([[1,2,3],[4,5,6]])
+mat1 = mat1
+print(mat1)
+print(mat1.shape)
+v = mat1.reshape(6)
+mat1 = v.reshape(2,3)
+
+
+mat1 = np.array([[1,2],[3, 4]])
+print(mat1)
+print("Sum", np.sum(mat1))
+print("Sum axis0", np.sum(mat1, axis=0))
+print("Sum axis1", np.sum(mat1, axis=1))
+
+
+
+
+
+
 # Depuis model=house.HouseCsv(...)
 # Créer x = np.array(model.surfaces)
 # y = np.array(model.loyers)
 # loyerparm2 = y / x
 # matplotlib
 # Filtrer les loyerparm2 > 40
+
+model = house.HouseCsv("data/house.csv")
+model.load()
+x = np.array(model.surfaces)
+y = np.array(model.loyers)
+plt.scatter(x, y)
+plt.show()
+loyerparm2 = y / x
+np.set_printoptions(precision=1)
+print(loyerparm2[loyerparm2 > 60])
+
+
 
 
