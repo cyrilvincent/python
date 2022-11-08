@@ -2,6 +2,10 @@ from datetime import date
 from dataclasses import dataclass
 from typing import List
 
+# Media super classe de Book, Cd, Dvd
+# TVA 5.5% Book mais 20% pour le reste
+# Facultatif : Cart possède plusieurs media, get_total_net_price
+
 
 class Publisher:
 
