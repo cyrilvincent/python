@@ -1000,6 +1000,8 @@ dico = [
     "year": 1951
   }
 ]
-print(dico[0]["author"])
-dico[0]["author"]="Cyril"
-print(dico[0])
+print(dico[-1]["year"])
+dico[-1]["year"]=2022
+print(dico[-1])
+
+print([elem["year"] for elem in dico])
