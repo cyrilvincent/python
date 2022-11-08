@@ -39,7 +39,7 @@ class Book:
 
 if __name__ == '__main__':
     p1 = Publisher("E2V", "St Egreve")
-    a1 = Author("Cyril", "Vincent")
+    a1 = Author("Cyril", "Vincent", 123)
     b1 = Book("Python",123,20.99, p1, date(2022, 11, 8))
     print(b1)
     print(b1.title)
