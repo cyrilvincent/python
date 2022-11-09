@@ -22,7 +22,13 @@ class CustomDialog(QDialog):
         self.setLayout(self.layout)
 
 class MainWindow(QMainWindow):
+
+    counter2 = 0
+
     def __init__(self):
+
+        self.counter = 0
+
         super().__init__()
 
         self.setWindowTitle("My App")
@@ -32,7 +38,9 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(button)
 
     def button_clicked(self, s):
-        print("click", s)
+        self.counter += 1
+        MainWindow.counter2 += 1
+        print(f"click {self.counter} {MainWindow.counter2}", s)
 
         dlg = CustomDialog()
         res = dlg.exec()
