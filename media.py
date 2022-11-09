@@ -75,6 +75,18 @@ class Cart:
     def remove(self, m: Media):
         self.medias.remove(m)
 
+class BookCsvParser:
+
+    def __init__(self, path):
+        self.path = path
+
+    def parse(self) -> List[Book]:
+        # TODO
+        pass
+
+    def get_by_id(self, id) -> Book:
+        pass
+
 if __name__ == '__main__':
     p1 = Publisher("E2V", "St Egreve")
     a1 = Author("Cyril", "Vincent", 123)
