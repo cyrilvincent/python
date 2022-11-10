@@ -1,6 +1,7 @@
 from datetime import date
 from dataclasses import dataclass
 from typing import List
+import csv
 
 # Media super classe de Book, Cd, Dvd
 # TVA 5.5% Book mais 20% pour le reste
@@ -41,7 +42,7 @@ class Book(Media):
 
     vat = 0.055
 
-    def __init__(self, title: str, id: int, price: float, publisher: Publisher, date: date = date(2022, 11, 8),
+    def __init__(self, title: str, id: int, price: float, publisher: Publisher = None, date: date = date(2022, 11, 8),
                  category: int = 0, lang: str = "fr-FR", authors: List[Author] = [], nb_page=0):
         super().__init__(title, id,price,publisher,date,category,lang,authors)
         self.nb_page = nb_page
@@ -81,8 +82,18 @@ class BookCsvParser:
         self.path = path
 
     def parse(self) -> List[Book]:
-        # TODO
-        pass
+        books = []
+        with open(self.path, "r") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                id = int(row["id"])
+                title = row["title"]
+                price = float(row["price"])
+                book = Book(title, id, price)
+                books.append(book)
+        return books
+
+
 
     def get_by_id(self, id) -> Book:
         pass
@@ -98,5 +109,7 @@ if __name__ == '__main__':
     cart.add(b1)
     cart.add(cd1)
     print(cart.get_total_net_price())
-
+    parser = BookCsvParser("data/book.csv")
+    res = parser.parse()
+    print(res)
 
