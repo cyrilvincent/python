@@ -7,14 +7,13 @@ import settings
 
 class Ui(QtWidgets.QMainWindow):
 
-
-
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('ui/main.ui', self) # Load the .ui file
         self.show() # Show the GUI
         self.parserButton.clicked.connect(self.parser_clicked)
-        self.parser = media.BookCsvParser(settings.book_path)
+        # self.parser = media.BookCsvParser(settings.book_csv_path)
+        self.parser = media.BookXmlParser(settings.book_xml_path)
 
     def parser_clicked(self):
         books = self.parser.parse()

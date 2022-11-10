@@ -2,6 +2,7 @@ from datetime import date
 from dataclasses import dataclass
 from typing import List
 import csv
+import xml.dom.minidom as dom
 
 # Media super classe de Book, Cd, Dvd
 # TVA 5.5% Book mais 20% pour le reste
@@ -76,6 +77,23 @@ class Cart:
     def remove(self, m: Media):
         self.medias.remove(m)
 
+class BookXmlParser:
+
+    def __init__(self, path):
+        self.path = path
+
+    def parse(self) -> List[Book]:
+        books = []
+        doc = dom.parse(self.path)
+        nodes = doc.getElementsByTagName("book")
+        for node in nodes:
+            id = int(node.getAttribute("id"))
+            title = node.getAttribute("title")
+            price = float(node.getAttribute("price"))
+            book = Book(title, id, price)
+            books.append(book)
+        return books
+
 class BookCsvParser:
 
     def __init__(self, path):
@@ -110,6 +128,9 @@ if __name__ == '__main__':
     cart.add(cd1)
     print(cart.get_total_net_price())
     parser = BookCsvParser("data/book.csv")
+    res = parser.parse()
+    print(res)
+    parser = BookXmlParser("data/books.xml")
     res = parser.parse()
     print(res)
 
