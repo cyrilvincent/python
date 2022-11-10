@@ -5,6 +5,7 @@ import media
 import sys
 import settings
 
+
 class Ui(QtWidgets.QMainWindow):
 
     def __init__(self):
@@ -13,7 +14,8 @@ class Ui(QtWidgets.QMainWindow):
         self.show() # Show the GUI
         self.parserButton.clicked.connect(self.parser_clicked)
         # self.parser = media.BookCsvParser(settings.book_csv_path)
-        self.parser = media.BookXmlParser(settings.book_xml_path)
+        # self.parser = media.BookXmlParser(settings.book_xml_path)
+        self.parser = media.BookXlParser(settings.book_xl_path)
 
     def parser_clicked(self):
         books = self.parser.parse()

@@ -3,10 +3,11 @@ from dataclasses import dataclass
 from typing import List
 import csv
 import xml.dom.minidom as dom
-
+import openpyxl
 # Media super classe de Book, Cd, Dvd
 # TVA 5.5% Book mais 20% pour le reste
 # Facultatif : Cart possède plusieurs media, get_total_net_price
+import settings
 
 
 class Publisher:
@@ -111,6 +112,27 @@ class BookCsvParser:
                 books.append(book)
         return books
 
+class BookXlParser:
+
+    def __init__(self, path):
+        self.path = path
+
+    def parse(self) -> List[Book]:
+        books = []
+        wb = openpyxl.load_workbook(settings.book_xl_path)
+        sheet = wb["Feuil1"]
+        first_line = True
+        for row in sheet.iter_rows():
+            if first_line:
+                first_line = False
+            else:
+                id = row[0].value
+                title = row[1].value
+                price = row[2].value
+                book = Book(title, id, price)
+                books.append(book)
+        return books
+
 
 
     def get_by_id(self, id) -> Book:
@@ -131,6 +153,9 @@ if __name__ == '__main__':
     res = parser.parse()
     print(res)
     parser = BookXmlParser("data/books.xml")
+    res = parser.parse()
+    print(res)
+    parser = BookXlParser("data/books.xlsx")
     res = parser.parse()
     print(res)
 
