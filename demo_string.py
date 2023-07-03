@@ -21,3 +21,6 @@ year = int(year)
 print(year)
 print(type(year))
 
+var = 123
+s = "titi"
+print(f"toto {var + 1}".upper())
