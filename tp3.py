@@ -16,6 +16,7 @@ if nb >= 2:
         if nb % div == 0:
             is_prime = False
             break
+
     print(is_prime)
 else:
     print(False)
