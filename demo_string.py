@@ -20,3 +20,4 @@ year = input("Saisir l'année en cours:")
 year = int(year)
 print(year)
 print(type(year))
+
