@@ -1,8 +1,10 @@
 # Faire la fonction sum(l) -> float
 # Faire average(l)
 # Faire les fonctions min, max
+from typing import List
 
-def sum(l) -> float:
+
+def sum(l:List[float]) -> float:
     sum = 0
     for val in l:
         sum += val
