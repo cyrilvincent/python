@@ -30,3 +30,9 @@ for i in range(l1.count(99)):
     l1.remove(99)
 
 print(l1)
+
+sum = 0
+for val in l1:
+    sum += val
+print(sum)
+
