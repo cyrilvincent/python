@@ -12,7 +12,7 @@ while not stop:
         nb = int(input("Saisir nb: "))
         print(tp4.is_prime(nb))
         stop = True
-    except ValueError as ex:
+    except ValueError:
         print("nb n'est pas un entier")
     except TypeError as ex:
         print(ex)
