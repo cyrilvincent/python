@@ -18,4 +18,9 @@ print(is_even(8))
 res = compute_distance(1,2,3,4)
 print(res)
 print(compute_distance(1,2))
+a = 1
+b = 2
+c = 3
+d = 4
+print(compute_distance(a,b,c,d))
 

@@ -14,7 +14,8 @@ def is_prime(nb: int) -> bool:
                 is_prime = False
                 break
         return is_prime
-    # Ajuter elif qui si < 0 raise ValueError("Canno't be < 0)
+    elif nb < 0:
+        raise TypeError("Nb < 0")
     else:
         return False
 
