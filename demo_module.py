@@ -1,5 +1,6 @@
 import math as m
 import tp4
+import my_package.my_sub_package.my_module as my
 
 print(m.sqrt(2))
 

@@ -14,10 +14,12 @@ def is_prime(nb: int) -> bool:
                 is_prime = False
                 break
         return is_prime
+    # Ajuter elif qui si < 0 raise ValueError("Canno't be < 0)
     else:
         return False
 
 if __name__ == '__main__':
+
     result = is_prime(7)
     print(result)
     print(is_prime(9))
