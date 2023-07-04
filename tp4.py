@@ -1,7 +1,7 @@
 # Faire la fonction is_prime(nb) -> bool
 # Tester avec plein de chiffres différents
 
-def is_prime(nb):
+def is_prime(nb: int) -> bool:
     """
     Calcul si nb est premier
     :param nb: nombre à tester
@@ -17,9 +17,10 @@ def is_prime(nb):
     else:
         return False
 
-result = is_prime(7)
-print(result)
-print(is_prime(9))
+if __name__ == '__main__':
+    result = is_prime(7)
+    print(result)
+    print(is_prime(9))
 
-for i in range(100):
-    print(f"{i}: {is_prime(i)}")
+    for i in range(100):
+        print(f"{i}: {is_prime(i)}")
