@@ -2,6 +2,11 @@
 # Tester avec plein de chiffres différents
 
 def is_prime(nb):
+    """
+    Calcul si nb est premier
+    :param nb: nombre à tester
+    :return: True si premier False sinon
+    """
     is_prime = True
     if nb >= 2:
         for div in range(2, nb):
