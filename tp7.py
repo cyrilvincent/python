@@ -50,3 +50,6 @@ if __name__ == '__main__':
     res = filter_generic(l, is_positive_sin)
     print(res)
     # Tester avec une list random
+
+    res = list(filter(is_positive_sin, l))
+    print(res)
