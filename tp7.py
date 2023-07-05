@@ -7,6 +7,9 @@ import math
 def is_positive_sin(x: float) -> bool:
     return math.sin(x) > 0
 
+def inc(x: float) -> float:
+    return x + 1
+
 
 def filter_even(l: List[int]) -> List[int]:
     res = []
@@ -27,6 +30,12 @@ def filter_generic(l: List[int], fn: Callable) -> List[int]:
     for val in l:
         if fn(val):
             res.append(val)
+    return res
+
+def map_generic(l: List[int], fn: Callable) -> List[int]:
+    res = []
+    for val in l:
+        res.append(fn(val))
     return res
 
 
@@ -52,4 +61,7 @@ if __name__ == '__main__':
     # Tester avec une list random
 
     res = list(filter(is_positive_sin, l))
+    print(res)
+
+    res = list(map(inc, l))
     print(res)
