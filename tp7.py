@@ -9,6 +9,18 @@ def filter_even(l: List[int]) -> List[int]:
             res.append(val)
     return res
 
+# Faire pareil pour les nombres premiers : filter_prime
+# Bonus = Créer filter_generic qui filtre n'importe en fonction d'une fonction passée en paramètre
+
+def my_function(x):
+    print(x)
+
+f = my_function
+
+
+
+
+
 
 if __name__ == '__main__':
     l = [1,2,3,4,5,6,7,8,9,10]
