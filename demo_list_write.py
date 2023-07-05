@@ -1,9 +1,6 @@
 import random
 from typing import List
 
-print(random.random())
-print(random.randint(0, 100))
-
 def generate_random_list(length: int, max: int)-> List[int]:
     l = []
     for i in range(length):
