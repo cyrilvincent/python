@@ -3,6 +3,7 @@ from typing import Tuple, List
 import tp6
 import matplotlib.pyplot as plt
 import scipy.stats as stats
+import pickle
 
 def parse_house_csv(path: str) -> Tuple[List[float], List[float]]:
     loyers = []
@@ -16,13 +17,19 @@ def parse_house_csv(path: str) -> Tuple[List[float], List[float]]:
             surfaces.append(surface)
     return loyers, surfaces
 
-# save_house_pickle(loyers, surfaces):
-#t = (loyers, surfaces) => data/house/house.pickle
+def save_house_pickle(path, loyers, surfaces):
+    with open(path, "wb") as f:
+        t = (loyers, surfaces)
+        pickle.dump(t, f)
 
-# load_house_pickle(path) -> Tuple[List[float], List[float]]
+def load_house_pickle(path):
+    with open(path, "rb") as f:
+        return pickle.load(f)
 
 if __name__ == '__main__':
-    loyers, surfaces = parse_house_csv("data/house/house.csv")
+    # loyers, surfaces = parse_house_csv("data/house/house.csv")
+    # save_house_pickle("data/house/house.pickle", loyers, surfaces)
+    loyers, surfaces = load_house_pickle("data/house/house.pickle")
     print(loyers)
     print(tp6.average(loyers), tp6.average(surfaces))
     slope, intercept, rvalue, pvalue, loss = stats.linregress(surfaces, loyers)
