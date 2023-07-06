@@ -16,6 +16,11 @@ def parse_house_csv(path: str) -> Tuple[List[float], List[float]]:
             surfaces.append(surface)
     return loyers, surfaces
 
+# save_house_pickle(loyers, surfaces):
+#t = (loyers, surfaces) => data/house/house.pickle
+
+# load_house_pickle(path) -> Tuple[List[float], List[float]]
+
 if __name__ == '__main__':
     loyers, surfaces = parse_house_csv("data/house/house.csv")
     print(loyers)
