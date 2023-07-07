@@ -8,7 +8,7 @@ def is_ean(ean: str) -> bool:
         return False
 
 def is_mail(mail: str) -> bool:
-    regex = r"^\w[\w\d_-]*@[\w\d_-]+.\w{2,6}$"
+    regex = r"^\w[.\w\d_-]*@[\w\d._-]+.\w{2,6}$"
     if re.search(regex, mail):
         return True
     else:
@@ -23,5 +23,8 @@ if __name__ == '__main__':
     res = is_ean(ean)
     print(res)
     mail = "contact@cyrilvincent.com"
+    res = is_mail(mail)
+    print(res)
+    mail = "cyril.vincent@cyrilvincent.com"
     res = is_mail(mail)
     print(res)
