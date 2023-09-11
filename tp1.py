@@ -22,5 +22,11 @@ birth_int = int(birth)
 age = year - birth_int
 print(f"Vous avez {age} ans")
 
+if age > 18:
+    print("Adulte")
+    print("Toto")
+
+print("Titi")
+
 
 
