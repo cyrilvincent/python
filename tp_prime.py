@@ -11,3 +11,5 @@ if nb >= 2:
             is_prime = False
             break
     print(f"{nb} est il premier: {is_prime}")
+
+
