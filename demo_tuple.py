@@ -7,3 +7,5 @@ l1 = [1,2,3]
 a,b,c = min_max_avg(l1)
 print(a, b, c)
 print(f"Moyenne {c:.2f}")
+
+
