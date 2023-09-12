@@ -6,7 +6,12 @@
 def power(x, y):
     return x ** y
 
-def is_even(x):
+def is_even(x: int) -> bool:
+    """
+    Return True if x is even
+    :param x: nb
+    :return: True if even
+    """
     if x % 2 == 0:
         return True
     else:
@@ -23,8 +28,10 @@ def is_prime(nb):
                 break
         return is_prime
 
-print(power(2,3))
-print(is_even(8))
-print(is_prime(7))
+if __name__ == '__main__':
+    print(power(2,3))
+    print(is_even(8))
+    print(is_prime(7))
+    result = is_even(8)
 
 
