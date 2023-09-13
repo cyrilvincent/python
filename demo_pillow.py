@@ -15,11 +15,13 @@ red = array[:,:,0]
 nb = np.mean(array, axis = 2)
 crop = array[100:-100, 100:-100]
 
+# array = array * 0.5
 # Baisser la luminosité de 10%
 # np.clip(x,0,255)
+norm = np.clip(((array - lum) / contrast) * 64 + 128, 0 , 255)
 
 
 
 path_destination = "data/modified.jpg"
-dest = Image.fromarray(crop.astype(np.uint8)).convert("RGB")
+dest = Image.fromarray(norm.astype(np.uint8)).convert("RGB")
 dest.save(path_destination)
