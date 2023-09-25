@@ -8,6 +8,7 @@
 
 year = 2023
 s = input("Année de naissance : ")
+
 birth = int(s)
 
 age = year - birth
