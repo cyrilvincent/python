@@ -9,4 +9,6 @@ parser.add_argument("-c", "--csv", action="store_true", help="Indique si le fich
 args = parser.parse_args()
 print(f"Ouverture de {args.path} en mode csv: {args.csv}")
 
-
+# Créer la fonction load(path) qui ouvre le fichier (house.csv)
+# Et retourne un tuple Loyers, Surfaces
+# load(args.path)

@@ -20,3 +20,5 @@ with open("data/house/house.csv") as f:
         loyers.append(loyer)
     print(loyers)
 
+
+
