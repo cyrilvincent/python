@@ -26,6 +26,13 @@ def min2(l1):
     l1.sort()
     return l1[0]
 
+def max(l1):
+    l1.sort()
+    return l1[-1]
+
+def avg(l):
+    return sum(l) / len(l)
+
 l1 = [0,1,2,99,4,99,6,-2,45,10]
 res = sum(l1)
 print(res)
@@ -35,3 +42,8 @@ res = min(l1)
 print(res)
 res = min2(l1)
 print(res)
+res = max(l1)
+print(res)
+res = avg(l1)
+print(res)
+
