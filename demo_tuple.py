@@ -6,6 +6,11 @@ min, max = min_max(l1)
 print(min, max)
 
 def min_max_avg(l):
+    """
+    Min, max, avg
+    :param l:
+    :return: Tuple min, max, avg
+    """ # o(n * log(n))
     min = max = l[0]
     total = 0
     for value in l:
