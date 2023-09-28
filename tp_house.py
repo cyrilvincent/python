@@ -34,7 +34,7 @@ if __name__ == '__main__':
             pickle.dump((loyers, surfaces), f)
     # Créer l'argument -p --pickle
     # Créer la fonction load_pickle(path)
-    # Fire le elif adéquat
+    # Faire le elif adéquat
     else:
         print("Error, must specify file type with --csv")
         sys.exit(1)
