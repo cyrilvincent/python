@@ -2,6 +2,7 @@
 # Afficher: Ouverture de data/house/house.csv en mode csv: True
 
 import argparse
+import pickle
 
 parser = argparse.ArgumentParser()
 parser.add_argument("path", help="path du fichier à ouvrir")
@@ -29,6 +30,8 @@ def load_csv(path):
 if __name__ == '__main__':
     if args.csv:
         loyers, surfaces = load_csv(args.path)
+        with open("data/house/house.pickle", "wb") as f:
+            pickle.dump((loyers, surfaces), f)
     else:
         print("Error, must specify file type with --csv")
         sys.exit(1)
