@@ -3,6 +3,7 @@
 
 import argparse
 import pickle
+import json
 
 parser = argparse.ArgumentParser()
 parser.add_argument("path", help="path du fichier à ouvrir")
@@ -39,6 +40,8 @@ if __name__ == '__main__':
         loyers, surfaces = load_csv(args.path)
         with open("data/house/house.pickle", "wb") as f:
             pickle.dump((loyers, surfaces), f)
+        with open("data/house/house.json", "w") as f:
+            json.dump({"loyers": loyers, "surfaces": surfaces}, f, indent=True)
     # Créer l'argument -p --pickle
     # Créer la fonction load_pickle(path)
     # Faire le elif adéquat
