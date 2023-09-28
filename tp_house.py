@@ -13,6 +13,7 @@ print(f"Ouverture de {args.path} en mode csv: {args.csv}")
 # Et retourne un tuple Loyers, Surfaces
 # load(args.path)
 import csv
+import sys
 def load_csv(path):
     with open(path) as f:
         reader = csv.DictReader(f)
@@ -26,6 +27,10 @@ def load_csv(path):
         return loyers, surfaces
 
 if __name__ == '__main__':
-    loyers, surfaces = load_csv("data/house/house.csv")
+    if args.csv:
+        loyers, surfaces = load_csv(args.path)
+    else:
+        print("Error, must specify file type with --csv")
+        sys.exit(1)
     print(loyers)
     print(surfaces)
