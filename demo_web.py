@@ -25,10 +25,10 @@ def house():
     loyers, surfaces = tp_house.load_csv("data/house/house.csv")
     plt.scatter(surfaces, loyers)
     plt.savefig("static/house.png")
-    s = "<html><body><h1>House</h1><table border='1'>"
+    s = "<html><body><h1>House</h1><img src='static/house.png'/><table border='1'>"
     for tuple in zip(loyers, surfaces):
         s += f"<tr><td>{tuple[0]}</td><td>{tuple[1]}</td></tr>"
-    s+="</table><img src='static/house.png'/></body></html>"
+    s+="</table></body></html>"
     return s
 
 if __name__ == '__main__':
