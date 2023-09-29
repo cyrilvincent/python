@@ -25,11 +25,12 @@ class Book:
 
     nb_book = 0
 
-    def __init__(self, title, price, category="Computer", authors=[]):
+    def __init__(self, title, price, publisher=None, category="Computer", authors=[]):
         self.title = title
         self.price = price
         self.category = category
         self.authors = authors
+        self.publisher = publisher
         Book.nb_book += 1
 
     def get_net_price(self):
@@ -55,3 +56,10 @@ if __name__ == '__main__':
     print(b1.nb_book)
     del b3
     print(b1.nb_book)
+    b4 = Book("toto","10", p1)
+    b2.publisher = p1
+    b2.authors = [a1, a2]
+    print(b2)
+
+
+
