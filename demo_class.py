@@ -23,6 +23,8 @@ class Book:
     # fonction __init__ = constructeur
     # QUOI? COMMENT?
 
+    nb_book = 0
+
     def __init__(self, title, price, category="Computer", authors=[]):
         self.title = title
         self.price = price
@@ -31,6 +33,9 @@ class Book:
 
     def get_net_price(self):
         return self.price * 1.055
+
+    def __del__(self):
+        pass
 
 
 if __name__ == '__main__':
