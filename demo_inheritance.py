@@ -20,7 +20,7 @@ class Rectangle:
 class Square(Rectangle): # Inheritance (IS)
 
     def __init__(self, side, coord):
-        super().__init__(side, side, coord)
+        super().__init__(length=side, width=side, coord=coord)
 
 
 
