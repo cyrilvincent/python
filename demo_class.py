@@ -30,12 +30,13 @@ class Book:
         self.price = price
         self.category = category
         self.authors = authors
+        Book.nb_book += 1
 
     def get_net_price(self):
         return self.price * 1.055
 
     def __del__(self):
-        pass
+        Book.nb_book -= 1
 
 
 if __name__ == '__main__':
@@ -51,3 +52,6 @@ if __name__ == '__main__':
     a1 = Author("Victor", "Hugo")
     a2 = Author("Cyril", "Vincent", "contact@cyrilvincent.com")
     p1 = Publisher("ENI", "inconnue", "contact@eni.fr")
+    print(b1.nb_book)
+    del b3
+    print(b1.nb_book)
