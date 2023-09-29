@@ -1,3 +1,21 @@
+# Créer la classe Publisher et Author PlusieurMot
+# Pas de méthode
+# Tester et vérifier le type
+
+class Publisher:
+
+    def __init__(self, name, address, mail):
+        self.name = name
+        self.address = address
+        self.mail = mail
+
+class Author:
+
+    def __init__(self, first_name, last_name, mail=""):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.mail = mail
+
 class Book:
 
     # variables = attributs
@@ -14,6 +32,7 @@ class Book:
     def get_net_price(self):
         return self.price * 1.055
 
+
 if __name__ == '__main__':
     b1 = Book("Python", 10)
     print(b1.title)
@@ -24,3 +43,6 @@ if __name__ == '__main__':
     b3 = Book("Python", 10)
     print(b1 == b3)
     print(b1.price == b3.price and b1.title == b3.title)
+    a1 = Author("Victor", "Hugo")
+    a2 = Author("Cyril", "Vincent", "contact@cyrilvincent.com")
+    p1 = Publisher("ENI", "inconnue", "contact@eni.fr")
