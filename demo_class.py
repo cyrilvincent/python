@@ -16,14 +16,14 @@ class Author:
         self.last_name = last_name
         self.mail = mail
 
-class Book:
+class Media:
 
     # variables = attributs
     # fonctions = méthodes
     # fonction __init__ = constructeur
     # QUOI? COMMENT?
 
-    nb_book = 0
+    nb_media = 0
 
     def __init__(self, title, price, publisher=None, category="Computer", authors=[]):
         self.title = title
@@ -31,13 +31,20 @@ class Book:
         self.category = category
         self.authors = authors
         self.publisher = publisher
-        Book.nb_book += 1
+        Media.nb_media += 1
 
     def get_net_price(self):
         return self.price * 1.055
 
     def __del__(self):
-        Book.nb_book -= 1
+        Media.nb_media -= 1
+
+class Book(Media):
+
+    def __init__(self, title, price, publisher=None, category="Computer", authors=[], nb_page = 0):
+        super().__init__(title,price,publisher,category,authors)
+        self.nb_page = nb_page
+
 
 
 if __name__ == '__main__':
@@ -53,9 +60,9 @@ if __name__ == '__main__':
     a1 = Author("Victor", "Hugo")
     a2 = Author("Cyril", "Vincent", "contact@cyrilvincent.com")
     p1 = Publisher("ENI", "inconnue", "contact@eni.fr")
-    print(b1.nb_book)
+    print(b1.nb_media)
     del b3
-    print(b1.nb_book)
+    print(b1.nb_media)
     b4 = Book("toto","10", p1)
     b2.publisher = p1
     b2.authors = [a1, a2]
