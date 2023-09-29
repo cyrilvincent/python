@@ -5,13 +5,7 @@ import argparse
 import pickle
 import json
 
-parser = argparse.ArgumentParser()
-parser.add_argument("path", help="path du fichier à ouvrir")
-parser.add_argument("-c", "--csv", action="store_true", help="Indique si le ficher est un csv")
-parser.add_argument("-p", "--pickle", action="store_true", help="Indique si le ficher est un pickle")
 
-args = parser.parse_args()
-print(f"Ouverture de {args.path} en mode csv: {args.csv}")
 
 # Créer la fonction load(path) qui ouvre le fichier (house.csv)
 # Et retourne un tuple Loyers, Surfaces
@@ -36,6 +30,13 @@ def load_pickle(path):
         return loyers, surfaces
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("path", help="path du fichier à ouvrir")
+    parser.add_argument("-c", "--csv", action="store_true", help="Indique si le ficher est un csv")
+    parser.add_argument("-p", "--pickle", action="store_true", help="Indique si le ficher est un pickle")
+
+    args = parser.parse_args()
+    print(f"Ouverture de {args.path} en mode csv: {args.csv}")
     if args.csv:
         loyers, surfaces = load_csv(args.path)
         with open("data/house/house.pickle", "wb") as f:
