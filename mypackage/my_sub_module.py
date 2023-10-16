@@ -1,2 +1,0 @@
-def toto():
-    return "titi"
