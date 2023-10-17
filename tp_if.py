@@ -1,5 +1,10 @@
 year = 2023
-birth = int(input("Année de naissance: "))
+while True:
+    try:
+        birth = int(input("Année de naissance: "))
+        break
+    except ValueError as ex:
+        print("Mauvaise saisie ", ex)
 age = year - birth
 print(f"Vous avez {age} ans")
 
