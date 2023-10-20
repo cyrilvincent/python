@@ -10,8 +10,8 @@ def min_max_avg(l):
         sum += val
     return min, max, sum / len(l)
 
-
-min, max, avg = min_max_avg(range(100))
-print(min)
-print(max)
-print(avg)
+if __name__ == '__main__':
+    min, max, avg = min_max_avg(range(100))
+    print(min)
+    print(max)
+    print(avg)

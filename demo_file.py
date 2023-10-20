@@ -19,17 +19,17 @@ def load_csv(path):
             surfaces.append(float(row["surface"]))
     return loyers, surfaces
 
-
-loyers, surfaces = load_csv("data/house/house.csv")
-print(loyers)
-print(surfaces)
-
-dataframe = pd.read_csv("data/house/house.csv")
-print(dataframe.loyer)
-print(dataframe.surface)
-
-plt.scatter(dataframe.surface, dataframe.loyer)
-plt.show()
-
-plt.scatter(surfaces, loyers)
-plt.show()
+#
+# loyers, surfaces = load_csv("data/house/house.csv")
+# print(loyers)
+# print(surfaces)
+#
+# dataframe = pd.read_csv("data/house/house.csv")
+# print(dataframe.loyer)
+# print(dataframe.surface)
+#
+# plt.scatter(dataframe.surface, dataframe.loyer)
+# plt.show()
+#
+# plt.scatter(surfaces, loyers)
+# plt.show()
