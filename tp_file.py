@@ -6,8 +6,10 @@
 
 # for loyer, surface in zip(loyers, surfaces)
 
+
 import demo_file
 import demo_tuple
+import pickle
 
 def get_loyers_per_m2(loyers, surfaces):
     res = []
@@ -25,5 +27,16 @@ loyers_m2 = get_loyers_per_m2(loyers, surfaces)
 print(loyers_m2)
 min, max, avg = demo_tuple.min_max_avg(loyers_m2)
 print(min, max, avg)
+
+# with open("data/house/house.pkl", "wb") as f:
+#     pickle.dump(loyers_m2, f)
+
+loyers_m2 = None
+
+with open("data/house/house.pkl", "rb") as f:
+    loyers_m2 = pickle.load(f)
+    print(loyers_m2)
+
+
 
 
