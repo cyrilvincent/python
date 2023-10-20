@@ -17,6 +17,16 @@ def get_loyers_per_m2(loyers, surfaces):
         res.append(loyer / surface)
     return res
 
+def save(x, path):
+    with open(path, "wb") as f:
+        pickle.dump(x, f)
+
+
+
+def load(path):
+    with open(path, "rb") as f:
+        loyers_m2 = pickle.load(f)
+        return loyers_m2
 
 loyers, surfaces = demo_file.load_csv("data/house/house.csv")
 min, max, avg = demo_tuple.min_max_avg(loyers)
@@ -28,14 +38,20 @@ print(loyers_m2)
 min, max, avg = demo_tuple.min_max_avg(loyers_m2)
 print(min, max, avg)
 
+
+save(loyers_m2, "data/house/house.pkl")
 # with open("data/house/house.pkl", "wb") as f:
 #     pickle.dump(loyers_m2, f)
 
 loyers_m2 = None
 
-with open("data/house/house.pkl", "rb") as f:
-    loyers_m2 = pickle.load(f)
-    print(loyers_m2)
+loyers_m2 = load("data/house/house.pkl")
+
+# with open("data/house/house.pkl", "rb") as f:
+#     loyers_m2 = pickle.load(f)
+#     print(loyers_m2)
+
+# tp_pickle créer les fonctions load et save
 
 
 
