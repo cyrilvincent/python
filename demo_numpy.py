@@ -52,10 +52,12 @@ v1 = [0,1,0,0,0,0,0,0,0,0]
 res = np.fft.fft(v1)
 print(res)
 
+plt.figure(1)
 plt.subplot(211)
 plt.plot(np.arange(10), v1)
 plt.subplot(212)
 plt.plot(np.arange(10), np.real(res), color="red")
+plt.interactive(True)
 plt.show()
 
 import demo_file
@@ -64,5 +66,7 @@ slope, intercept, r1, pvalue, loss = stats.linregress(surfaces, loyers)
 print(slope, intercept, r1, pvalue, loss)
 plt.scatter(surfaces, loyers)
 x = np.arange(400)
+plt.figure(2)
 plt.plot(x, slope * x + intercept)
+plt.interactive(False)
 plt.show()
