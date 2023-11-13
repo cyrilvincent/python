@@ -25,6 +25,12 @@ def filter(fn, l: List[int]) -> List[int]:
             res.append(i)
     return res
 
+def map(fn, l: List[int]) -> List[int]:
+    res = []
+    for i in l:
+        res.append(fn(i))
+    return res
+
 
 
 
@@ -33,3 +39,29 @@ if __name__ == '__main__':
     assert max([1,2,3,4]) == 4
     assert filter(lambda x: x % 2 == 0, [1,2,3,4]) == [2,4]
     assert filter(prime.is_prime, [1, 2, 3, 4]) == [2, 3]
+    assert map(lambda x: x + 1, [1,2,3,4]) == [2,3,4,5]
+
+    # Even
+    l = [1,2,3,4]
+    res = [x for x in l if x % 2 == 0]
+    print(res)
+
+    # Map *2
+    res = [x * 2 for x in l]
+    print(res)
+
+    # Filter + Map
+    res = [x ** 2 for x in l if prime.is_prime(x)]
+    print(res)
+
+    volts = [10,20,30,40]
+    amps = [1.1,1.3,1.6,1.9]
+    res = [v * a for v, a in zip(volts, amps)]
+    print(res)
+
+    i = 0
+    res = []
+    while i < len(volts):
+        v = volts[i]
+        a = amps[i]
+        res.append(v * a)
