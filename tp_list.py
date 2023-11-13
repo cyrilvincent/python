@@ -59,6 +59,9 @@ if __name__ == '__main__':
     res = [v * a for v, a in zip(volts, amps)]
     print(res)
 
+    res = [{"volt": v, "amp": a} for v, a in zip(volts, amps)]
+    print(res)
+
     i = 0
     res = []
     while i < len(volts):
