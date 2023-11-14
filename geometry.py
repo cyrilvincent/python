@@ -1,3 +1,6 @@
+import math
+
+
 class Point:
 
     def __init__(self, x: float, y: float):
@@ -37,8 +40,30 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self._length + self._width)
 
+    def __repr__(self):
+        return f"{type(self).__name__} {self._length} x {self._width}"
+
     def __del__(self):
         print("Destructor")
+
+class Square(Rectangle):
+
+    def __init__(self, side: float, origin: Point=Point(0,0)):
+        super().__init__(side, side, origin)
+        # Rectangle.__init__(self,side,side,origin)
+        # super(Rectangle).__init__(side, side, origin)
+
+class TriangleRectangle(Rectangle):
+
+    def __init__(self, length: float, width: float, origin: Point=Point(0,0)):
+        super().__init__(length, width, origin)
+
+    def area(self):
+        return super(Rectangle).area / 2
+
+    def perimeter(self):
+        return self._width + self._length + math.sqrt(self._width ** 2 + self._length ** 2)
+
 
 if __name__ == '__main__':
     p1 = Point(4,0)
@@ -53,3 +78,6 @@ if __name__ == '__main__':
     r1 = None
     r1 = r2
     del(r1)
+    s1 = Square(3)
+    print(s1.area)
+    print(s1)
