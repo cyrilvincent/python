@@ -4,6 +4,7 @@
 # Bonus : filter
 from typing import List
 import tp_prime as prime
+import pandas
 
 def sum(l: List[int]) -> int:
     sum = 0
