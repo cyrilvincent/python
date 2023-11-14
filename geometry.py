@@ -1,4 +1,6 @@
 import math
+from typing import List
+import abc
 
 
 class Point:
@@ -15,9 +17,26 @@ class Point:
         self.x += x
         self.y += y
 
+class Parallelogram(metaclass=abc.ABCMeta):
+
+    def __init__(self):
+        pass
 
 
-class Rectangle:
+    @property
+    @abc.abstractmethod
+    def area(self):...
+
+class Losange(Parallelogram):
+
+    def __init__(self):
+        pass
+
+    @property
+    def area(self):
+        return 1
+
+class Rectangle(Parallelogram):
 
     def __init__(self, length: float, width: float, origin: Point=Point(0,0)):
         """
@@ -58,6 +77,7 @@ class TriangleRectangle(Rectangle):
     def __init__(self, length: float, width: float, origin: Point=Point(0,0)):
         super().__init__(length, width, origin)
 
+    @property
     def area(self):
         return super(Rectangle).area / 2
 
@@ -81,3 +101,17 @@ if __name__ == '__main__':
     s1 = Square(3)
     print(s1.area)
     print(s1)
+
+    l: List[Parallelogram] = []
+    l.append(r2)
+    l.append(s1)
+    l.append(Losange())
+
+    res = [p.area for p in l]
+    print(sum(res))
+
+    losange = Losange()
+    print(losange)
+    m = Parallelogram()
+    print(m.area)
+
