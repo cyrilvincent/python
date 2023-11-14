@@ -12,6 +12,6 @@
     <option name="modifyBaseFiles" value="true" />
   </component>
   <component name="TestRunnerService">
-    <option name="PROJECT_TEST_RUNNER" value="Twisted Trial" />
+    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
   </component>
 </module>
