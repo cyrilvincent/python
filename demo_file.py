@@ -21,9 +21,9 @@ with open("data/house/house.csv", "r") as f:
 
 import pickle
 with open("data/house/house.pkl", "wb") as f:
-    pickle.dump(avg, f)
+    pickle.dump((avg, total), f)
 
 avg = None
 
 with open("data/house/house.pkl", "rb") as f:
-    avg = pickle.load(f)
+    avg, total = pickle.load(f)
