@@ -7,6 +7,14 @@ def add(i:float, j:float=0) -> float:
     """
     return i + j
 
-res = add("toto", 1)
+res = add(2, 1)
 
 print(res)
+
+def add_tuple(*args):
+    res = 0
+    for arg in args:
+        res += arg
+    return res
+
+print(add_tuple())

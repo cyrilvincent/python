@@ -22,9 +22,13 @@ def is_prime(nb : int) -> bool:
                 break
     return is_prime
 
-print(power(x=2,y=3))
-print(is_prime(7), is_prime(8))
 
-for i in range(100):
-    if is_prime(i):
-        print(i)
+
+
+
+def sqrt(x):
+    return "toto"
+
+if __name__ == '__main__':
+    print(power(x=2,y=3))
+    print(is_prime(7), is_prime(8))
