@@ -28,13 +28,6 @@ for i in range(1, 11):
         print(f"{i}*{j}={i*j}")
 
 nb = 1223
-is_prime = True
-if nb < 2:
-    is_prime = False
-else:
-    for div in range(2, nb):
-        if nb % div == 0:
-            is_prime = False
-            break
+
 print(f"Est prime: {is_prime}")
 
