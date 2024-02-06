@@ -8,7 +8,9 @@ while not stop:
     try:
         birth = int(input("Année de naissance: "))
         age = year - birth
+        if age < 0:
+            raise ValueError("Age < 0")
         print(f"Votre age est de {age} ans")
         stop = True
-    except ValueError:
-        print("Mauvaise saisie")
+    except ValueError as ex:
+        print(f"Mauvaise saisie: {ex}")
