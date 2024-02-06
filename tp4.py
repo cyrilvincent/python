@@ -10,28 +10,28 @@ from typing import List
 import tp3
 
 
-def sum(l: List) -> float:
+def sum(l: List[float]) -> float:
     res = 0
     for value in l:
         res += value
     return res
 
-def mean(l: List) -> float:
+def mean(l: List[float]) -> float:
     return sum(l) / len(l)
 
-def remove_all(l: List, x: float) -> List:
+def remove_all(l: List[float], x: float) -> List[float]:
     for i in range(l.count(x)):
         l.remove(x)
     return l
 
-def filter_even(l: List) -> List:
+def filter_even(l: List[float]) -> List[float]:
     res = []
     for value in l:
         if value % 2 == 0:
             res.append(value)
     return res
 
-def filter_prime(l: List) -> List:
+def filter_prime(l: List[float]) -> List[float]:
     res = []
     for value in l:
         if tp3.is_prime(value):
