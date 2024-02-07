@@ -57,6 +57,7 @@ if __name__ == '__main__':
     del(b1)
     print(Book.nb_book)
     b2.authors.append(a1)
+    b2.authors = [Author("Cyril", "Vincent"), Author("toto", "titi")]
 
 
 # TP

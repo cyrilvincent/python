@@ -12,6 +12,12 @@ class Point:
         self.x += x_rel
         self.y = y_rel
 
+class Point3d(Point):
+
+    def __init__(self, x, y, z):
+        super().__init__(x, y)
+        self.z = z
+
 class Rectangle:
 
     def __init__(self, length: float, width: float, origin: Point = Point()):
@@ -29,6 +35,11 @@ class Rectangle:
     def move(self, x:float, y:float):
         self.origin.move(x, y)
 
+class Square(Rectangle):
+
+    def __init__(self, side: float):
+        super().__init__(side, side)
+
 if __name__ == '__main__':
     p1 = Point(3,2)
     r1 = Rectangle(4,5,p1)
@@ -45,20 +56,5 @@ if __name__ == '__main__':
 
     r4.origin.move(5,6)
 
-
-
-
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    r2 = Rectangle(2,3)
-    r2.width = 99
-    r1 = Rectangle(length=2,width=3)
-    print(r1.length, r1.width)
-    print(r1.area())
+    s1 = Square(3)
+    print(s1.area())
