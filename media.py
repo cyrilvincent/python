@@ -23,26 +23,61 @@ class Author:
 
 
 
-class Book:
+class Media:
 
-    tva = 0.055
-    nb_book = 0
+    tva = 0.2
+    nb_media = 0
 
-    def __init__(self, title: str, price: float,publisher: Publisher=None, lang: str="fr-FR", nb_page=0, date:datetime=datetime.now(), authors: List[Author]=[] ):
+    def __init__(self, title: str, price: float,publisher: Publisher=None, lang: str="fr-FR", date:datetime=datetime.now(), authors: List[Author]=[] ):
         self.title = title
         self.price = price
         self.lang = lang
         self.date = date
-        self._nb_page = nb_page
         self.publisher = publisher
         self.authors = authors
-        Book.nb_book += 1
+        Media.nb_media += 1
 
     def net_price(self):
-        return self.price * (1 + Book.tva)
+        return self.price * (1 + Media.tva)
 
     def __del__(self):
-        Book.nb_book -= 1
+        Media.nb_media -= 1
+
+class Book(Media):
+
+    tva = 0.055
+
+    def __init__(self, title: str, price: float, publisher: Publisher = None, lang: str = "fr-FR",
+                 date: datetime = datetime.now(), authors: List[Author] = [], nb_page=0):
+        super().__init__(title, price,publisher,lang,date,authors)
+        self.nb_page = nb_page
+
+    def net_price(self):
+        return self.price * 0.95 * (1 + Book.tva) + 0.01
+
+class Cd(Media):
+
+    def __init__(self, title: str, price: float, publisher: Publisher = None, lang: str = "fr-FR",
+                 date: datetime = datetime.now(), authors: List[Author] = [], nb_track=0):
+        super().__init__(title, price,publisher,lang,date,authors)
+        self.nb_track = nb_track
+
+class Cart:
+
+    def __init__(self):
+        self.medias: List[Media] = []
+
+    def add(self, m: Media):
+        self.medias.append(m)
+
+    def remove(self, m:Media):
+        self.medias.remove(m)
+
+    def total_net_price(self):
+        res = 0
+        for media in self.medias:
+            res += media.net_price()
+        return res
 
 if __name__ == '__main__':
     print(config.copyright)
@@ -50,14 +85,15 @@ if __name__ == '__main__':
     a1 = Author("Cyril", "Vincent")
     b1 = Book("Python",10,publisher=p1, authors=[a1])
     print(f"Price: {b1.net_price():.2f}")
-    print(b1._nb_page)
-    print(b1.nb_book)
+    print(b1.nb_media)
     b2 = Book("Python 3", 20)
-    print(Book.nb_book)
+    print(Book.nb_media)
     del(b1)
-    print(Book.nb_book)
+    print(Book.nb_media)
     b2.authors.append(a1)
     b2.authors = [Author("Cyril", "Vincent"), Author("toto", "titi")]
+    cd = Cd("Allumer le feu",10)
+
 
 
 # TP
