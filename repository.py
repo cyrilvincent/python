@@ -9,6 +9,7 @@ class GenericRepository:
 
     def __init__(self,path:str):
         self.path = path
+        self.books = []
 
     def load(self) -> List[media.Book]:
         pass
@@ -22,15 +23,14 @@ class BookCsvRepository(GenericRepository):
         super().__init__(path)
 
     def load(self) -> List[media.Book]:
-        books = []
         with open(self.path) as f:
             reader = csv.DictReader(f)
             for row in reader:
                 title = row["title"]
                 price = float(row["price"])
                 book = media.Book(title, price)
-                books.append(book)
-        return books
+                self.books.append(book)
+        return self.books
 
     def save(self, books: List[media.Book]):
         with open(self.path, "w") as f:
