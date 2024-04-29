@@ -20,18 +20,38 @@ def filter2(fn, l):
             res.append(v)
     return res
 
-
 def map2(fn, l):
     res = []
     for v in l:
         res.append(fn(v))
     return res
 
+def map_yield(fn, l):
+    for v in l:
+        yield fn(v)
+
 # f(x) = x + 1
 f = lambda x: x + 1
 # <=>
 def f(x):
     return x + 1
+
+def filter_yield(fn, l):
+    for v in l:
+        if fn(v):
+            yield v
+
+def range_yield(nb):
+    i = 0
+    while i < nb:
+        yield i
+        i += 1
+
+def infinite():
+    i = 0
+    while True:
+        yield i
+        i += 1
 
 
 
@@ -44,8 +64,9 @@ if __name__ == '__main__':
     print(filter2(hello.is_prime, l))
     print(list(map(lambda x: x+1, l)))
 
-    big = range(100000000000000000000000000000000000000000000000)
-    res = filter(lambda x: x % 2 == 0, big)
-    res = filter(lambda x: hello.is_prime(x), res)
+    big = infinite() # range(100000000000000000000000000000000000000000000000)
+    res = filter_yield(lambda x: x % 2 == 0, big)
+    res = filter_yield(lambda x: hello.is_prime(x), res)
+    res = map_yield(lambda x: x **2, res)
     for x in res:
         print(x)
