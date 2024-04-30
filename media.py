@@ -1,6 +1,6 @@
 class Book:
 
-    def __init__(self, title: str, price: float, weight_g: int=0, nb_page: int=0, summary: str="", format:str="A3"):
+    def __init__(self, title: str, price: float, weight_g: int=0, nb_page: int=0, summary: str="", format: str="A3"):
         self.title = title
         self.price = price
         self.nb_page = nb_page
@@ -12,6 +12,14 @@ class Book:
     def net_price(self):
         return self.price * 1.055
 
+
 if __name__ == '__main__':
     b1 = Book("Python", 10.0)
     print(b1.net_price)
+
+# Créer la class Author avec @dataclass
+# Idem pour publisher
+# Créer la relation Book possède 0 ou 1 publisher
+# Créer la relation Book possède n authors
+# Tester
+# Compter automatiquement le nombre de book créé : nb_book
