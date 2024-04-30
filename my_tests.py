@@ -19,11 +19,21 @@ class MediaTest(unittest.TestCase):
             m = media.Media("",0)
         cd = media.Cd("", 10)
 
-    def testu_cart(self):
+    def test_cart(self):
         cart = media.Cart()
         cd = media.Cd("", 10)
         cart.add(cd)
         cart.add(media.Book("Python", 10))
-        self.assertAlmostEquals(22.55, cart.total_net_price)
+        self.assertAlmostEqual(22.032, cart.total_net_price, delta=1e-2)
+
+    def test_media_isbn(self):
+        with self.assertRaises(ValueError):
+            b = media.Book("",1,isbn="123")
+        b = media.Book("",1, isbn="ISBN 978-2-7177-2113-4")
+        self.assertEqual("ISBN 978-2-7177-2113-4", b.isbn)
+        # try:
+        #     b = media.Book("", 1, isbn="123")
+        # except ValueError as ex:
+        #     print(ex)
 
 

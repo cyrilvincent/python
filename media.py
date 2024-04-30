@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional, List
 import abc
+import re
 
 
 @dataclass
@@ -47,9 +48,28 @@ class Book(Media):
     vat = 0.055
 
     def __init__(self, title: str, price: float, weight_g: int = 0, summary: str = "", format: str = "A3",
-                 publisher: Optional[Publisher] = None, authors: List[Author] = [], nb_page=0):
+                 publisher: Optional[Publisher] = None, authors: List[Author] = [], nb_page=0, isbn: Optional[str]=None):
         super().__init__(title,price,weight_g,summary,format,publisher,authors)
         self.nb_page = nb_page
+        self.regex = r"^(ISBN )?\d{3}-\d-\d{4}-\d{4}-\d$"
+        self.regex_compile = re.compile(self.regex)
+        self._isbn = None
+        self.isbn = isbn
+
+
+    @property
+    def isbn(self):
+        return self._isbn
+
+    @isbn.setter
+    def isbn(self, value):
+        if value is not None and not re.match(self.regex_compile, value):
+            raise ValueError("Bad ISBN")
+        self._isbn = value
+
+
+    # ajouter l'attribut isbn
+    # tester le format isbn13
 
     @property
     def net_price(self):
@@ -63,11 +83,27 @@ class Cd(Media):
         super().__init__(title, price, weight_g, summary, format, publisher, authors)
         self.nb_track = nb_track
 
+    @property
     def net_price(self):
         return self.price * (1 + Media.vat)
 
 # Créer Cd nb_track
 # Créer Dvd zone
+
+class Cart:
+
+    def __init__(self):
+        self.items: List[Media] = []
+
+    def add(self, media: Media):
+        self.items.append(media)
+
+    def remove(self, media: Media):
+        self.items.remove(media)
+
+    @property
+    def total_net_price(self):
+        return sum([m.net_price for m in self.items])
 
 
 if __name__ == '__main__':
