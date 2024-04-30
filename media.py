@@ -42,6 +42,9 @@ class Book:
     def __del__(self):
         Book.nb_book -= 1
 
+# Créer Cd nb_track
+# Créer Dvd zone
+
 
 if __name__ == '__main__':
     b1 = Book("Python", 10.0)
