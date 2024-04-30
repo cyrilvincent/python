@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional, List
+import abc
 
 
 @dataclass
@@ -15,32 +16,55 @@ class Publisher:
     name: str
 
 
-class Book:
+class Media(metaclass=abc.ABCMeta):
 
-    nb_book = 0
-    vat = 0.055
+    nb_media = 0
+    vat = 0.2
 
-    def __init__(self, title: str, price: float, weight_g: int=0, nb_page: int=0, summary: str="", format: str="A3",
+    def __init__(self, title: str, price: float, weight_g: int=0, summary: str="", format: str="A3",
                  publisher: Optional[Publisher]=None, authors: List[Author]=[]):
         self.title = title
         self.price = price
-        self.nb_page = nb_page
         self.summary = summary
         self.format = format
         self.weight_g = weight_g
         self.publisher = publisher
         self.authors = authors
-        Book.nb_book += 1
+        Media.nb_media += 1
+
+    @abc.abstractmethod
+    def net_price(self):...
+
+    def __repr__(self):
+        return f"{type(self).__name__} {self.title} {self.price}"
+
+    def __del__(self):
+        Media.nb_media -= 1
+
+
+class Book(Media):
+
+    vat = 0.055
+
+    def __init__(self, title: str, price: float, weight_g: int = 0, summary: str = "", format: str = "A3",
+                 publisher: Optional[Publisher] = None, authors: List[Author] = [], nb_page=0):
+        super().__init__(title,price,weight_g,summary,format,publisher,authors)
+        self.nb_page = nb_page
 
     @property
     def net_price(self):
-        return self.price * (1 + Book.vat)
+        return self.price * (1 + Book.vat) * 0.95 + 0.01
 
-    def __repr__(self):
-        return f"Book {self.title} {self.price}"
 
-    def __del__(self):
-        Book.nb_book -= 1
+class Cd(Media):
+
+    def __init__(self, title: str, price: float, weight_g: int = 0, summary: str = "", format: str = "A3",
+                 publisher: Optional[Publisher] = None, authors: List[Author] = [], nb_track=0):
+        super().__init__(title, price, weight_g, summary, format, publisher, authors)
+        self.nb_track = nb_track
+
+    def net_price(self):
+        return self.price * (1 + Media.vat)
 
 # Créer Cd nb_track
 # Créer Dvd zone
@@ -54,9 +78,9 @@ if __name__ == '__main__':
     a1 = Author("Victor", "Hugo")
     b2.authors.append(a1)
     b2.authors = [a1]
-    print(Book.nb_book)
+    print(Media.nb_media)
     del b1
-    print(Book.nb_book)
+    print(Media.nb_media)
 
 
 
@@ -67,3 +91,8 @@ if __name__ == '__main__':
 # Tester
 # Compter automatiquement le nombre de book créé : nb_book
 # Mettre la TVA en static
+
+# Cart
+# items: List[Media]=[]
+# add, remove
+# total_net_price
