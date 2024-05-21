@@ -1,0 +1,1 @@
+connection_string = "postgresql://postgres:sa@localhost/formation"

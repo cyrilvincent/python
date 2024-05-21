@@ -1,5 +1,6 @@
 import unittest
 import media
+import repository
 
 class MediaTest(unittest.TestCase):
 
@@ -35,5 +36,17 @@ class MediaTest(unittest.TestCase):
         #     b = media.Book("", 1, isbn="123")
         # except ValueError as ex:
         #     print(ex)
+
+    def test_repository(self):
+        repo: repository.ARepository = repository.CSVRepository()
+        repo.load("data/book.csv")
+        result = repo.get_by_title("Python")
+        self.assertEqual(len(result), 2)
+        # ...
+        book = media.Book("Nouveau livre", 10)
+        repo.add(book)
+        repo_pickle = repository.PickleRepository()
+        repo_pickle.medias = repo.medias
+        repo_pickle.save("path")
 
 
