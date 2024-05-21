@@ -39,7 +39,7 @@ class MediaTest(unittest.TestCase):
 
     def test_repository(self):
         repo: repository.ARepository = repository.CSVRepository()
-        repo.load("data/book.csv")
+        repo.load("data/media/books.csv")
         result = repo.get_by_title("Python")
         self.assertEqual(len(result), 2)
         # ...
@@ -47,6 +47,8 @@ class MediaTest(unittest.TestCase):
         repo.add(book)
         repo_pickle = repository.PickleRepository()
         repo_pickle.medias = repo.medias
-        repo_pickle.save("path")
-
+        repo_pickle.save("data/media/books.pickle")
+        repo_pickle = repository.PickleRepository()
+        repo_pickle.load("data/media/books.pickle")
+        print(repo_pickle.medias[-1])
 

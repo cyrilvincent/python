@@ -99,6 +99,7 @@ if __name__ == '__main__':
     m.authors.append(a)
     context.session.commit()
     # Puis voir unique et index
+    # Migration = alembic
 
 
 
