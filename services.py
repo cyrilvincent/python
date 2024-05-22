@@ -18,6 +18,7 @@ class ManageCartService(AService):
     def __init__(self, context: db_context.FormationContext):
         super().__init__(context)
 
+
     def search(self, query: str) -> List[entities.Media]:
         pass
 
@@ -30,6 +31,9 @@ class ManageCartService(AService):
     def validate(self) -> bool:
         pass
         # verif si panier non vide
+
+    def get_total_net_price(self) -> float:
+        pass
 
 
 
