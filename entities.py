@@ -5,7 +5,7 @@ import sqlalchemy
 import config
 import db_context as context
 from sqlalchemy.orm import relationship, joinedload
-from sqlalchemy import Integer, String, Float, CHAR, create_engine, Column, ForeignKey, Boolean, UniqueConstraint, \
+from sqlalchemy import Integer, String, Float, CHAR, SMALLINT, create_engine, Column, ForeignKey, Boolean, UniqueConstraint,CheckConstraint, \
     Table, Index, Date, select, Enum
 
 
@@ -13,7 +13,7 @@ class Publisher(context.Base):
     __tablename__ = "publisher"
 
     id = Column(Integer, primary_key=True, )
-    name = Column(String, nullable=False)
+    name = Column(String, nullable=False, index=True)
     medias = relationship("Media", back_populates="publisher")
 
     def __repr__(self):
@@ -36,6 +36,8 @@ class Author(context.Base):
     last_name = Column(String, nullable=False)
     medias = relationship("Media", secondary=media_author, back_populates="authors")
 
+    __table_args__ = (UniqueConstraint('first_name', 'last_name'),)
+
     def __init__(self, first_name: str, last_name: str):
         self.first_name = first_name
         self.last_name = last_name
@@ -48,6 +50,7 @@ class Media(context.Base):
     price = Column(String, nullable=False)
     type = Column(Enum(MediaEnum), nullable=False)
     nb_page = Column(Integer)
+    awards = Column(Integer, nullable=False, default=0)
     publisher_id = Column(ForeignKey('publisher.id'))
     publisher: Publisher = relationship(Publisher, back_populates="medias") # many_to_zero
     authors: List[Author] = relationship(Author, secondary=media_author, back_populates="medias")
