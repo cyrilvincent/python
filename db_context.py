@@ -7,6 +7,7 @@ from sqlalchemy.engine import Engine
 from typing import Optional, List
 import config
 
+
 class Base:
     __allow_unmapped__ = True
 
@@ -23,8 +24,7 @@ class FormationContext:
 
     def create_engine(self, echo=False, create_all=True):
         self.engine = create_engine(self.connection_string, echo=echo)
-        if create_all:
-            Base.metadata.create_all(self.engine)
+
 
     def get_session(self, expire_on_commit=False):
         Session = sessionmaker(bind=self.engine, autocommit=False, autoflush=False, expire_on_commit=expire_on_commit)
