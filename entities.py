@@ -1,11 +1,10 @@
 import enum
 from typing import List
 import sqlalchemy
-
 import config
 import db_context as context
 from sqlalchemy.orm import relationship, joinedload
-from sqlalchemy import Integer, String, Float, CHAR, SMALLINT, create_engine, Column, ForeignKey, Boolean, UniqueConstraint,CheckConstraint, \
+from sqlalchemy import Integer, String, Float, CHAR, SMALLINT, create_engine, Column, ForeignKey, Boolean, UniqueConstraint, CheckConstraint, \
     Table, Index, Date, select, Enum
 
 
@@ -42,22 +41,34 @@ class Author(context.Base):
         self.first_name = first_name
         self.last_name = last_name
 
+cart_media = Table('cart_media', context.Base.metadata,
+                     Column('media_id', ForeignKey('media.id'), primary_key=True),
+                     Column('cart_id', ForeignKey('cart.id'), primary_key=True)
+                     )
+
+
 class Media(context.Base):
     __tablename__ = "media"
 
     id = Column(Integer, primary_key=True, )
     title = Column(String, nullable=False)
-    price = Column(String, nullable=False)
+    price = Column(Float, nullable=False)
     type = Column(Enum(MediaEnum), nullable=False)
     nb_page = Column(Integer)
     awards = Column(Integer, nullable=False, default=0)
     publisher_id = Column(ForeignKey('publisher.id'))
     publisher: Publisher = relationship(Publisher, back_populates="medias") # many_to_zero
     authors: List[Author] = relationship(Author, secondary=media_author, back_populates="medias")
+    carts = relationship("Cart", secondary=cart_media, back_populates="medias")
     def __repr__(self):
         return f"{self.id} {self.title} {self.price}"
 
 
+class Cart(context.Base):
+    __tablename__ = "cart"
+    id = Column(Integer, primary_key=True, )
+    medias: List[Media] = relationship("Media", secondary=cart_media, back_populates="carts")
+    is_validate = Column(Boolean, default=False)
 
 
 if __name__ == '__main__':
@@ -100,7 +111,7 @@ if __name__ == '__main__':
         select(Media)
         .options(joinedload(Media.publisher))
     ).scalars().first()
-    res = session.execute(select(Media).join(Publisher).where(Publisher.name == "Vincent")).scalars().first()
+    res = session.execute(select(Media).join(Publisher).where(Publisher.name.in_("vincent%"))).scalars().first()
     # print(res.publisher) # Pas bon car lazy (2 requêtes)
     res = session.execute(select(Media).options(joinedload(Media.publisher)).join(Publisher).where(Publisher.name == "Vincent")).scalars().first()
     # print(res.publisher)  # ok
