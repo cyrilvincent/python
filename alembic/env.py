@@ -22,7 +22,6 @@ import sys
 import pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import db_context
-import entities
 
 target_metadata = db_context.Base.metadata
 

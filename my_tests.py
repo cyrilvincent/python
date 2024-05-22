@@ -1,6 +1,7 @@
 import unittest
 import media
 import repository
+from factory import Db
 
 class MediaTest(unittest.TestCase):
 
@@ -52,3 +53,5 @@ class MediaTest(unittest.TestCase):
         repo_pickle.load("data/media/books.pickle")
         print(repo_pickle.medias[-1])
 
+    def factory(self):
+        context = Db.context()
