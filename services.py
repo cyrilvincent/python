@@ -29,16 +29,16 @@ class ManageCartService(AService):
         cart = self.session.get(entities.Cart, 1) # bidouille
         if cart is None:
             cart = entities.Cart()
-            session.add(cart)
+            self.session.add(cart)
         if media not in cart.medias:
             cart.medias.append(media)
-            session.commit()
+            self.session.commit()
 
     def validate(self) -> bool:
         cart = self.session.get(entities.Cart, 1)
         if len(cart.medias) > 0:
             cart.is_validate = True
-            session.commit()
+            self.session.commit()
 
     def get_total_net_price(self) -> float:
         cart = self.session.execute(select(entities.Cart, 1).options(joinedload(entities.Cart.medias))).scalars().first()
