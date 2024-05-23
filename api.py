@@ -23,7 +23,7 @@ def media(id:int):
     return dto
 
 @app.post("/media")
-def add_media(media:dtos.MediaDTO):
+async def add_media(media:dtos.MediaDTO):
     # todo
     pass
 

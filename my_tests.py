@@ -2,8 +2,10 @@ import unittest
 import media
 import repository
 from factory import Db
+import db_context_async
+import entities
 
-class MediaTest(unittest.TestCase):
+class MediaTest(unittest.IsolatedAsyncioTestCase):
 
     def test_add(self):
         self.assertEqual(2, 1+1)
@@ -55,3 +57,11 @@ class MediaTest(unittest.TestCase):
 
     def factory(self):
         context = Db.context()
+
+    async def test_async(self):
+        context = db_context_async.FormationContext()
+        context.create_engine(True)
+        session_async = context.get_session_async()
+        async with session_async() as session:
+            m = await session.get(entities.Media, id)
+            print(m)
