@@ -16,3 +16,12 @@ class Adapter:
         return dto
 
 
+if __name__ == '__main__':
+    m = entities.Media()
+    m.title="Python"
+    m.price=10
+    m.type=entities.MediaEnum.book
+    res = Adapter.to_media_detail_dto(m)
+    print(res)
+
+
