@@ -109,6 +109,7 @@ class Cart:
 if __name__ == '__main__':
     b1 = Book("Python", 10.0)
     print(b1.net_price)
+    print(b1.__dict__)
     p1 = Publisher(0, "Cyril")
     b2 = Book("Python3", 15, publisher=p1)
     a1 = Author("Victor", "Hugo")

@@ -20,13 +20,13 @@ class ManageCartService(AService):
         super().__init__(session)
 
     def search(self, query: str) -> Sequence[entities.Media]:
-        return session.execute(select(entities.Media).where(entities.Media.title.ilike(f"%{query}%"))).scalars().all()
+        return self.session.execute(select(entities.Media).where(entities.Media.title.ilike(f"%{query}%"))).scalars().all()
 
     def get_detail(self, id: int) -> entities.Media:
-        return session.get(entities.Media, id)
+        return self.session.get(entities.Media, id)
 
     def add_to_cart(self, media: media.Media):
-        cart = session.get(entities.Cart, 1) # bidouille
+        cart = self.session.get(entities.Cart, 1) # bidouille
         if cart is None:
             cart = entities.Cart()
             session.add(cart)
@@ -35,13 +35,13 @@ class ManageCartService(AService):
             session.commit()
 
     def validate(self) -> bool:
-        cart = session.get(entities.Cart, 1)
+        cart = self.session.get(entities.Cart, 1)
         if len(cart.medias) > 0:
             cart.is_validate = True
             session.commit()
 
     def get_total_net_price(self) -> float:
-        cart = session.execute(select(entities.Cart, 1).options(joinedload(entities.Cart.medias))).scalars().first()
+        cart = self.session.execute(select(entities.Cart, 1).options(joinedload(entities.Cart.medias))).scalars().first()
         return sum([m.price for m in cart.medias])
 
 

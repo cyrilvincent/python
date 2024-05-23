@@ -111,7 +111,7 @@ if __name__ == '__main__':
         select(Media)
         .options(joinedload(Media.publisher))
     ).scalars().first()
-    res = session.execute(select(Media).join(Publisher).where(Publisher.name.in_("vincent%"))).scalars().first()
+    res = session.execute(select(Media).join(Publisher).where(Publisher.name.ilike_("vincent%"))).scalars().first()
     # print(res.publisher) # Pas bon car lazy (2 requêtes)
     res = session.execute(select(Media).options(joinedload(Media.publisher)).join(Publisher).where(Publisher.name == "Vincent")).scalars().first()
     # print(res.publisher)  # ok
