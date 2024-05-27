@@ -13,3 +13,21 @@ else:
     print("Non premier")
 
     # Créer la fonction is_prime(nb) -> bool
+
+def is_prime(nb):
+    """
+    Check if nb is prime number
+    :param nb: nb to check
+    :return: True if nb is prime
+    """
+    if nb > 1:
+        for div in range(2, nb):
+            if nb % div == 0:
+                return False
+        return True
+    else:
+        return False
+
+
+res = is_prime(8)
+print(res)
