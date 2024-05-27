@@ -11,3 +11,5 @@ if nb > 1:
     print("Premier")
 else:
     print("Non premier")
+
+    # Créer la fonction is_prime(nb) -> bool
