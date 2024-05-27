@@ -14,7 +14,8 @@ else:
 
     # Créer la fonction is_prime(nb) -> bool
 
-def is_prime(nb):
+
+def is_prime(nb:int) -> bool:
     """
     Check if nb is prime number
     :param nb: nb to check
@@ -29,5 +30,10 @@ def is_prime(nb):
         return False
 
 
-res = is_prime(8)
+res = is_prime(7)
 print(res)
+
+# Fonctions simples sur 1 ligne
+# f(x) = x + 1
+f = lambda x: x + 1
+print(f(1))

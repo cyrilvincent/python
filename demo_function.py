@@ -1,4 +1,4 @@
-def add(i, j=0):
+def add(i: float, j:float =0) -> float:
     """
     Add 2 numbers
     :param i: first param
