@@ -13,7 +13,13 @@ def is_prime(nb:int) -> bool:
         return False
 
 
+def is_even(nb:int) -> bool:
+    return nb % 2 == 0
+
+
 if __name__ == '__main__':
     res = is_prime(7)
+    print(res)
+    res = is_even(8)
     print(res)
 
