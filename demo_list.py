@@ -33,7 +33,7 @@ def sum(l: list[float]) -> float:
 
 def max(l: list[float]) -> float:
     max = l[0]
-    for value in l:
+    for value in l[1:]:
         if value > max:
             max = value
     return max
