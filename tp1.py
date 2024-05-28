@@ -8,9 +8,15 @@
 # Afficher
 
 year = 2024
-res = input("Année de naissance: ")
-birth = int(res)
-age = year - birth
+ok = False
+while not ok:
+    try:
+        res = input("Année de naissance: ")
+        birth = int(res)
+        age = year - birth
+        ok = True
+    except ValueError as ex:
+        print(f"Erreur {ex}")
 print(f"Vous allez avoir {age} ans")
 if age < 1:
     print("Nourrisson")
