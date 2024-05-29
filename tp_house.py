@@ -15,6 +15,7 @@ def load(path: str) -> tuple[list[float], list[float]]:
             surfaces.append(surface)
     return loyers, surfaces
 
+
 if __name__ == '__main__':
     loyers, surfaces = load("data/house/house.csv")
     loyers = np.array(loyers)
