@@ -1,5 +1,5 @@
 import csv
-
+import matplotlib.pyplot as plt
 import numpy as np
 
 def load(path: str) -> tuple[list[float], list[float]]:
@@ -34,3 +34,8 @@ if __name__ == '__main__':
     surfaces_greater_mean = surfaces[loyers > loyer_mean + 3 * loyer_std]
     print(loyers_greater_mean, surfaces_greater_mean)
     print(list(zip(loyers_greater_mean, surfaces_greater_mean)))
+
+    loyers = loyers[surfaces < 180]
+    surfaces = surfaces[surfaces < 180]
+    plt.scatter(surfaces, loyers)
+    plt.show()
