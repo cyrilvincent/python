@@ -2,7 +2,6 @@ import csv
 
 import numpy as np
 
-
 def load(path: str) -> tuple[list[float], list[float]]:
     loyers = []
     surfaces = []
@@ -24,4 +23,7 @@ if __name__ == '__main__':
     print(np.mean(loyers), np.std(loyers), np.median(loyers))
     print(np.mean(surfaces), np.std(surfaces), np.median(surfaces))
     loyers_per_m2 = loyers / surfaces
-    print(loyers_per_m2)
+    print(np.mean(loyers_per_m2), np.std(loyers_per_m2), np.median(loyers_per_m2))
+    np.savez("data/house/house.npz", loyers=loyers, surfaces=surfaces, loyers_per_m2=loyers_per_m2)
+    content = np.load("data/house/house.npz")
+    print(content.keys())
