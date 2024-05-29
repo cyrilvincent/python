@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(-2*np.pi,2*np.pi,0.1)
+y = np.sin(x)
+y2 = np.cos(x)
+
+plt.subplot(221)
+xbar = np.arange(10)
+plt.bar(xbar, xbar)
+plt.subplot(222)
+plt.scatter(x, y, color="green")
+plt.plot(x, y2)
+plt.show()
+
+# surfaces ,loyers
+# Afficher le nuage de points surfaces / loyers
