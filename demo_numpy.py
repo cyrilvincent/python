@@ -56,3 +56,5 @@ a2 = content["a2"]
 # Créer le tableau loyer_per_m2
 # Sauvegarder les 3 tableaux dans un .npz
 # Calculer le loyer_per_m2 moyen + ecart type
+
+
