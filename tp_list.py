@@ -37,7 +37,7 @@ def palindrome(l: list[float]) -> bool:
     l2 = l.copy().reverse()
     return l2 == l
 
-def palindrome2(l: list[float]) -> bool:
+def palindrome2(l: list) -> bool:
     for i in range(len(l) // 2):
         if l[i] != l[-(i+1)]:
             return False

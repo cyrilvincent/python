@@ -38,4 +38,5 @@ def sum2(l: list[float]) -> float:
         total += l[i]
     return total
 
+
 print(sum(l1))
