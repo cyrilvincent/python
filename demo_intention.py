@@ -22,6 +22,10 @@ res = [tp_function.is_prime(x) for x in l if x % 2 == 0]
 print(res)
 
 # TP
-# Filtrer les nombre premiers < 100 et les monter au carré
-# Filtrer les nombre premiers pairs
-# Filtrer les nombre premiers multiples de 3
+# Filtrer les nombres premiers < 100 et les monter au carré
+# Filtrer les nombres premiers pairs
+# Filtrer les nombres premiers se terminant par 3
+l = list(range(100))
+print([x ** 2 for x in l if tp_function.is_prime(x)])
+print([x for x in l if tp_function.is_prime(x) and x % 2 == 0])
+print([x for x in l if tp_function.is_prime(x) and x % 10 == 3])
