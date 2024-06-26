@@ -19,7 +19,7 @@ loyer_per_m2 = dataframe.loyer / dataframe.surface
 print(loyer_per_m2)
 dataframe["loyer_per_m2"] = loyer_per_m2
 print(dataframe)
-dataframe.to_excel("data/house/house.xlsx")
+dataframe.to_excel("data/house/house.xlsx") # pip install openpyxl
 
 print(dataframe.describe())
 
