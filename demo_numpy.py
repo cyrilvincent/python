@@ -44,4 +44,6 @@ def f(x):
 
 print(f(a5))
 
+print(np.max(np.array([1,2,np.nan])))
+
 
