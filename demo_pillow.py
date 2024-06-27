@@ -53,6 +53,8 @@ if __name__=='__main__':
     # dest = crop(dest,100,100,100,100)
     # dest = nb(array)
     dest = auto_lum_contrast(array)
+    np.median(dest)
+    print(np.quantile(dest, [0.1,0.25,0.5,0.75,0.9]))
     # dest = horizontal(dest)
     # dest = vertical(dest)
     print(dest.shape)
