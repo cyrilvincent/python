@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 # data/climate/
 # pd.read_csv(index_col="nom_col")
@@ -29,3 +30,9 @@ plt.subplot(224)
 plt.plot(dataframe.index, dataframe["rh (%)"])
 plt.xticks([])
 plt.show()
+
+print(dataframe.corr())
+
+a_nan = np.array([1,2,3,np.nan,5])
+print(a_nan)
+print(np.nanmax(a_nan))
