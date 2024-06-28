@@ -22,7 +22,7 @@ xtest = scaler.transform(xtest)
 
 
 #model = rf.RandomForestClassifier(n_estimators=100)
-model = nn.MLPClassifier(hidden_layer_sizes=(30,30))
+model = nn.MLPClassifier(hidden_layer_sizes=(30,30,30), max_iter=1000)
 model.fit(xtrain, ytrain)
 ypred = model.predict(xtest)
 score = model.score(xtrain, ytrain)
