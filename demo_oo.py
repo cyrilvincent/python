@@ -21,6 +21,12 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.length + self.width)
     
+class Square(Rectangle):
+
+    def __init__(self, side: float, coord: Coord = Coord()) -> None:
+        super().__init__(side, side, coord)
+    
+    
 class VideoGame:
 
     def __init__(self, rectangles: list[Rectangle]=[]) -> None:
@@ -39,3 +45,5 @@ if __name__=='__main__':
     r2.coord.x = 4
     c00 = Coord()
     vg = VideoGame([r1, r2])
+    s1 = Square(3)
+    print(s1.area())
