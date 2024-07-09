@@ -2,6 +2,7 @@
 # 5 & 7 attributs
 # 1 méthode net_price() = price * 1.055
 from dataclasses import dataclass
+import abc
 from typing import Optional
 # dataclass Publisher (name) + Author (first_name, last_name)
 # 1 book possède 1 ou 0 publisher
@@ -12,6 +13,7 @@ from typing import Optional
 # Media, Book (nb_page), cd (nb_track), Dvd (zone)
 # Cart plusieurs Media
 # total_net_price
+# UT
 
 @dataclass
 class Publisher:
@@ -26,17 +28,15 @@ class Author:
     last_name: str
 
 
-class Book:
+class Media(abc.ABC):
 
-    nb_book = 0
-    tva = 0.055
+    nb_media = 0
+    tva = 0.2
 
     def __init__(self,
                  id: int,
                  title: str,
                  price: float,
-                 format: str="A3",
-                 nb_page: int = 0,
                  rate: int | None = None,
                  language: str = "fr-FR",
                  publisher: Publisher | None = None,
@@ -44,17 +44,15 @@ class Book:
         self.id = id
         self.title = title
         self.price = price
-        self.format = format
-        self.nb_page = nb_page
         self.rate = rate
         self.language = language
         self.publisher = publisher
         self.authors = authors
-        Book.nb_book += 1
+        Media.nb_media += 1
 
     @property
     def net_price(self):
-        return self.price * (1 + Book.tva)
+        return self.price * (1 + Media.tva)
 
     def __eq__(self, other):
         return self.id == other.id
@@ -63,7 +61,57 @@ class Book:
         return self.id != other.id
 
     def __del__(self):
-        Book.nb_book -= 1
+        Media.nb_media -= 1
+
+
+class Book(Media):
+
+    def __init__(self,
+                 id: int,
+                 title: str,
+                 price: float,
+                 rate: int | None = None,
+                 language: str = "fr-FR",
+                 publisher: Publisher | None = None,
+                 authors: list[Author] = [],
+                 nb_page: int = 0):
+        super().__init__(id, title, price, rate, language, publisher, authors)
+        self.nb_page = nb_page
+
+    @property
+    def net_price(self):
+        return self.price * 1.055
+
+
+class Cd(Media):
+
+    def __init__(self,
+                 id: int,
+                 title: str,
+                 price: float,
+                 rate: int | None = None,
+                 language: str = "fr-FR",
+                 publisher: Publisher | None = None,
+                 authors: list[Author] = [],
+                 nb_track: int = 0):
+        super().__init__(id, title, price, rate, language, publisher, authors)
+        self.nb_track = nb_track
+
+
+class Cart:
+
+    def __init__(self):
+        self.medias = []
+
+
+    @property
+    def total_net_price(self):
+        return sum([m.net_price if m.net_price is not None else 0 for m in self.medias])
+
+
+
+
+
 
 
 

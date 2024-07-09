@@ -23,4 +23,17 @@ class MyTests(unittest.TestCase):
         # p = geometry.Polygon()
         r = geometry.Rectangle(3,2)
 
+    def test_cd(self):
+        cd = media.Cd(1,"Allumer le feu", 10)
+        self.assertAlmostEqual(12, cd.net_price, delta=1e-3)
+
+    def test_cart(self):
+        cart = media.Cart()
+        b = media.Book(1, "", 10)
+        cd = media.Cd(1, "Allumer le feu", 10)
+        cart.medias.append(b)
+        cart.medias.append(cd)
+        self.assertAlmostEqual(22.55, cart.total_net_price, delta=1e-3)
+
+
 
