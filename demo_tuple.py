@@ -7,7 +7,22 @@ def min_max_avg(l: list[int]) -> tuple[int, int, float]:
     :param l:
     :return:
     """
-    return 0, 10, 5
+    min = l[0]
+    max = l[0]
+    sum = l[0]
+    count = 1
+    for v in l[1:]:
+        sum += v
+        if v < min:
+            min = v
+        elif v > max:
+            max = v
+        count += 1
+    return min, max, sum / count
+
+def min_max_avg_dict(l: list[int]) -> dict[str, float]:
+    min, max, avg = min_max_avg(l)
+    return {"min": min, "max": max, "avg": avg}
 
 
 if __name__ == '__main__':
