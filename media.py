@@ -9,6 +9,10 @@ from typing import Optional
 # nb_book static qui compte et décremente les book à la création destruction
 # mettre la tva en static
 
+# Media, Book (nb_page), cd (nb_track), Dvd (zone)
+# Cart plusieurs Media
+# total_net_price
+
 @dataclass
 class Publisher:
 
@@ -48,6 +52,7 @@ class Book:
         self.authors = authors
         Book.nb_book += 1
 
+    @property
     def net_price(self):
         return self.price * (1 + Book.tva)
 
