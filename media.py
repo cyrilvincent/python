@@ -118,10 +118,13 @@ class Cart:
 
 if __name__ == '__main__':
     b1 = Book(1, "Python", 10)
-    print(b1.net_price())
-    Book.net_price(b1)
+    print(b1.net_price)
+    # Book.net_price(b1)
     p = Publisher("Cyril")
     b2 = Book(1,"Numpy", 9, publisher=p, authors=[Author("Cyril", "Vincent")])
     print(b2.authors[0].first_name)
+
+    b1.__dict__["toto"]= "titi"
+    print(b1.__dict__)
 
 
