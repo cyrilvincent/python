@@ -34,5 +34,8 @@ np.savez("data.npz", res=res, a4=a4)
 file = np.load("data.npz")
 print(file["res"])
 
+rnd = np.random.rand(10000)
+print(np.mean(rnd), np.std(rnd), np.median(rnd), np.quantile(rnd, [0.01,0.1,0.25,0.5,0.75]))
+
 
 
