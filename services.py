@@ -45,7 +45,7 @@ class CartService(AService):
         return True
 
     def pay(self, cart: media.Cart):
-        logging.info("Payed")
+        logging.warning("Payed")
 
 
 

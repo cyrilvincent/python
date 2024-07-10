@@ -1,6 +1,8 @@
 import unittest
 import geometry
 import media
+import services
+
 
 class MyTests(unittest.TestCase):
 
@@ -34,6 +36,21 @@ class MyTests(unittest.TestCase):
         cart.medias.append(b)
         cart.medias.append(cd)
         self.assertAlmostEqual(22.55, cart.total_net_price, delta=1e-3)
+
+    def test_db(self):
+        s = services.CartService()
+        res = s.search("py")
+        self.assertEqual(3, len(res))
+
+    def test_integration(self):
+        s = services.CartService()
+        res = s.search("py")
+        book = s.detail(res[0].id)
+        cart = media.Cart()
+        s.add_to_cart(book, cart)
+        ok = s.validate(cart)
+        self.assertTrue(ok)
+
 
 
 
