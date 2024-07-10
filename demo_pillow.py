@@ -5,7 +5,7 @@ im = Image.open("data/ski.jpg")
 array = np.asarray(im).astype(float)
 print(array.shape)
 
-red = array[:,:,0]
+red = array[...,0]
 nb = np.mean(array, axis=2)
 
 crop = array[100:-100:2,100:-100:2]
