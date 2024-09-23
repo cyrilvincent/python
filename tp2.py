@@ -44,9 +44,10 @@ for i in range(1, n+1):
     sum = sum + i
 print(sum)
 
-x = 1223
+x = 8
+is_prime = True
 for div in range(2, int(x ** 0.5) + 1):
     if x % div == 0:
-        print("Non premier")
+        is_prime = False
         break
-print("Premier")
+print(is_prime)
