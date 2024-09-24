@@ -19,3 +19,9 @@ print(list(res))
 
 res = [x ** 2 for x in l if tp3.is_prime(x)]
 print(res)
+
+a = [1,2]
+b = [1,2]
+print(a == b, a is b)
+a = b
+print(a == b, a is b)
