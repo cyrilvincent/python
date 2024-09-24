@@ -24,10 +24,10 @@ def is_prime(n:int) -> bool:
     else:
         return False
 
-
-print(max(3,2))
-print(fact(5))
-print(is_prime(9), is_prime(13))
-for i in range(100000000):
-    if is_prime(i) == True:
-        print(i)
+if __name__ == '__main__':
+    print(max(3,2))
+    print(fact(5))
+    print(is_prime(9), is_prime(13))
+    for i in range(100):
+        if is_prime(i) == True:
+            print(i)

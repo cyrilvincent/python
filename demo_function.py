@@ -12,5 +12,12 @@ def sum(n):
         total += i
     return total
 
+def add_multiple(a: float, *kargs) -> float:
+    total = 0
+    for p in kargs:
+        total += p
+    return total
+
 print(sum(5))
-print(add(3,"toto"))
+# print(add(3,"toto"))
+print(add_multiple())
