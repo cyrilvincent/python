@@ -23,9 +23,13 @@ def load(path: str) -> tuple[list[int], list[int], list[float]]:
             loyers_per_m2.append(loyer / surface)
         return loyers, surfaces, loyers_per_m2
 
+
 if __name__ == '__main__':
     loyers, surfaces, loyers_per_m2 = load("data/house/house.csv")
     print(loyers_per_m2)
     print(sum(loyers) / len(loyers))
     print(sum(surfaces) / len(surfaces))
     print(sum(loyers_per_m2) / len(loyers_per_m2))
+    # Sauvegarder les 3 listes avec pickle
+    # Effacer les 3 listes
+    # Recharcher les 3 listes
