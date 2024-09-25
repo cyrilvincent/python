@@ -29,6 +29,13 @@ def save(path, *args):
     with open(path, "wb") as f:
         pickle.dump(l, f)
 
+def save_csv3(path, loyers, surfaces, loyers_per_m2):
+    with open(path, "w") as f:
+        f.write("loyer,surface,loyer_per_m2\n")
+        for loyer,surface,loyer_per_m2 in zip(loyers, surfaces, loyers_per_m2):
+            f.write(f"{loyer},{surface},{loyer_per_m2}\n")
+
+
 
 if __name__ == '__main__':
     loyers, surfaces, loyers_per_m2 = load("data/house/house.csv")
@@ -36,6 +43,7 @@ if __name__ == '__main__':
     print(sum(loyers) / len(loyers))
     print(sum(surfaces) / len(surfaces))
     print(sum(loyers_per_m2) / len(loyers_per_m2))
+    save_csv3("data/house/house3.csv", loyers, surfaces, loyers_per_m2)
     # Sauvegarder les 3 listes avec pickle
     # Effacer les 3 listes
     # Recharcher les 3 listes
