@@ -23,21 +23,40 @@ class Publisher:
 
 
 
-class Book:
+class Media:
 
-    tva = 0.055
+    tva = 0.2
 
-    def __init__(self, title: str, price: float, publisher: Publisher, authors: list[Author]=[], lang="fr-FR", note=0.0, nb_page=0):
+    def __init__(self, title: str, price: float, publisher: Publisher, authors: list[Author]=[], lang="fr-FR", note=0.0):
         self.title = title
         self.price = price
         self.publisher = publisher
         self.authors = authors
         self.lang = lang
         self.note = note
+
+    def get_net_price(self):
+        return self.price * (1 + Media.tva)
+
+class Book(Media):
+
+    tva = 0.055
+
+    def __init__(self, title: str, price: float, publisher: Publisher, authors: list[Author] = [], lang="fr-FR",
+                 note=0.0, nb_page = 0):
+        super().__init__(title, price, publisher,authors,lang, note)
         self.nb_page = nb_page
 
     def get_net_price(self):
         return self.price * (1 + Book.tva)
+
+
+class Cd(Media):
+
+    def __init__(self, title: str, price: float, publisher: Publisher, authors: list[Author] = [], lang="fr-FR",
+                 note=0.0, nb_track=0):
+        super().__init__(title, price, publisher, authors, lang, note)
+        self.nb_track = nb_track
 
 
 if __name__ == '__main__':
@@ -48,3 +67,5 @@ if __name__ == '__main__':
     print(f"Livre {b2.title} de l'éditeur {b2.publisher.name}")
     b3 = Book("Numpy", 20, p1, [Author("Cyril", "Vincent")])
     print(f"Livre {b3.title} de l'éditeur {b3.publisher.name} de l'auteur {b3.authors[0].last_name}")
+    cd = Cd("Allumer le feu",10,Publisher("001", "CEA"), [Author("Johnny", "Hallyday")])
+    print(f"Cd {cd.title} de l'auteur {cd.authors[0].last_name} de prix {cd.get_net_price():.2f}€")
