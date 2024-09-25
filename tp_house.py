@@ -38,6 +38,8 @@ def save_csv3(path, loyers, surfaces, loyers_per_m2):
 
 
 if __name__ == '__main__':
+    l=["a","b","c"]
+    print(",".join(l))
     loyers, surfaces, loyers_per_m2 = load("data/house/house.csv")
     print(loyers_per_m2)
     print(sum(loyers) / len(loyers))
