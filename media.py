@@ -3,6 +3,11 @@
 # class Author (first_name, last_name)
 # Book possède n Authors (list[Author])
 
+# Media (tous les attributs sauf nb_page)
+# Book (nb_page)
+# Cd (nb_track)
+# Dvd (zone)
+
 class Author:
 
     def __init__(self, first_name: str, last_name: str):
