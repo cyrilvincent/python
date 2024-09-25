@@ -7,6 +7,7 @@
 # Bonus : Créer le ficher CSV avec 3 colonnes : loyer,surface,loyer_per_m2
 # Bonus : OO, Fonctions
 import csv
+import pickle
 
 
 def load(path: str) -> tuple[list[int], list[int], list[float]]:
@@ -23,6 +24,11 @@ def load(path: str) -> tuple[list[int], list[int], list[float]]:
             loyers_per_m2.append(loyer / surface)
         return loyers, surfaces, loyers_per_m2
 
+def save(path, *args):
+    l = list(args)
+    with open(path, "wb") as f:
+        pickle.dump(l, f)
+
 
 if __name__ == '__main__':
     loyers, surfaces, loyers_per_m2 = load("data/house/house.csv")
@@ -33,3 +39,13 @@ if __name__ == '__main__':
     # Sauvegarder les 3 listes avec pickle
     # Effacer les 3 listes
     # Recharcher les 3 listes
+    with open("data/house/house.pickle", "wb") as f:
+        pickle.dump((loyers, surfaces, loyers_per_m2), f)
+
+    loyers = None
+    surfaces = None
+    loyers_per_m2 = None
+
+    with open("data/house/house.pickle", "rb") as f:
+        loyers, surfaces, loyers_per_m2 = pickle.load(f)
+        print(loyers, surfaces, loyers_per_m2)
