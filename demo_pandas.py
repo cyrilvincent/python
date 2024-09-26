@@ -11,3 +11,5 @@ print(dataframe)
 print(dataframe.describe())
 
 dataframe.to_html("data/house.house.html")
+
+dataframe_filtered = dataframe[dataframe.surface < 200]
