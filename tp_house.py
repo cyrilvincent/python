@@ -68,3 +68,4 @@ if __name__ == '__main__':
 
     with open("data/house/house.json", "r") as f:
         loyers, surfaces, loyers_per_m2 = json.load(f)
+
