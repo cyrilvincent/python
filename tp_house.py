@@ -8,6 +8,7 @@
 # Bonus : OO, Fonctions
 import csv
 import pickle
+import json
 
 
 def load(path: str) -> tuple[list[int], list[int], list[float]]:
@@ -52,6 +53,8 @@ if __name__ == '__main__':
     with open("data/house/house.pickle", "wb") as f:
         pickle.dump((loyers, surfaces, loyers_per_m2), f)
 
+
+
     loyers = None
     surfaces = None
     loyers_per_m2 = None
@@ -59,3 +62,9 @@ if __name__ == '__main__':
     with open("data/house/house.pickle", "rb") as f:
         loyers, surfaces, loyers_per_m2 = pickle.load(f)
         print(loyers, surfaces, loyers_per_m2)
+
+    with open("data/house/house.json", "w") as f:
+        json.dump((loyers, surfaces, loyers_per_m2), f)
+
+    with open("data/house/house.json", "r") as f:
+        loyers, surfaces, loyers_per_m2 = json.load(f)
