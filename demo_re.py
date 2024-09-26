@@ -17,3 +17,9 @@ else:
     print("No match")
 
 # Saisir un isbn et vérifier s'il est correct
+isbn = input("Saisir isbn: ")
+regex = r"^\d{3}-\d-\d{4}-\d{4}-\d$"
+if re.search(regex, isbn):
+    print("OK")
+else:
+    print("No match")
