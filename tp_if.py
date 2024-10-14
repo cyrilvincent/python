@@ -13,6 +13,7 @@
 # else:
 #     print("Impair")
 
+
 age = int(input("Age: "))
 if age < 1:
     print("BB")
