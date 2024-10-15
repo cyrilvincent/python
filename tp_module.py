@@ -12,3 +12,10 @@ import my_package.tp_function as tp
 
 print(math.tanh(0))
 print(tp.factorielle(5))
+
+try:
+    i = int(input("saisir: "))
+except ValueError as ex:
+    print(f"Error {ex}")
+print("toto")
+

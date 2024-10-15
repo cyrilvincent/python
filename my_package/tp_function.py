@@ -22,6 +22,8 @@ def max(x: float, y: float) -> float:
 
 
 def factorielle(n: int) -> int:
+    if n < 0:
+        raise ValueError("n < 0")
     fact = 1
     for i in range(n, 0, -1):
         fact *= i
@@ -74,6 +76,7 @@ if __name__ == '__main__':
     print(sum())
     print(sum(1))
     print(sum(1,2,3,4,5,6,7,8,9,0))
+    factorielle(-1)
 
     toto = add
     print(toto(1,2))
