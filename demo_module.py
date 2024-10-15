@@ -1,5 +1,5 @@
 import math as m
-import tp_function as mylib
+from my_package import tp_function as mylib
 import my_package.my_module as my_module
 
 print(m.sin(m.pi))
