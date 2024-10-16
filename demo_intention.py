@@ -1,4 +1,5 @@
 import math
+import my_package.tp_function as tp
 
 l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -33,4 +34,5 @@ f2_list = [f(x) for x in l if is_even(x)]
 print(filter2_list)
 
 # TP Filtrer les nombres premiers et les monter au carré **
-
+result = [x ** 2 for x in l if tp.is_prime(x)]
+print(result)
