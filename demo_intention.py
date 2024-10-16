@@ -32,3 +32,5 @@ print(filter2_list)
 f2_list = [f(x) for x in l if is_even(x)]
 print(filter2_list)
 
+# TP Filtrer les nombres premiers et les monter au carré **
+
