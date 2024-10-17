@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats as stats
 
 res = np.load("data/house/house.npz")
 print(res)
@@ -24,3 +26,19 @@ predicat = surfaces > 200
 # print(predicat)
 print(surfaces[predicat])
 print(loyers[predicat])
+
+print(np.mean(loyers), np.std(loyers), np.median(loyers), np.quantile(loyers, [0.01, 0.1, 0.25, 0.5, 0.75,0.99]))
+
+loyers = loyers[surfaces < 180]
+surfaces = surfaces[surfaces < 180]
+
+
+slope, intercept, rvalue, pvalue, stderr = stats.linregress(surfaces, loyers)
+print(slope, intercept, rvalue, pvalue, stderr)
+
+f = lambda x: slope * x + intercept
+
+plt.scatter(surfaces, loyers)
+plt.plot(surfaces, f(surfaces), color="red")
+plt.savefig("data/house/house.png")
+plt.show()
