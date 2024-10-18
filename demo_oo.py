@@ -1,6 +1,6 @@
 class Point:
 
-    def __init__(self,x: float, y: float):
+    def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
 
@@ -30,6 +30,11 @@ class Rectangle:
         return 2 * (self.length + self.width)
 
 
+class Square(Rectangle):
+
+    def __init__(self, side, origin):
+        super().__init__(side, side, origin)
+
 
 if __name__ == '__main__':
     p1 = Point(0,0)
@@ -42,3 +47,5 @@ if __name__ == '__main__':
     print(r1.area(), r1.perimeter())
     print(r1.origin.x, r1.origin.y)
     r1.origin.move(0,0)
+    s1 = Square(3, p1)
+    print(s1.area(), s1.perimeter())
