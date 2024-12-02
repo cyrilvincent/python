@@ -30,3 +30,6 @@ text = input("Saisir du nombre:")
 value = int(text)
 print(value + 1)
 
+text = "toto"
+
+

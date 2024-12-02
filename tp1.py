@@ -4,6 +4,7 @@
 # Afficher le nombre de chiffre, 50 => 2
 # * par 2 le nombre et l'afficher
 # Afficher 0 si le nombre est pair et 1 sinon
+import math
 
 a = 1
 b = 2
@@ -19,3 +20,10 @@ nb = int(nb)
 print(f"Le nombre *2 = {nb * 2}")
 print(nb % 2)
 
+if nb % 2 == 0:
+    print("Pair")
+else:
+    print("Impair")
+
+
+print(f"La valeur de pi est: {math.pi:.2f}")
