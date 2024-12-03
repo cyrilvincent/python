@@ -6,6 +6,13 @@
 # Créer la fonction is_prime(n) => retourne True si n est premier False sinon
 # Tester
 
+import math as m
+m.cos(0)
+
+# from math import cos
+# cos(0)
+
+
 def is_even(n):
     if n % 2 == 0:
         return True
@@ -42,10 +49,14 @@ def is_prime(n):
                 return False
         return True
 
+def cos(n):
+    return "toto"
 
 
-print(is_even(8), is_even(7))
-print(sums(5))
-print(factorielle(10))
-print(fibo(15))
-print(is_prime(7), is_prime(10), is_prime(1223))
+if __name__ == '__main__':
+    print(is_even(8), is_even(7))
+    print(sums(5))
+    print(factorielle(10))
+    print(fibo(15))
+    print(is_prime(7), is_prime(10), is_prime(1223))
+
