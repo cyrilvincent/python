@@ -43,6 +43,11 @@ def fibo(n):
     return fibo
 
 def is_prime(n):
+    """
+
+    :param n:
+    :return: boolean True if prime
+    """
     if n < 2:
         return False
     else:
