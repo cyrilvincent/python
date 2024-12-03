@@ -26,7 +26,7 @@ for i in range(1,11):
         print(f"{i}*{j}={i*j}")
 
 n = 1223
-for div in range(2,int(n ** 0.5) + 1):
+for div in range(2, int(n ** 0.5) + 1):
     if n % div == 0:
         print("Non premier")
         break
