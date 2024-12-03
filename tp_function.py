@@ -26,6 +26,8 @@ def sums(n):
     return total
 
 def factorielle(n):
+    if n < 1 or type(n) != int:
+        raise ValueError("N must be >= 1")
     factorielle = 1
     for i in range(2, n+1):
         factorielle *= i
