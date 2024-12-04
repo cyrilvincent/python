@@ -15,8 +15,11 @@ print(np.min(loyers), np.max(loyers))
 loyers_m2 = loyers / surfaces
 print(np.min(loyers_m2), np.max(loyers_m2), np.sum(loyers_m2) / len(loyers_m2))
 
-def model_loyer(surface):
-    return surface * 37.66
+def model_loyer(surfaces):
+    return surfaces * 37.66
 
 if __name__ == '__main__':
     print(model_loyer(100))
+
+# Afficher le nuage de points surfaces / loyers
+# Afficher le model_loyer
