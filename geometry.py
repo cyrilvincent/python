@@ -27,12 +27,13 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.length + self.width)
 
-    # def __add__(self, other): # +
-    #     return self.price + other.price
 
-    # def __eq__(self, other): # ==
-    #
-    # def __lt__
+class Square(Rectangle):
+
+    def __init__(self, side, coord):
+        super().__init__(side, side, coord)
+
+
 
 
 if __name__ == '__main__':
@@ -45,4 +46,6 @@ if __name__ == '__main__':
     print(r1.area(), r1.perimeter())
     r2 = Rectangle(4,5, Coord(6,1))
     print(r2.area(), r2.perimeter())
+    s1 = Square(3, c1)
+    print(s1.area())
 

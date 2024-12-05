@@ -19,19 +19,35 @@ class Author:
         self.phone = phone
 
 
-class Book:
+class Media:
 
-    def __init__(self, title, price, year, lang, publisher: Publisher, authors: list[Author], nb_page=0):
+    def __init__(self, title, price, year, lang, publisher: Publisher, authors: list[Author]):
         self.title = title
         self.price = price
         self.year = year
-        self.nb_page = nb_page
         self.lang = lang
         self.publisher = publisher
         self.authors = authors
 
     def net_price(self):
-        return self.price * 1.055
+        return self.price * 1.2
+
+
+class Book(Media):
+
+    def __init__(self, title, price, year, lang, publisher: Publisher, authors: list[Author], nb_page = 0):
+        super().__init__(title,price,year,lang,publisher,authors)
+        self.nb_page = nb_page
+
+    def net_price(self):
+        return self.price * 1.05
+
+
+class Cd(Media):
+
+    def __init__(self, title, price, year, lang, publisher: Publisher, authors: list[Author], nb_track=0):
+        super().__init__(title, price, year, lang, publisher, authors)
+        self.nb_track = nb_track
 
 
 if __name__ == '__main__':
@@ -40,4 +56,6 @@ if __name__ == '__main__':
     b1 = Book("Les misérables", 10, 1862, "fr-FR", p1, [a1])
     print(f"Book {b1.title} {b1.net_price():.2f}€")
     print(b1.publisher.name)
+    print([f"{a.first_name} {a.last_name}" for a in b1.authors])
+    cd1 = Cd("Allumer le feu", 10, 1990, "fr", Publisher("Sony", "", ""), [Author("Johnny", "Hallyday")])
 
