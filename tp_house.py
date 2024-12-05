@@ -32,3 +32,8 @@ if __name__ == '__main__':
 
 # Afficher le nuage de points surfaces / loyers
 # Afficher le model_loyer
+# Regression lineaire
+# Regression poly2
+# calculer moyenne et ecart type des surfaces
+# Bonus filtrer avec [] les surfaces > 200 & > 3 ecarts types
+# Bonus refaire les regressions
