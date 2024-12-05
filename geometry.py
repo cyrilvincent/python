@@ -1,3 +1,5 @@
+import datetime
+
 class Rectangle:
 
     def __init__(self, length, width):
@@ -9,6 +11,13 @@ class Rectangle:
 
     def perimeter(self):
         return 2 * (self.length + self.width)
+
+    # def __add__(self, other): # +
+    #     return self.price + other.price
+
+    # def __eq__(self, other): # ==
+    #
+    # def __lt__
 
 
 if __name__ == '__main__':
