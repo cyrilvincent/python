@@ -1,6 +1,6 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-import pandas as pd
+import demo_pandas as pd
 
 # https://www.tensorflow.org/tutorials/structured_data/time_series
 

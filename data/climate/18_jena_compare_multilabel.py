@@ -1,7 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import tensorflow.keras as keras
-import pandas as pd
+import demo_pandas as pd
 import data.climate.window_generator as wg
 import numpy as np
 

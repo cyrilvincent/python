@@ -1,4 +1,4 @@
-import pandas as pd
+import demo_pandas as pd
 import data.climate.window_generator as wg
 
 # https://www.tensorflow.org/tutorials/structured_data/time_series

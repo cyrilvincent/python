@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
+import demo_pandas as pd
 import tensorflow as tf
 import data.climate.window_generator as wg
 
