@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QVBoxLayout, QLineEdit, QLabel
 import sys
 import tp_function
+import house_library as house
 
 class MainWindow(QMainWindow):
 
@@ -18,16 +19,23 @@ class MainWindow(QMainWindow):
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
+        self.df = house.load("data/house/house.csv")
 
 
     def button_clicked(self): # Slot
         # print("Clicked")
         # self.button.setText("TOTO")
-        value = self.input.text()
-        value = int(value)
-        result = tp_function.is_prime(value)
-        self.label.setText(f"Le nombre {value} est premier: {result}")
-
+        try:
+            value = self.input.text()
+            value = int(value)
+            # result = tp_function.is_prime(value)
+            # self.label.setText(f"Le nombre {value} est premier: {result}")
+            self.df = house.filter(self.df, value)
+            surface_mean, surface_std, loyer_mean, loyer_std = house.stats(self.df)
+            self.label.setText(f"Surface mean={surface_mean:.2f} Surface std={surface_std:.2f} Loyer mean={loyer_mean:.2f} Loyer std={loyer_std:.2f}")
+        except:
+            self.label.setText(f"Erreur merci de saisir un entier")
+            self.label_2.setVisible(True)
 
 app = QApplication(sys.argv)
 window = MainWindow()
