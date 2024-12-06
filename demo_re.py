@@ -1,7 +1,7 @@
 import re
 
-regex = "^0[1-7]|9-\d{2}-\d{2}-\d{2}-\d{2}$"
-phone = "06-22-53-87-62"
+regex = "^\d-\d{4}-\d{4}-\d$"
+phone = "2-7654-1005-4"
 if re.match(regex, phone):
     print("OK")
 else:
