@@ -32,12 +32,11 @@ class Ui(QMainWindow):
             self.label_2.setVisible(False)
             self.label.setText(
                 f"Surface mean={surface_mean:.2f} Surface std={surface_std:.2f} Loyer mean={loyer_mean:.2f} Loyer std={loyer_std:.2f}")
-            house.show()
+            # house.show()
         except:
             self.label.setText(f"Erreur merci de saisir un entier")
             self.label.setVisible(False)
             self.label_2.setVisible(True)
-        plt.plot(self.x, self.y)
 
 
 app = QApplication(sys.argv)
