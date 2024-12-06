@@ -3,6 +3,8 @@ from PyQt6 import uic
 import sys
 import tp_function
 
+# c:\users\g-gre-fpa9\appdata\roaming\python\python311\site-packages
+
 class Ui(QMainWindow):
 
     def __init__(self):
