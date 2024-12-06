@@ -8,13 +8,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 
 # c:\users\g-gre-fpa9\appdata\roaming\python\python311\site-packages
-class MplCanvas(FigureCanvasQTAgg):
-
-    def __init__(self, parent=None, width=5, height=4, dpi=100):
-        fig = Figure(figsize=(width, height), dpi=dpi)
-        self.axes = fig.add_subplot(111)
-        super().__init__(fig)
-
 class Ui(QMainWindow):
 
     def __init__(self):
