@@ -1,3 +1,5 @@
+import math
+
 def sum(l: list[float]) -> float:
     sum = 0
     for value in l:
@@ -45,3 +47,5 @@ if __name__ == '__main__':
     print(max(l))
     print(double(l))
     print(filter_even(l))
+    result = [math.cos(x) for x in l if x % 3 == 0]
+    print(result)
