@@ -40,6 +40,9 @@ def filter_even(l: list[float]) -> list[float]:
             result.append(value)
     return result
 
+def min_max_mean(l: list[float]) -> tuple[float, float, float]:
+    pass
+
 if __name__ == '__main__':
     l = [1,2,3,4,5,6,7,8,9,10]
     print(sum(l))
