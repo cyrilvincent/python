@@ -41,7 +41,16 @@ def filter_even(l: list[float]) -> list[float]:
     return result
 
 def min_max_mean(l: list[float]) -> tuple[float, float, float]:
-    pass
+    sum =0
+    min = l[0]
+    max = l[0]
+    for value in l:
+        sum += value
+        if value < min:
+            min = value
+        elif value > max:
+            max=value
+    return min, max, sum / len(l)
 
 if __name__ == '__main__':
     l = [1,2,3,4,5,6,7,8,9,10]
@@ -52,3 +61,4 @@ if __name__ == '__main__':
     print(filter_even(l))
     result = [math.cos(x) for x in l if x % 3 == 0]
     print(result)
+    print(min_max_mean(l))
