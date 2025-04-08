@@ -49,7 +49,7 @@ def min_max_mean(l: list[float]) -> tuple[float, float, float]:
         if value < min:
             min = value
         elif value > max:
-            max=value
+            max = value
     return min, max, sum / len(l)
 
 if __name__ == '__main__':
