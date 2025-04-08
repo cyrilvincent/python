@@ -1,11 +1,18 @@
 def sum(l: list[float]) -> float:
-    pass
+    sum = 0
+    for value in l:
+        sum += value
+    return sum
 
 def mean(l: list[float]) -> float:
-    pass
+    return sum(l) / len(l)
 
 def max(l: list[float]) -> float:
-    pass
+    max = l[0]
+    for value in l[1:]:
+        if value > max:
+            max = value
+    return max
 
 def double(l: list[float]) -> list[float]:
     """
@@ -13,7 +20,10 @@ def double(l: list[float]) -> list[float]:
     :param l:
     :return:
     """
-    pass
+    result = []
+    for value in l:
+        result.append(value * 2)
+    return result
 
 # Bonus
 def filter_even(l: list[float]) -> list[float]:
@@ -22,3 +32,16 @@ def filter_even(l: list[float]) -> list[float]:
     :param l:
     :return:
     """
+    result = []
+    for value in l:
+        if value % 2 == 0:
+            result.append(value)
+    return result
+
+if __name__ == '__main__':
+    l = [1,2,3,4,5,6,7,8,9,10]
+    print(sum(l))
+    print(mean(l))
+    print(max(l))
+    print(double(l))
+    print(filter_even(l))
