@@ -48,3 +48,18 @@ def factorielle(n: int) -> int:
 res = factorielle(5)
 print(res)
 
+def parameter_tuple(*params):
+    for p in params:
+        print(p)
+
+def add(*kargs):
+    sum = 0
+    for arg in kargs:
+        sum += arg
+    return sum
+
+print(add(1,2))
+
+def cos(x):
+    return 0
+

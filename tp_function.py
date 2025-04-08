@@ -31,6 +31,6 @@ def is_prime(n: int) -> bool:
             break
     return is_prime
 
-
-print(is_palindrome("radar"))
-print(is_prime(7))
+if __name__ == '__main__':
+    print(is_palindrome("radar"))
+    print(is_prime(7))
