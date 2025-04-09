@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 data = np.load("data/house/house.npz")
 print(data)
@@ -18,4 +19,15 @@ print(np.min(loyer_per_m2), np.max(loyer_per_m2), np.mean(loyer_per_m2), len(loy
 
 surfaces_200 = surfaces[surfaces > 200]
 print(len(surfaces_200))
+
+mean = np.mean(loyer_per_m2)
+
+x = np.arange(400)
+y = mean * x
+
+plt.scatter(surfaces, loyers, label="loyers")
+plt.plot(x, y, color="red", label="model")
+plt.legend()
+plt.title("Surfaces / Loyers")
+plt.show()
 
