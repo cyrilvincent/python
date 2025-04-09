@@ -22,3 +22,5 @@ v12 = np.arange(12)
 m34 = v12.reshape(3,4)
 print(m34)
 v12 = m34.reshape(12)
+
+print(np.sum(m34, axis=1))
