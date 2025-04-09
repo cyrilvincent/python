@@ -16,3 +16,6 @@ print(np.min(surfaces), np.max(surfaces), np.mean(surfaces), len(surfaces))
 loyer_per_m2 = loyers / surfaces
 print(np.min(loyer_per_m2), np.max(loyer_per_m2), np.mean(loyer_per_m2), len(loyer_per_m2))
 
+surfaces_200 = surfaces[surfaces > 200]
+print(len(surfaces_200))
+
