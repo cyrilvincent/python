@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 data = np.load("data/house/house.npz")
-print(data)
+
 loyers = data["loyers"]
 surfaces = data["surfaces"]
 print(loyers)
