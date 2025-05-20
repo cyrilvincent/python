@@ -19,6 +19,8 @@ def is_prime(nb: int) -> bool:
     :param nb: the number
     :return: True if nb is a prime number
     """
+    if nb < 2:
+        return False
     is_prime = True
     for i in range(2, int(nb ** 0.5) + 1):
         if nb % i == 0:
