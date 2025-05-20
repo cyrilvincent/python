@@ -46,9 +46,23 @@ def filter_prime(l: list[int]) -> list[int]:
             result.append(val)
     return result
 
+def input_list() -> list[int]:
+    result = []
+    while True:
+        try:
+            value = input("Saisir un entier: ")
+            if value.strip() == "":
+                break
+            result.append(int(value))
+        except ValueError as error:
+            print("Merci de saisir un entier")
+    return result
+
 if __name__ == '__main__':
     l = [5, 99, 8, -2, 55, 52, 2006, 0, 18, 47]
     print(sum(l))
     print(max(l))
     print(filter_even(l))
     print(filter_prime(l))
+    res = input_list()
+    print(res)
