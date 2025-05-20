@@ -10,3 +10,4 @@ res = [x * 2 for x in res] # Maladroit
 print(res)
 
 res = [x * 2 for x in l if x % 2 == 0]
+
