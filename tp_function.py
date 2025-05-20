@@ -14,6 +14,11 @@ def is_palindrome(word: str) -> bool:
 
 
 def is_prime(nb: int) -> bool:
+    """
+    Compute if nb is a prime number
+    :param nb: the number
+    :return: True if nb is a prime number
+    """
     is_prime = True
     for i in range(2, int(nb ** 0.5) + 1):
         if nb % i == 0:
@@ -21,7 +26,8 @@ def is_prime(nb: int) -> bool:
             break
     return is_prime
 
-result = factorielle(5)
-print(result)
-print(is_palindrome("radar"))
-print(is_prime(7))
+if __name__ == '__main__':
+    result = factorielle(5)
+    print(result)
+    print(is_palindrome("radar"))
+    print(is_prime(7))
