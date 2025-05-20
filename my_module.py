@@ -58,11 +58,18 @@ def input_list() -> list[int]:
             print("Merci de saisir un entier")
     return result
 
+def square(l: list[float]) -> list[float]:
+    result = []
+    for val in l:
+        result.append(val ** 2)
+    return result
+
 if __name__ == '__main__':
     l = [5, 99, 8, -2, 55, 52, 2006, 0, 18, 47]
     print(sum(l))
     print(max(l))
     print(filter_even(l))
     print(filter_prime(l))
+    print(square(l))
     res = input_list()
     print(res)
