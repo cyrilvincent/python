@@ -13,4 +13,4 @@ while True:
         print(age)
         break
     except ValueError as error:
-        print(f"Erreur sur l'age : {error}")
+        print(f"Erreur sur l'age : {age}")
