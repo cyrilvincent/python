@@ -1,3 +1,5 @@
+import json
+
 config = {
     "name": "Formation Python",
     "copyright": "(C) CEA 2025",
@@ -38,3 +40,11 @@ if __name__ == '__main__':
     for instrument in config["instruments"]:
         for measure_type in instrument["measure_types"]:
             print(measure_type)
+
+with open("data/equipments.json", "w") as f:
+    json.dump(config, f, indent="\t")
+
+
+with open("data/equipments.json", "r") as f:
+    dico = json.load(f)
+    print(config["name"])
