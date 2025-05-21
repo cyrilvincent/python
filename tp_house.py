@@ -6,6 +6,7 @@
 import math
 import csv
 import my_module
+import pickle
 
 print(f"pi: {math.pi:.2f}")
 
@@ -24,6 +25,15 @@ with open("data/house/house.csv") as f:
 print(my_module.stats(surfaces))
 print(my_module.stats(loyers))
 print(my_module.stats(loyers_m2))
+
+with open("data/house/house.pickle", "wb") as f:
+    pickle.dump(loyers_m2, f)
+
+loyers_m2 = None
+
+with open("data/house/house.pickle", "rb") as f:
+    loyers_m2 = pickle.load(f)
+    print(loyers_m2)
 
 
 
