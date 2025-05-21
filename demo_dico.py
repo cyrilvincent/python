@@ -47,4 +47,7 @@ with open("data/equipments.json", "w") as f:
 
 with open("data/equipments.json", "r") as f:
     dico = json.load(f)
-    print(config["name"])
+    config["name"] = "Hello"
+    with open("data/equipments.json", "w") as f:
+        json.dump(config, f, indent="\t")
+
