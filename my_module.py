@@ -64,6 +64,24 @@ def square(l: list[float]) -> list[float]:
         result.append(val ** 2)
     return result
 
+
+def stats(l: list[int]) -> tuple[float, int, int]:
+    """
+
+    :param l: 
+    :return: min, max, avg 
+    """
+    sum = 0
+    min = l[0]
+    max = l[0]
+    for val in l:
+        sum += val
+        if val > max:
+            max = val
+        elif val < min:
+            min = val
+    return sum / len(l), min, max
+
 if __name__ == '__main__':
     l = [5, 99, 8, -2, 55, 52, 2006, 0, 18, 47]
     print(sum(l))
@@ -71,5 +89,7 @@ if __name__ == '__main__':
     print(filter_even(l))
     print(filter_prime(l))
     print(square(l))
+    avg, min, max = stats(l)
+    print(avg, min, max)
     res = input_list()
     print(res)

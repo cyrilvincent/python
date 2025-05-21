@@ -29,13 +29,7 @@ def is_prime(nb: int) -> bool:
     return is_prime
 
 
-def stats(l: list[float]) -> tuple[float, float, float]
-    """
-    
-    :param l: 
-    :return: min, max, avg 
-    """
-    pass
+
 
 if __name__ == '__main__':
     result = factorielle(5)
