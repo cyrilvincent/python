@@ -66,6 +66,19 @@ class BankAccount:
             raise ValueError("Découvert non autorisé")
 
 
+class LivretA(BankAccount):
+
+    def __init__(self, customer: str, transactions: list[Transaction] = [], rate: float = 0):
+        BankAccount.__init__(self, customer, transactions)
+        self.rate = rate
+
+    def interest(self):
+        return self.balance * self.rate
+
+    def credit_interest(self):
+        interest = self.interest()
+        self.deposit(interest)
+
 
 if __name__ == '__main__':
     r1 = Rectangle(3,2, Point(1,-1))
