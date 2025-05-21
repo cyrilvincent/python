@@ -29,6 +29,12 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.length + self.width)
 
+
+class Square(Rectangle):
+
+    def __init__(self, side: float, origin: Point):
+        Rectangle.__init__(self, side, side, origin)
+
 class Transaction:
 
     def __init__(self, amount: float):
@@ -76,4 +82,8 @@ if __name__ == '__main__':
         assert False
     except ValueError as error:
         pass
+    s1 = Square(3, Point(1,-1))
+    assert s1.area() == 9
+    s1.origin.move(3,4)
+    assert s1.origin.x == 3
 
