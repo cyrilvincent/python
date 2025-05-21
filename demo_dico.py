@@ -30,6 +30,11 @@ if __name__ == '__main__':
     for instrument in config["instruments"]:
         print(instrument["ip"])
 
+
 # Dans un fichier main.py afficher le name du programme + version + copyright
 # Dans __name__ == '__main__': faire une boucle sur les intruments et afficher les names
 # idem mais afficher toues les measure_types
+
+    for instrument in config["instruments"]:
+        for measure_type in instrument["measure_types"]:
+            print(measure_type)
