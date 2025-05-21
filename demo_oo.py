@@ -1,8 +1,27 @@
+import datetime
+
+
+class Point:
+
+    def __init__(self,x: float, y: float):
+        self.x = x
+        self.y = y
+
+    def move(self, x: float, y: float):
+        self.x = x
+        self.y = y
+
+    def move_relative(self, x: float, y: float):
+        self.x += x
+        self.y += y
+
+
 class Rectangle:
 
-    def __init__(self, length:float, width:float):
+    def __init__(self, length:float, width:float, origin: Point):
         self.length = length
         self.width = width
+        self.origin = origin
 
     def area(self):
         return self.width * self.length
@@ -10,31 +29,43 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.length + self.width)
 
+class Transaction:
+
+    def __init__(self, amount: float):
+        self.datetime = datetime.datetime.now()
+        self.amount = amount
+
 class BankAccount:
 
     counter = 1
 
-    def __init__(self, customer: str):
+    def __init__(self, customer: str, transactions: list[Transaction] = []):
         self.customer = customer
         self.iban = BankAccount.counter
         BankAccount.counter += 1
         self.balance = 0
+        self.transactions = transactions
 
     def deposit(self, amount: float):
         self.balance += amount
+        transaction = Transaction(amount)
+        self.transactions.append(transaction)
 
     def withdraw(self, amount: float):
         if amount <= self.balance:
             self.balance -= amount
-        # else:
-        #     raise ValueError("Découvert non autorisé")
+            transaction = Transaction(-amount)
+            self.transactions.append(transaction)
+        else:
+            raise ValueError("Découvert non autorisé")
 
 
 
 if __name__ == '__main__':
-    r1 = Rectangle(3,2)
+    r1 = Rectangle(3,2, Point(1,-1))
     assert r1.area() == 6
     assert r1.perimeter() == 10
+    assert r1.origin.x == 1
     b1 = BankAccount("Cyril")
     b1.deposit(1000)
     b1.withdraw(100)
