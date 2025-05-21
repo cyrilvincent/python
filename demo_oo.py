@@ -65,6 +65,9 @@ class BankAccount:
         else:
             raise ValueError("Découvert non autorisé")
 
+    def __str__(self):
+        return f"BankAccount {self.iban}: {self.balance}"
+
 
 class LivretA(BankAccount):
 
