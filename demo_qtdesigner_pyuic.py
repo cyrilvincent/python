@@ -3,16 +3,16 @@ import sys
 from PyQt6 import uic
 from PyQt6.QtWidgets import QMainWindow, QPushButton, QApplication, QLayout, QLineEdit, QLabel, QVBoxLayout, QWidget
 import tp_function
+import mainwindow # python -m PyQt6.uic.pyuic ui\MainWindow.ui -o mainwindow.py
 
-class MainWindow(QMainWindow):
+class MainWindow(QMainWindow, mainwindow.Ui_MainWindow):
 
     def __init__(self):
         super().__init__()
-        uic.loadUi("ui/MainWindow.ui", self)
+        self.setupUi(self)
         self.pushButton.clicked.connect(self.button_clicked)
         self.errorLabel.setVisible(False)
         self.actionPrime.triggered.connect(self.button_clicked)
-
 
 
     def button_clicked(self):
