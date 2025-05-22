@@ -1,4 +1,5 @@
 import numpy as np
+import tp_function
 
 print(np.__version__)
 
@@ -17,3 +18,14 @@ for i in a2:
 print(np.sin(a2))
 print(np.dot(a2, a1))
 print(np.sin(0), np.sin(np.array([0,1])), np.sin(np.array([[1,2],[3,4]])))
+print(np.concatenate((a2, a3)))
+
+print(np.mean(a1))
+
+a10 = np.arange(10)
+print(a10[a10 % 2 == 0] ** 2)
+
+np.savez("file.npz", a10=a10)
+dico = np.load("file.npz")
+a10 = dico["a10"]
+
