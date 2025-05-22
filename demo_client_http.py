@@ -6,3 +6,4 @@ conn.request("GET", "/config")
 response = conn.getresponse()
 content = response.read().decode()
 print(content)
+
