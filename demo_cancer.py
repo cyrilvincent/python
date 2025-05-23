@@ -10,11 +10,12 @@ class CancerService:
         self.data = None
         self.x = None
         self.y = None
-        self.model = nn.MLPClassifier((30,30,30)) # 30 | 30 | 30
+        self.model = nn.MLPClassifier((30,30,30), max_iter=2000) # 30 | 30 | 30
+        np.random.seed(0)
 
     def load(self):
         self.data = pd.read_csv(self.path)
-        self.x = self.data.drop(["id", "diagnosis"], axis=1)
+        self.x = self.data.drop(["id", "diagnosis"], axis=1).values
         self.y = self.data["diagnosis"]
 
     def fit(self):
