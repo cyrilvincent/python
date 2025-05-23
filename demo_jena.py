@@ -18,6 +18,7 @@ plt.xticks([1, 365.25], labels=["1/year", "1/day"])
 plt.xscale("log")
 
 slope, intercept, rvalue, pvalue, stderr = stats.linregress(f_per_dataset, df["T (degC)"])
+print(rvalue, pvalue)
 x = f_per_dataset
 y = slope * x + intercept
 plt.subplot(313)
