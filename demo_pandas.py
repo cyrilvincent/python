@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = pd.read_csv("data/house/house.csv")
+data = pd.read_csv("data/house/house.csv",)
 loyer_m2 = data["loyer"] / data["surface"]
 avg = np.mean(loyer_m2)
 
