@@ -40,3 +40,4 @@ for row in cube232:
     for col in row:
         for val in col:
             print(val)
+np.transpose(cube232, (0,1))
