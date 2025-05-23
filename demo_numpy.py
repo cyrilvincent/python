@@ -27,5 +27,5 @@ print(a10[a10 % 2 == 0] ** 2)
 
 np.savez("file.npz", a10=a10)
 dico = np.load("file.npz")
-a10 = dico["a10"]
+a11 = dico["a10"]
 
