@@ -25,3 +25,18 @@ m31 = np.array([[1],[2],[3]])
 print(v3)
 print(m13)
 print(m31)
+print(np.linalg.inv(m22))
+
+v12 = np.arange(12)
+mat34 = v12.reshape(3,4)
+print(mat34)
+mat43 = v12.reshape(-1,3)
+print(mat43)
+v12 = mat43.reshape(-1)
+cube232 = v12.reshape(2,3,2)
+print(cube232)
+print(cube232[1,1,1])
+for row in cube232:
+    for col in row:
+        for val in col:
+            print(val)
