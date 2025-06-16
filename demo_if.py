@@ -6,3 +6,7 @@ if x > 0 and y % 2 == 1:
         print("Hello")
     else:
         print("Else")
+
+condition = x > 0 and y % 2 == 1
+if condition:
+    print("OK")
