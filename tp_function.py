@@ -3,6 +3,11 @@
 # Tester
 
 def factorielle(n: int) -> int:
+    """
+    Factorielle
+    :param n:
+    :return:
+    """
     facto = 1
     for i in range(2, n + 1):
         facto *= i
@@ -25,7 +30,9 @@ def is_prime(n: int) -> bool:
             break
     return is_prime
 
-print(factorielle(5))
-print(fibonacci(10))
-print(is_prime(7))
-print(is_prime(8))
+if __name__ == '__main__':
+    print(factorielle(5))
+    print(fibonacci(10))
+    print(is_prime(7))
+    print(is_prime(8))
+    assert factorielle(5) == 120
