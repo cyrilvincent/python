@@ -13,7 +13,7 @@ def factorielle(n: int) -> int:
         facto *= i
     return facto
 
-def fibonacci(n: int) -> int:
+def fibo(n: int) -> int:
     fibo = 1
     fibo2 = 0
     for i in range(1, n):
@@ -34,7 +34,7 @@ def is_prime(n: int) -> bool:
 
 if __name__ == '__main__':
     print(factorielle(5))
-    print(fibonacci(10))
+    print(fibo(10))
     print(is_prime(7))
     print(is_prime(8))
     assert factorielle(5) == 120
