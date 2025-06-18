@@ -26,6 +26,12 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.width + self.length)
 
+
+class Square(Rectangle):
+
+    def __init__(self, side):
+        super().__init__(side, side)
+
 if __name__ == '__main__':
     r1 = Rectangle(3,2)
     assert 6 == r1.area()
@@ -37,3 +43,5 @@ if __name__ == '__main__':
     print([r.area() + r.perimeter() for r in rectangles])
     assert 4 == r2.coord.x
     r2.coord.move(0,0)
+    s1 = Square(3)
+    assert 9 == s1.area()
