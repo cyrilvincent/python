@@ -1,8 +1,11 @@
 class BankAccount:
 
+    count = 1
+
     def __init__(self, banque: str, devise="EUR"):
         self.solde = 0
-        self.id = 0
+        self.id = BankAccount.count
+        BankAccount.count += 1
         self.devise = devise
         self.banque = banque
 
@@ -28,6 +31,7 @@ if __name__ == '__main__':
     argent = c1.debiter(60)
     assert 60 == argent
     assert 40 == c1.solde
+    assert 1 == c1.id
     try:
         c1.debiter(41)
         assert False
@@ -36,6 +40,7 @@ if __name__ == '__main__':
     c2 = BankAccount("CM")
     c2.crediter(200)
     assert c1.solde != c2.solde
+    assert 2 == c2.id
 
 
 
