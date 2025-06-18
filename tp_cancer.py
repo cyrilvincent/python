@@ -3,6 +3,7 @@
 # Afficher la moyenne des listes
 import csv
 import pickle
+import json
 
 class CancerService:
 
@@ -35,6 +36,11 @@ class CancerService:
         with open("data/cancer/data.pkl", "wb") as f:
             pickle.dump(self, f)
 
+    def save_json(self):
+        with open("data/cancer/data.json", "w") as f:
+            json.dump([self.ids, self.diagnosis,self.radius], f)
+
+
     def load_pickle(self):
         with open("data/cancer/data.pkl", "rb") as f:
             self = pickle.load(f)
@@ -45,6 +51,7 @@ if __name__ == '__main__':
     c = CancerService()
     c.load("data/cancer/data.csv")
     c.save()
+    c.save_json()
     c.load_pickle()
     print(c.ids)
     print(c.avg(c.radius))
