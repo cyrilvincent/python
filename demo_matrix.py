@@ -1,0 +1,42 @@
+import numpy as np
+
+m1 = np.array([[1,2],[3,4]])
+print(m1)
+print(m1[0])
+print(m1[1,0])
+print(m1[:,0])
+
+m12 = np.array([[1,2]])
+v2 = np.array([1,2])
+m21 = np.array([[1],[2]])
+print(v2)
+print(m12)
+print(m21)
+
+m23 = np.array([[1,2,3],[4,5,6]])
+print(m23)
+print(m23.size, m23.ndim, m23.shape)
+print(m23.T)
+
+v12 = np.arange(12)
+m43 = v12.reshape(4, -1)
+print(m43)
+m34 = v12.reshape(-1, 4)
+print(m34)
+v12 = m34.reshape(-1)
+print(v12)
+c232 = v12.reshape(2,3,-1)
+print(c232)
+
+print(m23)
+print(m23 + 1)
+print(np.sin(m23))
+print(m23 + np.arange(3))
+print(m23 + m23)
+print(np.dot(m23, m23.T))
+
+print(m23)
+print(np.sum(m23))
+print(np.sum(m23, axis=0))
+print(np.sum(m23, axis=1))
+print(np.sum(c232, axis=2))
