@@ -2,6 +2,14 @@ import numpy as np
 import tp_cancer
 
 v1 = np.array([1,2,3,4], dtype=np.uint8)
+
+for value in v1:
+    print(v1)
+v2 = np.arange(100)
+print(v2[5:87:3])
+
+print(v1.size, v1.ndim, v1.shape)
+print(np.mean(v1), v1.mean())
 print(v1 + 1)
 print(v1)
 v2 = np.array([5,6,7,8])
@@ -21,3 +29,7 @@ print(np.linspace(0,100,11))
 np.random.seed(42)
 print(np.random.randint(0,100))
 print(np.random.rand(10) * 100)
+
+v2 = np.arange(100)
+print(v2[(v2 % 3 == 0) & (v2 > 50)])
+
