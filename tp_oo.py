@@ -1,5 +1,10 @@
 import datetime
 
+class BankAccountError(Exception):
+
+    def __init__(self, msg: str):
+        super().__init__(msg)
+
 class Personne:
 
     def __init__(self, fname, lname):
@@ -36,7 +41,7 @@ class BankAccount:
             self.transactions.append(transac)
 
         else:
-            raise ValueError("Montant < 0")
+            raise BankAccountError("Montant < 0")
 
     def debiter(self, montant: float) -> float:
         if montant <= self.solde:
@@ -46,9 +51,9 @@ class BankAccount:
                 self.transactions.append(transac)
                 return montant
             else:
-                raise ValueError("Montant < 0")
+                raise BankAccountError("Montant < 0")
         else:
-            raise ValueError("Découvert non autorisé")
+            raise BankAccountError("Découvert non autorisé")
 
     def __repr__(self):
         return f"BankAccount {self.id} {self.solde} {self.titulaire}"
@@ -64,6 +69,8 @@ class LivretA(BankAccount):
 
     def crediter_interet(self):
         self.crediter(self.calc_interets())
+
+
 
 
 

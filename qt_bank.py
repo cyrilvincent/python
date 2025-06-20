@@ -52,6 +52,9 @@ class MainWindow(QMainWindow):
         except ValueError as ex:
             self.error_label.setText(str(ex))
             self.error_label.setVisible(True)
+        except tp_oo.BankAccountError as ex:
+            self.error_label.setText(f"Erreur de la banque: {ex}")
+            self.error_label.setVisible(True)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
