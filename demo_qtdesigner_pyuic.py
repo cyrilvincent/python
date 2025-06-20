@@ -10,10 +10,10 @@ import generated_ui
 class MainWindow(QMainWindow, generated_ui.Ui_MainWindow):
 
 
-    # 1 Taper la coùmmande : python -m PyQt6.uic.pyuic ui\NomDeVotreUi.ui -o generated_ui.py
+    # 1 Taper la commande : python -m PyQt6.uic.pyuic ui\NomDeVotreUi.ui -o generated_ui.py
     # 2 import generated_ui
     # 3 Ajouter l'héritage generated_ui.Ui_MainWindow
-    # 4 Remplacer uci.loadUi par self.setupUi(self)
+    # 4 Remplacer uic.loadUi par self.setupUi(self)
 
     def __init__(self):
         super().__init__()
