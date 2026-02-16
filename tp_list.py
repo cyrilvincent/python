@@ -7,6 +7,7 @@
 # Bonus filter_prime(l: list[int])-> list[int] par exemple filter_prime([1,2,3,4,5,6,7,8,9,10]) => [2,3,5,7]
 
 import tp3
+import math
 
 def sum(l: list[float]) -> float:
     result = 0
@@ -34,6 +35,12 @@ def filter_prime(l: list[int]) -> list[int]:
             result.append(v)
     return result
 
+def double(l: list[float]) -> list[float]:
+    result = []
+    for v in l:
+        result.append(v * 2)
+    return result
+
 
 if __name__ == '__main__':
     l = [1, 2, 5, 8, 99, 45, 61, -1, 9, 12]
@@ -41,3 +48,13 @@ if __name__ == '__main__':
     print(max(l))
     print(power2(8))
     print(filter_prime(l))
+    print(double(l))
+
+    res = [math.cos(x) ** 2 for x in l]
+    print(res)
+    filter = [x for x in l if x % 2 == 0]
+    print(filter)
+    filter = [x for x in l if tp3.is_prime(x)]
+    print(filter)
+    filter = [x ** 2 for x in l if tp3.is_prime(x)]
+    print(filter)
