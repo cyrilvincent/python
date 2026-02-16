@@ -1,0 +1,1 @@
+# Créer les fonction fact(n: int) -> int et is_prime(n: int) -> bool
