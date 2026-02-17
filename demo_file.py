@@ -1,6 +1,7 @@
 import csv
 import tp_tuple
 import pickle
+import json
 
 # with open("data/house/house.csv", "r") as f:
 #     with open("data/house/house2.csv", "w") as w:
@@ -29,13 +30,22 @@ def load_csv(path: str, delimiter=",") -> tuple[list[int], list[int]]:
             surfaces.append(int(row["surface"]))
     return loyers, surfaces
 
+def save_pickle(path: str, object):
+    with open(path, "wb") as f:
+        pickle.dump(object, f)
+
+def load_pickle(path: str):
+    with open(path, "rb") as f:
+        return pickle.load(f)
+
 if __name__ == '__main__':
     loyers, surfaces = load_csv("data/house/house.csv")
     loyers_m2 = [loyer / surface for loyer, surface in zip(loyers, surfaces)]
     print(tp_tuple.min_max_avg(loyers_m2))
-    # with open("data/house/house_m2.pkl", "wb") as f:
-    #     pickle.dump(loyers_m2, f)
-    with open("data/house/house_m2.pkl", "rb") as f:
-        loyers_m2 = pickle.load(f)
-        print(loyers_m2)
+    save_pickle("data/house/house.pkl", (loyers, surfaces, loyers_m2))
+    loyers, surfaces, loyers_m2 = load_pickle("data/house/house.pkl")
+    print(loyers_m2)
+    dico = {"loyers": loyers, "surfaces": surfaces, "loyers_m2": loyers_m2}
+    with open("data/house/house.json", "w") as f:
+        json.dump(dico, f, indent=2)
 
