@@ -33,19 +33,36 @@ def flip(array):
 def negative(array):
     return 255 - array
 
+def range(array):
+    return np.max(array) - np.min(array)
+
+def lum(array):
+    return np.mean(array)
+
+def contrast(array):
+    return np.std(array)
+
+def auto_correct(array):
+    return np.clip(((array - lum(array)) / contrast(array)) * 255 / 4 + 255 / 2, 0, 255)
+
+
 # range (max - min)
 # lum (mean) 255/2
 # contrast (std) 255/4
 # auto_correct np.clip(((x - mean) / std) * 255/4 + 127.5,0,255)
 
 if __name__ == '__main__':
-    array = load("data/python.jpg")
+    array = load("data/ski.jpg")
     red = get_chanel(array, 0)
     crop = crop(red, 20,40,60,80)
     reduce = reduce2(crop, 2)
     flip = flip(reduce)
     negative = negative(flip)
-    save(negative, "data/out.jpg")
+    correct = auto_correct(array)
+    print(f"Range: {range(flip)}")
+    print(f"Lum: {lum(negative)}")
+    print(f"Contrast: {contrast(negative)}")
+    save(correct, "data/out.jpg")
 
 
 # TP
