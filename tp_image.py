@@ -33,6 +33,11 @@ def flip(array):
 def negative(array):
     return 255 - array
 
+# range (max - min)
+# lum (mean) 255/2
+# contrast (std) 255/4
+# auto_correct np.clip(((x - mean) / std) * 255/4 + 127.5,0,255)
+
 if __name__ == '__main__':
     array = load("data/python.jpg")
     red = get_chanel(array, 0)
