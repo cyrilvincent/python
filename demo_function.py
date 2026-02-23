@@ -16,7 +16,25 @@ def factorielle(n: int) -> int:
         facto = facto * x
     return facto
 
-result = add(3)
-print(result)
-print(factorielle(5))
-print(f(2))
+def is_prime(n: int) -> bool:
+    """
+    Calcul si n est un nombre premier
+    :param n: n
+    :return: True si n est premier
+    """
+    is_prime = True
+    for div in range(2, int(n ** 0.5) + 1):
+        if n % div == 0:
+            is_prime = False
+            break
+    return is_prime
+
+def sin():
+    return "toto"
+
+if __name__ == '__main__':
+    result = add(3)
+    print(result)
+    print(factorielle(5))
+    print(f(2))
+    print(is_prime(7))
