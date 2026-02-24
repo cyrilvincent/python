@@ -22,6 +22,8 @@ def is_prime(n: int) -> bool:
     :param n: n
     :return: True si n est premier
     """
+    if n < 2:
+        return False
     is_prime = True
     for div in range(2, int(n ** 0.5) + 1):
         if n % div == 0:
