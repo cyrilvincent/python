@@ -35,7 +35,7 @@ def filter_even(l: list[float]) -> list[float]:
             result.append(i)
     return result
 
-def filter_prime(l: list[float]) -> list[float]:
+def filter_prime(l: list[int]) -> list[int]:
     result = []
     for i in l:
         if demo_function.is_prime(i):
