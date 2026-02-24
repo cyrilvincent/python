@@ -3,13 +3,15 @@
 # Afficher votre age en fin d'année
 
 year = 2026
-toto = 2
-titi = 3
-birth = input("Année de naissance: ")
-birth = int(birth)
-age = year - birth
-print(f"Vous avez {age} ans")
 
-condition = (year > 2026 or titi==3) and toto == 2
-if condition:
-    print("Trop grand")
+while True:
+    try:
+        birth = input("Année de naissance: ")
+        birth = int(birth)
+        if birth > year or birth < year - 130:
+            raise ValueError("Date de naissance incompatible")
+        age = year - birth
+        print(f"Vous avez {age} ans")
+        break
+    except:
+        print("Merci de resaisir votre age")
