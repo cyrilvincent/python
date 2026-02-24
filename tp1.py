@@ -13,5 +13,8 @@ while True:
         age = year - birth
         print(f"Vous avez {age} ans")
         break
-    except:
+    except TypeError as err:
+        print(err)
         print("Merci de resaisir votre age")
+    except ValueError as err:
+        print(err)
