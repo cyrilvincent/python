@@ -7,3 +7,16 @@ print(dico["loyers"], dico["surfaces"])
 # Créer le vecteur loyer_m2 = loyers/surfaces
 # Filtrer les surfaces < 200
 # Bonus : Filtrer les loyers dont la surface < 200
+
+loyers = dico["loyers"]
+surfaces = dico["surfaces"]
+
+print(np.min(loyers), np.max(loyers), np.sum(loyers)/len(loyers))
+loyer_m2 = loyers / surfaces
+print(np.min(loyer_m2), np.max(loyer_m2), np.sum(loyer_m2)/len(loyer_m2))
+surfaces_inf100 = surfaces[surfaces < 100]
+print(surfaces_inf100)
+loyers_inf100 = loyers[surfaces < 100]
+print(loyers_inf100)
+print(surfaces[loyers < 1000])
+print(loyers < 1000)
