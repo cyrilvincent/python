@@ -38,7 +38,7 @@ slope, intercept, rvalue, pvalue, _ = stats.linregress(surfaces[surfaces<178], l
 print(slope, intercept, rvalue, pvalue)
 
 plt.subplot(2,1,2)
-plt.title("house filtered")
+plt.title(f"house filtered {slope:.2f}")
 plt.scatter(surfaces[surfaces < 178], loyers[surfaces < 178])
 plt.plot(surfaces, slope * surfaces + intercept, color="red")
 plt.show()
