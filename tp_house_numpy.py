@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 dico = np.load("data/house/house.npz")
 print(dico["loyers"], dico["surfaces"])
@@ -20,3 +21,11 @@ loyers_inf100 = loyers[surfaces < 100]
 print(loyers_inf100)
 print(surfaces[loyers < 1000])
 print(loyers < 1000)
+
+plt.subplot(2,1,1)
+plt.scatter(surfaces, loyers)
+plt.title("house")
+plt.subplot(2,1,2)
+plt.title("house filtered")
+plt.scatter(surfaces[surfaces < 178], loyers[surfaces < 178])
+plt.show()
