@@ -12,6 +12,9 @@ class Book:
     # Reprogrammer net_price
     # Compter automatiquement le nb de book
 
+    vat = 0.055
+    nb = 0
+
     def __init__(self,
                  isbn: str,
                  title: str,
@@ -30,9 +33,13 @@ class Book:
         self.publisher = publisher
         self.date = date
         self.lang = lang
+        Book.nb += 1
 
     def net_price(self):
-        return self.price * 1.055
+        return self.price * (1 + Book.vat)
+
+    def __del__(self):
+        Book.nb -= 1
 
 
 class Cart:
@@ -60,7 +67,13 @@ class Counter:
 
 if __name__ == '__main__':
     b1 = Book("978-2-07-061275-8", "Python pour les nuls", 10, ["Cyril"], "CEA", 99)
+    # Book.nb
     assert np.round(b1.net_price(), 2) == 10.55
+    b2 = Book("978-2-07-061275-9", "Python 3", 10, ["Cyril"], "CEA", 99)
+    assert Book.nb == 2
+    del b2
+    assert Book.nb == 1
+    print(Book.nb)
     cart = Cart()
     cart.add("oignons")
     print(cart.items)
