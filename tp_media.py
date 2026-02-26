@@ -107,3 +107,7 @@ if __name__ == '__main__':
     c2 = Counter()
     c2.increment()
     print(c1.i, c2.i)
+
+# Book, Cd, Dvd
+# Media
+# Bonus : Item

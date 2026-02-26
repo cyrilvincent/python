@@ -12,6 +12,9 @@ class Point:
         self.x += x
         self.y += y
 
+    def __repr__(self):
+        return f"({self.x},{self.y})"
+
 class Rectangle:
 
     def __init__(self, length: float, width: float, coord: Point):
@@ -28,8 +31,26 @@ class Rectangle:
     def _private(self):
         pass
 
+
+class Square(Rectangle):
+
+    def __init__(self, side, coord: Point):
+        super().__init__(side, side, coord)
+
+
+class TriangleRectangle(Rectangle):
+
+    def __init__(self, length: float, width: float, coord: Point):
+        super().__init__(length, width, coord)
+
+
+    def area(self):
+        return super().area() / 2
+
+
 if __name__ == '__main__':
     p0 = Point(2,3)
+    print(p0)
     r1 = Rectangle(3,2,p0)
     print(r1.length, r1.width)
     print(r1.area())
@@ -42,3 +63,5 @@ if __name__ == '__main__':
     assert p1.x == 5
     assert p1.y == 1
     print(type(p1))
+    s1 = Square(3, p0)
+    assert s1.area() == 9
