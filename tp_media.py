@@ -92,16 +92,19 @@ class Cd(Media):
 class Cart:
 
     def __init__(self):
-        self.items = []
+        self.items: list[Media] = []
 
-    def add(self, item):
+    def add(self, item: Media):
         self.items.append(item)
 
-    def remove(self, item):
+    def remove(self, item: Media):
         self.items.remove(item)
 
     def clear(self):
         self.items.clear()
+
+    def total_net_price(self):
+        pass
 
 
 class Counter:
@@ -126,13 +129,13 @@ if __name__ == '__main__':
     assert b1.authors[0].first_name == "Cyril"
     print(Book.nb)
     cart = Cart()
-    cart.add("oignons")
-    print(cart.items)
-    cart.add("salade")
-    print(cart.items)
-    cart.add("salade")
-    print(cart.items)
-    cart.remove("salade")
+    # cart.add("oignons")
+    # print(cart.items)
+    # cart.add("salade")
+    # print(cart.items)
+    # cart.add("salade")
+    # print(cart.items)
+    # cart.remove("salade")
     print(cart.items)
     cart.add(b1)
     print(cart.items)
@@ -143,6 +146,7 @@ if __name__ == '__main__':
     c2 = Counter()
     c2.increment()
     print(c1.i, c2.i)
+
 
 # Book, Cd, Dvd
 # Media

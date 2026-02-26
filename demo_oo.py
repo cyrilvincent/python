@@ -73,3 +73,6 @@ if __name__ == '__main__':
     print(type(p1))
     s1 = Square(3, p0)
     assert s1.area() == 9
+    mylist: list[Rectangle] = []
+    mylist.append(r1)
+    mylist.append(s1)
