@@ -8,14 +8,15 @@ import datetime
 
 class Publisher:
 
-    # 2 à 3 attributs, pas de methode
-    # 1 book possède un et un seul publisher
-    pass
+    def __init__(self, id: str, name: str):
+        self.id = id
+        self.name = name
 
 class Author:
-    # first_name, last_name
-    # 1 book possède n auteurs n[0, inf]
-    pass
+
+    def __init__(self, first_name: str, last_name: str):
+        self.first_name = first_name
+        self.last_name = last_name
 
 class Book:
 
@@ -30,8 +31,8 @@ class Book:
                  isbn: str,
                  title: str,
                  price: float,
-                 authors: list,
-                 publisher,
+                 authors: list[Author],
+                 publisher: Publisher,
                  nb_page=0,
                  date=datetime.date.today(),
                  lang="fr-FR",
@@ -77,13 +78,16 @@ class Counter:
 
 
 if __name__ == '__main__':
-    b1 = Book("978-2-07-061275-8", "Python pour les nuls", 10, ["Cyril"], "CEA", 99)
+    pub = Publisher("007", "CEA")
+    b1 = Book("978-2-07-061275-8", "Python pour les nuls", 10, [Author("Cyril", "Vincent")], pub, 99)
     # Book.nb
     assert np.round(b1.net_price(), 2) == 10.55
-    b2 = Book("978-2-07-061275-9", "Python 3", 10, ["Cyril"], "CEA", 99)
+    b2 = Book("978-2-07-061275-9", "Python 3", 10, [Author("Cyril", "Vincent"), Author("toto", "titi")], pub, 99)
     assert Book.nb == 2
     del b2
     assert Book.nb == 1
+    assert b1.publisher.name == "CEA"
+    assert b1.authors[0].first_name == "Cyril"
     print(Book.nb)
     cart = Cart()
     cart.add("oignons")
