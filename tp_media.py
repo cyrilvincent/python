@@ -48,6 +48,9 @@ class Media:
     def net_price(self):
         return self.price * (1 + Media.vat)
 
+    def __repr__(self):
+        return f"{self.isbn} {self.title} {self.net_price():.2f}€"
+
     def __del__(self):
         Media.nb -= 1
 
@@ -104,7 +107,15 @@ class Cart:
         self.items.clear()
 
     def total_net_price(self):
-        pass
+        prices = [m.net_price() for m in self.items]
+        prices = np.array(prices)
+        return np.sum(prices)
+
+    def total_net_price2(self):
+        price = 0
+        for media in self.items:
+            price += media.net_price()
+        return price
 
 
 class Counter:
@@ -129,15 +140,10 @@ if __name__ == '__main__':
     assert b1.authors[0].first_name == "Cyril"
     print(Book.nb)
     cart = Cart()
-    # cart.add("oignons")
-    # print(cart.items)
-    # cart.add("salade")
-    # print(cart.items)
-    # cart.add("salade")
-    # print(cart.items)
-    # cart.remove("salade")
     print(cart.items)
     cart.add(b1)
+    cart.add(cd1)
+    cart.add(cd1)
     print(cart.items)
     assert len(cart.items) == 3
     c1 = Counter()
@@ -146,6 +152,7 @@ if __name__ == '__main__':
     c2 = Counter()
     c2.increment()
     print(c1.i, c2.i)
+    print(cart.total_net_price())
 
 
 # Book, Cd, Dvd
