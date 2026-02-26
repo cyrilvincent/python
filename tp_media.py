@@ -6,6 +6,17 @@
 import numpy as np
 import datetime
 
+class Publisher:
+
+    # 2 à 3 attributs, pas de methode
+    # 1 book possède un et un seul publisher
+    pass
+
+class Author:
+    # first_name, last_name
+    # 1 book possède n auteurs n[0, inf]
+    pass
+
 class Book:
 
     # Gérer un TVA commune à tous les livres
