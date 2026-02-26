@@ -18,13 +18,13 @@ class Author:
         self.first_name = first_name
         self.last_name = last_name
 
-class Book:
+class Media:
 
     # Gérer un TVA commune à tous les livres
     # Reprogrammer net_price
     # Compter automatiquement le nb de book
 
-    vat = 0.055
+    vat = 0.2
     nb = 0
 
     def __init__(self,
@@ -33,7 +33,6 @@ class Book:
                  price: float,
                  authors: list[Author],
                  publisher: Publisher,
-                 nb_page=0,
                  date=datetime.date.today(),
                  lang="fr-FR",
                  ):
@@ -41,17 +40,53 @@ class Book:
         self.title = title
         self.price = price
         self.authors = authors
-        self.nb_page = nb_page
         self.publisher = publisher
         self.date = date
         self.lang = lang
-        Book.nb += 1
+        Media.nb += 1
+
+    def net_price(self):
+        return self.price * (1 + Media.vat)
+
+    def __del__(self):
+        Media.nb -= 1
+
+
+class Book(Media):
+
+    vat = 0.055
+
+    def __init__(self,
+                 isbn: str,
+                 title: str,
+                 price: float,
+                 authors: list[Author],
+                 publisher: Publisher,
+                 date=datetime.date.today(),
+                 lang="fr-FR",
+                 nb_page=0
+                 ):
+        super().__init__(isbn, title, price, authors, publisher, date, lang)
+        self.nb_page = nb_page
 
     def net_price(self):
         return self.price * (1 + Book.vat)
 
-    def __del__(self):
-        Book.nb -= 1
+
+class Cd(Media):
+
+    def __init__(self,
+                 isbn: str,
+                 title: str,
+                 price: float,
+                 authors: list[Author],
+                 publisher: Publisher,
+                 date=datetime.date.today(),
+                 lang="fr-FR",
+                 nb_track=0
+                 ):
+        super().__init__(isbn, title, price, authors, publisher, date, lang)
+        self.nb_track = nb_track
 
 
 class Cart:
@@ -79,13 +114,14 @@ class Counter:
 
 if __name__ == '__main__':
     pub = Publisher("007", "CEA")
-    b1 = Book("978-2-07-061275-8", "Python pour les nuls", 10, [Author("Cyril", "Vincent")], pub, 99)
+    b1 = Book("978-2-07-061275-8", "Python pour les nuls", 10, [Author("Cyril", "Vincent")], pub)
     # Book.nb
     assert np.round(b1.net_price(), 2) == 10.55
-    b2 = Book("978-2-07-061275-9", "Python 3", 10, [Author("Cyril", "Vincent"), Author("toto", "titi")], pub, 99)
-    assert Book.nb == 2
+    b2 = Book("978-2-07-061275-9", "Python 3", 10, [Author("Cyril", "Vincent"), Author("toto", "titi")], pub)
+    cd1 = Cd("001", "Allumer le feu", 5, [Author("Johnny", "H")], pub)
+    assert Media.nb == 3
     del b2
-    assert Book.nb == 1
+    assert Book.nb == 2
     assert b1.publisher.name == "CEA"
     assert b1.authors[0].first_name == "Cyril"
     print(Book.nb)

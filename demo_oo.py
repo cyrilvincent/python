@@ -15,6 +15,14 @@ class Point:
     def __repr__(self):
         return f"({self.x},{self.y})"
 
+class Point3d(Point):
+
+    def __init__(self, x: float, y: float, z: float):
+        super().__init__(x, y)
+        self.z = z
+
+
+
 class Rectangle:
 
     def __init__(self, length: float, width: float, coord: Point):
