@@ -8,6 +8,10 @@ import datetime
 
 class Book:
 
+    # Gérer un TVA commune à tous les livres
+    # Reprogrammer net_price
+    # Compter automatiquement le nb de book
+
     def __init__(self,
                  isbn: str,
                  title: str,
@@ -46,6 +50,14 @@ class Cart:
         self.items.clear()
 
 
+class Counter:
+
+    i = 0
+
+    def increment(self):
+        Counter.i += 1
+
+
 if __name__ == '__main__':
     b1 = Book("978-2-07-061275-8", "Python pour les nuls", 10, ["Cyril"], "CEA", 99)
     assert np.round(b1.net_price(), 2) == 10.55
@@ -61,3 +73,9 @@ if __name__ == '__main__':
     cart.add(b1)
     print(cart.items)
     assert len(cart.items) == 3
+    c1 = Counter()
+    c1.increment()
+    c1.increment()
+    c2 = Counter()
+    c2.increment()
+    print(c1.i, c2.i)
