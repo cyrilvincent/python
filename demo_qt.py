@@ -21,7 +21,8 @@ class MainWindow(QMainWindow):
         self.media_list = QListWidget()
         titles = [m.title for m in self.medias]
         self.media_list.addItems(titles)
-        self.media_list.currentItemChanged.connect(self.media_list_changed)
+        # self.media_list.currentItemChanged.connect(self.media_list_selected)
+        self.media_list.itemClicked.connect(self.media_list_selected)
         self.media_label = QLabel()
 
         # self.setCentralWidget(self.button)
@@ -58,7 +59,7 @@ class MainWindow(QMainWindow):
             self.errorLabel.setText(str(ex))
             self.errorLabel.setVisible(True)
 
-    def media_list_changed(self, i):
+    def media_list_selected(self, i):
         self.media_label.setText(f"Vous avec choisi {i.text()}")
 
 
