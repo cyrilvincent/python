@@ -126,6 +126,18 @@ class Counter:
         Counter.i += 1
 
 
+class DbMedia:
+
+    def getMedias(self):
+        pub = Publisher("007", "CEA")
+        books = [
+            Book("978-2-07-061275-8", "Python pour les nuls", 10, [Author("Cyril", "Vincent")], pub),
+            Book("978-2-07-061275-9", "Python 3", 10, [Author("Cyril", "Vincent"), Author("toto", "titi")], pub),
+            Cd("001", "Allumer le feu", 5, [Author("Johnny", "H")], pub)
+        ]
+        return books
+
+
 if __name__ == '__main__':
     pub = Publisher("007", "CEA")
     b1 = Book("978-2-07-061275-8", "Python pour les nuls", 10, [Author("Cyril", "Vincent")], pub)

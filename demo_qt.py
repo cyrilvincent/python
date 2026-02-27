@@ -2,6 +2,7 @@ from PyQt6.QtCore import QSize
 from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout
 import sys
 import demo_function
+import tp_media
 
 
 class MainWindow(QMainWindow):
@@ -31,6 +32,8 @@ class MainWindow(QMainWindow):
         self.button.clicked.connect(self.button_clicked)
         # self.edit.textChanged.connect(self.button_clicked)
         self.nb = 0
+        db = tp_media.DbMedia()
+        self.medias = db.getMedias()
 
     def button_clicked(self):
         self.nb += 1
