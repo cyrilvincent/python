@@ -34,6 +34,8 @@ print(len(chaine))
 nb = 3.99
 print(int(nb))
 
+print(chaine.upper())
+
 my_input = input("Saisir un nombre: ")
 my_int = int(my_input)
 print(my_int + 1)
