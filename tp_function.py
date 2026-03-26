@@ -49,7 +49,14 @@ def display_primes(limit: int):
 
 
 
-print(power(2, 8))
-print(facto(5))
-print(is_prime(13))
-display_primes(1000)
+
+
+
+if __name__ == '__main__':  # main + [tab]
+    # # print(power(2, 8))
+    # print(facto(5))
+    # print(is_prime(13))
+    display_primes(1000)
+    assert power(2, 8) == 256
+    assert facto(5) == 120
+    assert is_prime(13)
