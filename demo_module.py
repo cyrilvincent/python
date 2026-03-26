@@ -1,4 +1,5 @@
 import tp_function as lib
 
-print(lib.facto(5))
+
+print(lib.facto(-1))
 

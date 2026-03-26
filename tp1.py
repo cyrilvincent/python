@@ -7,12 +7,19 @@
 # Afficher votre age en fin d'année
 
 year = 2026
-print(f"L'année en cours est {year}.")
-my_text = "Je suis en majuscule"
-print(my_text.upper())
-birth_year_str = input("Saisir votre année de naissance: ")
-birth_year = int(birth_year_str)
-age = year - birth_year
-print(f"Vous avez {age} ans")
+while True:
+    try:
+        print(f"L'année en cours est {year}.")
+        my_text = "Je suis en majuscule"
+        print(my_text.upper())
+        birth_year_str = input("Saisir votre année de naissance: ")
+        birth_year = int(birth_year_str)
+        if birth_year > year or birth_year < 1900:
+            raise ValueError("Impossible")
+        age = year - birth_year
+        print(f"Vous avez {age} ans")
+        break
+    except ValueError as ex:
+        print(f"Erreur: {ex}")
 
 
