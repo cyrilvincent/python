@@ -60,3 +60,6 @@ if __name__ == '__main__':  # main + [tab]
     assert power(2, 8) == 256
     assert facto(5) == 120
     assert is_prime(13)
+    assert is_prime(2)
+    assert not is_prime(1)
+    assert round(power(2, 0.5), 3) == 1.414
