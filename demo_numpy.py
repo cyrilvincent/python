@@ -24,9 +24,12 @@ print(v1 + v2)
 
 print(np.mean(v2), np.std(v2))
 
+def xsinx(x):
+    return x * np.sin(x)
+
 plt.subplot(2,2,1)
 plt.plot(x, np.sin(x), color="red")
-plt.plot(x, np.cos(x), color="green")
+plt.plot(x, xsinx(x), color="green")
 plt.title("sin+cos")
 
 plt.subplot(2,2,4)
