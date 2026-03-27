@@ -4,6 +4,7 @@ import numpy as np
 df = pd.read_csv("data/house/house.csv")
 
 df["loyer_m2"] = df["loyer"] / df["surface"]
+df.insert(1,"toto", 3)
 print(df)
 print(np.mean(df["loyer_m2"]))
 
