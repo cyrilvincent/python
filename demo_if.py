@@ -3,6 +3,7 @@ vitesse = 21
 
 if vitesse < 20 or couleur == "blanc":
     print("OK")
+    ma_variable=2
 else:
     print("KO")
 
