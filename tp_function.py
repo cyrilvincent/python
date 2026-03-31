@@ -40,6 +40,8 @@ def fibo(n: int) -> int:
     return fibo
 
 def is_prime(n: int) -> bool:
+    if n < 2:
+        return False
     for div in range(2, n):
         if n % div == 0:
             return False
