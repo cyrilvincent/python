@@ -14,3 +14,6 @@ birth = input("Année de naissance: ")
 birth2 = int(birth)
 age = year - birth2
 print(f"Vous avez {age} ans")
+
+# birth n'est pas un nb
+# age ne peut pas être < 0
