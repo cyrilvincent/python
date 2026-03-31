@@ -45,8 +45,25 @@ def is_prime(n: int) -> bool:
             return False
     return True
 
+def multiply(*kargs):
+    result = 1
+    for k in kargs:
+        result *= k
+    return result
+
+def matplotlib(**kwargs):
+    for key in kwargs:
+        print(key, kwargs[key])
+
 
 print(multiply(2,3))
 print(factorielle(5))
 print(fibo(10))
 print(is_prime(7))
+print(multiply(2,3,4))
+matplotlib(toto="titi", tata="tutu")
+
+def f(x):
+    return x +1
+
+f = lambda x: x + 1
