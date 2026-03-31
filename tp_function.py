@@ -56,14 +56,19 @@ def matplotlib(**kwargs):
         print(key, kwargs[key])
 
 
-print(multiply(2,3))
-print(factorielle(5))
-print(fibo(10))
-print(is_prime(7))
-print(multiply(2,3,4))
-matplotlib(toto="titi", tata="tutu")
 
 def f(x):
     return x +1
 
 f = lambda x: x + 1
+
+
+if __name__ == '__main__':
+
+
+    print(multiply(2,3))
+    print(factorielle(5))
+    print(fibo(10))
+    print(is_prime(7))
+    print(multiply(2,3,4))
+    matplotlib(toto="titi", tata="tutu")
