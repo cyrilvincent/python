@@ -52,5 +52,6 @@ if __name__ == '__main__':
     print(min([2,1,3]))
     print(max([1,2,4,3]))
     print(mean([1,2,3,4]))
-    print(filter_even([1,2,3,4]))
+    l = [1.1,2.,3.,4.]
+    print(filter_even(l))
     print(filter_prime([1,2,3,4,5,6,7]))
