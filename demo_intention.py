@@ -28,3 +28,6 @@ print(result)
 # Traitement + Filtre
 result = [complex(x) for x in l1 if tp.is_prime(x)]
 print(result)
+
+# Filtrer les nombres pairs et / 2
+# Filtrer les nb premier et appliquer un x.tanh
