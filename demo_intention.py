@@ -31,3 +31,5 @@ print(result)
 
 # Filtrer les nombres pairs et / 2
 # Filtrer les nb premier et appliquer un x.tanh
+result = [x / 2 for x in l1 if x % 2 == 0]
+result = [math.tanh(x) for x in l1 if tp.is_prime(x)]
