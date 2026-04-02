@@ -1,11 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.stats as stats
 
 data = np.load("data/house/house.npz")
 print(data)
 loyers = data["loyers"]
 surfaces = data["surfaces"]
 print(loyers)
+
+surfaces_inf = surfaces[surfaces < 180]
+loyers_inf = loyers[surfaces < 180]
+
+slope, intercept, rvalue, pvalue, stderr = stats.linregress(surfaces_inf, loyers_inf)
+print(slope, intercept, rvalue, pvalue, stderr)
+
+plt.plot(surfaces_inf, surfaces_inf * slope + intercept, color="red")
 
 # Afficher pour loyers & surfaces les min, max, mean, meadian, std
 # Créer le tableau loyer_m2 qui est le loyer par m²
