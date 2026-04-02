@@ -28,6 +28,10 @@ print(a10[n:-n:2])
 print(a10[a10 < 50])
 
 temp = np.random.randint(18, 24, 10)
+
+np.mean(temp)
+temp.mean()
+
 rh = np.random.rand(10)
 print(temp)
 print(rh)
