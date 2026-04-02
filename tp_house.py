@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 data = np.load("data/house/house.npz")
 print(data)
@@ -13,6 +14,9 @@ print(loyers)
 # Filtrer les loyers dont la surface > 200
 
 # Afficher le nuage de points x = surfaces et y = loyers
+
+plt.scatter(surfaces, loyers)
+plt.show()
 
 print(np.min(loyers), np.max(loyers), np.mean(loyers), np.std(loyers), np.median(loyers))
 loyer_m2 = loyers / surfaces

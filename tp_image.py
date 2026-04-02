@@ -2,6 +2,7 @@
 
 from PIL import Image
 import numpy as np
+import matplotlib.pyplot as plt
 
 def load(path: str):
     im = Image.open(path)
@@ -31,6 +32,12 @@ def auto_normalize(array):
     std = contrast(array)
     return np.clip(((array - mean) / std) * 255 / 4 + 255 / 2, 0 ,255)
 
+def black_white(array):
+    return np.mean(array, axis=2)
+
+def profil(array, num):
+    return np.mean(array, axis=num)
+
 if __name__ == '__main__':
     array = load("data/ski.jpg")
     green = get_chanel(array, 1)
@@ -38,7 +45,13 @@ if __name__ == '__main__':
     print(f"Luminance: {lum(array):.1f}, contrast: {contrast(array):.1f}")
     reduced = reduce(array, 2)
     norm = auto_normalize(array)
-    save(norm, "data/out.png")
+    bw = black_white(array)
+    save(bw, "data/out.png")
+    array = load("data/cercle.jpg")
+    bw = black_white(array)
+    profil_row = profil(bw, 1)
+    plt.plot(np.arange(len(profil_row)), profil_row)
+    plt.show()
 
 # Créer la fonction load(path) -> array
 # save(array, path)
