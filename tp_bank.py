@@ -1,6 +1,21 @@
+import datetime
+
+class Owner:
+    pass
+
+class Transaction:
+    pass
+
+    # montant
+    # date
+    # datetime.datetime.now()
+    # Quand on crédite BankAccount on créé une transaction +montant
+    # Auand on débite                               ``     -montant
+    # Un BankAccount possède une liste de transaction à la création = []
+
 class BankAccount:
 
-    def __init__(self, id, owner):
+    def __init__(self, id, owner: Owner):
         self.id = id
         self.solde = 0
         self.owner = owner
