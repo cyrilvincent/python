@@ -11,3 +11,15 @@ print(df.corr())
 # KO = num == 1
 # np.mean + np.std pour age + sex + chol + thalach
 
+ok = df[df["num"] == 0]
+ko = df[df["num"] == 1]
+
+print(f"Age OK: mean: {np.mean(ok["age"])}, std: {np.std(ok["age"])}")
+print(f"Age KO: mean: {np.mean(ko["age"])}, std: {np.std(ko["age"])}")
+print(f"Age OK: mean: {np.mean(ok["sex"])}, std: {np.std(ok["sex"])}")
+print(f"Age KO: mean: {np.mean(ko["sex"])}, std: {np.std(ko["sex"])}")
+print(f"Age OK: mean: {np.mean(ok["chol"])}, std: {np.std(ok["chol"])}")
+print(f"Age KO: mean: {np.mean(ko["chol"])}, std: {np.std(ko["chol"])}")
+print(f"Age OK: mean: {np.mean(ok["thalach"])}, std: {np.std(ok["thalach"])}")
+print(f"Age KO: mean: {np.mean(ko["thalach"])}, std: {np.std(ko["thalach"])}")
+
