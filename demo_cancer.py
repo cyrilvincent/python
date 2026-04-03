@@ -14,3 +14,5 @@ model = neural.MLPClassifier(hidden_layer_sizes=(30,20,10), max_iter=1000)
 model.fit(x, y)
 ypred = model.predict(x)
 print(model.score(x, y))
+
+
