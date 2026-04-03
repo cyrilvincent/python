@@ -6,3 +6,8 @@ pd.set_option('display.width', None)
 df = pd.read_csv("data/heart/data_cleaned_up.csv")
 print(df)
 print(df.corr())
+
+# OK = num==0 df[df["num"]==0]
+# KO = num == 1
+# np.mean + np.std pour age + sex + chol + thalach
+
