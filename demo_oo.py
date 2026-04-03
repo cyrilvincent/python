@@ -27,6 +27,13 @@ class Rectangle:
     def __del__(self):
         Rectangle.nb -= 1
 
+
+class Square(Rectangle):
+
+    def __init__(self, side, coord: Point):
+        super().__init__(side, side, coord)
+
+
 if __name__ == '__main__':
     p1 = Point(2,-3)
     print(p1.x, p1.y)
@@ -41,3 +48,5 @@ if __name__ == '__main__':
     print(r2.nb)
     del(r2)
     print(Rectangle.nb)
+    s1 = Square(3, p1)
+    print(s1.area(), s1.perimeter())

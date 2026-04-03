@@ -42,6 +42,15 @@ class BankAccount:
         transaction = Transaction(-montant)
         self.transactions.append(transaction)
 
+
+class BankAcountRemunere(BankAccount):
+
+    # interest_rate
+
+    def compute_interest(self):
+        pass
+        # solde * interest_rate
+
 if __name__ == '__main__':
     o1 = Owner("0", "Cyril", "Vincent", "0622538762", "contact@cyrilvincent.com")
     c1 = BankAccount("123", o1)
