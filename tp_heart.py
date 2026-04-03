@@ -16,10 +16,10 @@ ko = df[df["num"] == 1]
 
 print(f"Age OK: mean: {np.mean(ok["age"])}, std: {np.std(ok["age"])}")
 print(f"Age KO: mean: {np.mean(ko["age"])}, std: {np.std(ko["age"])}")
-print(f"Age OK: mean: {np.mean(ok["sex"])}, std: {np.std(ok["sex"])}")
-print(f"Age KO: mean: {np.mean(ko["sex"])}, std: {np.std(ko["sex"])}")
-print(f"Age OK: mean: {np.mean(ok["chol"])}, std: {np.std(ok["chol"])}")
-print(f"Age KO: mean: {np.mean(ko["chol"])}, std: {np.std(ko["chol"])}")
-print(f"Age OK: mean: {np.mean(ok["thalach"])}, std: {np.std(ok["thalach"])}")
-print(f"Age KO: mean: {np.mean(ko["thalach"])}, std: {np.std(ko["thalach"])}")
+print(f"Sex OK: mean: {np.mean(ok["sex"])}, std: {np.std(ok["sex"])}")
+print(f"Sex KO: mean: {np.mean(ko["sex"])}, std: {np.std(ko["sex"])}")
+print(f"Chol OK: mean: {np.mean(ok["chol"])}, std: {np.std(ok["chol"])}")
+print(f"Chol KO: mean: {np.mean(ko["chol"])}, std: {np.std(ko["chol"])}")
+print(f"Thalach OK: mean: {np.mean(ok["thalach"])}, std: {np.std(ok["thalach"])}")
+print(f"Thalach KO: mean: {np.mean(ko["thalach"])}, std: {np.std(ko["thalach"])}")
 
