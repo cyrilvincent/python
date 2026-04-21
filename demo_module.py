@@ -3,4 +3,4 @@ import tp_function as lib
 
 print(m.sin(m.pi))
 
-print()
+print(lib.fibonacci(10))
