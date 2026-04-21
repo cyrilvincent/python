@@ -48,10 +48,10 @@ print(f"F({n})={result}")
 
 n = 7919
 i = 2
+is_prime = True
 if n < 2:
     is_prime = False
 else:
-    is_prime = True
     while i < n:
         if n % i == 0:
             is_prime = False
