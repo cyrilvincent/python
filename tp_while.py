@@ -55,6 +55,7 @@ else:
     while i < n:
         if n % i == 0:
             is_prime = False
+            break
         i += 1
     print(is_prime)
 
