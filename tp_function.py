@@ -19,7 +19,7 @@ def factorielle(n: int) -> int:
         result *= i
     return result
 
-def finonacci(n: int) -> int:
+def fibonacci(n: int) -> int:
     f0 = 0
     f1 = 1
     result = 0
@@ -43,8 +43,9 @@ def display_primes(limit: int):
             print(i)
 
 
-print(sum_cumul(10))
-print(factorielle(5))
-print(finonacci(10))
-print(is_prime(7919))
-display_primes(1000)
+if __name__ == '__main__':
+    assert sum_cumul(10) == 55
+    assert factorielle(5) == 120
+    assert fibonacci(10) == 55
+    assert is_prime(7919)
+    # display_primes(1000)
