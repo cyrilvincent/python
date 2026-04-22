@@ -34,6 +34,12 @@ def filter_prime(l: list[int]) -> list[int]:
             result.append(value)
     return result
 
+def double(l: list[int]) -> list[int]:
+    result = []
+    for value in l:
+        result.append(value * 2)
+    return result
+
 # def mean
 # def min
 # def max
@@ -48,3 +54,4 @@ if __name__ == '__main__':
     assert max([1,2,3,4]) == 4
     assert filter_even([1,2,3,4]) == [2,4]
     assert filter_prime([1, 2, 3, 4]) == [2, 3]
+    assert double([1,2,3,4]) == [2,4,6,8]
