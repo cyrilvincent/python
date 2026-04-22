@@ -3,7 +3,7 @@ def min_max_avg(l: list[float]) -> tuple[float, float, float]:
     min = l[0]
     max = l[0]
     for value in l:
-        total += value
+        total = total + value
         if value < min:
             min = value
         elif value > max:
