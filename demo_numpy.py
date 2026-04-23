@@ -9,7 +9,7 @@ print(v1 + 2)
 print(v1 * v2)
 print(np.sin(v1))
 print(np.arange(0,10,2))
-print(np.linspace(0,10,8))
+print(np.linspace(-2 * np.pi,10,8))
 
 rnd1 = np.random.rand(10)
 print(rnd1 * 10)
