@@ -19,3 +19,6 @@ x = df_filtered["Date Time"]
 y = df_filtered["T (degC)"]
 plt.plot(x, y)
 plt.show()
+
+# Faire une regression lineaire sur T (degC)
+# Afficher la regression
