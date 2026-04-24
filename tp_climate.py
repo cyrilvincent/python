@@ -13,10 +13,13 @@ df = pd.read_csv("data/climate/jena_filtered.csv")
 df = df[12::24]
 print(df.describe())
 
-df_filtered = df[(df["T (degC)"] <= 0) & (df["rh (%)"] >= 50)]
+x = np.arange(len(df))
+y = df["T (degC)"]
 
-x = df_filtered["Date Time"]
-y = df_filtered["T (degC)"]
+# df_filtered = df[(df["T (degC)"] <= 0) & (df["rh (%)"] >= 50)]
+#
+# x = df_filtered["Date Time"]
+# y = df_filtered["T (degC)"]
 plt.plot(x, y)
 plt.show()
 

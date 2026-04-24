@@ -14,6 +14,7 @@ now = datetime.datetime.now()
 
 df.to_excel(f"data/house/house_{now.year}{now.month}{now.day}{now.hour}{now.minute}.xlsx", index=False)
 plt.show()
+df.to_json("data/house/house.json", indent=2)
 
 df["surface"].hist(bins=20)
 plt.show()
