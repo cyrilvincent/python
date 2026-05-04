@@ -8,8 +8,11 @@
 # for i, v in enumerate(l):
 #     print(i, v, l[i])
 
-def sum(l):
-    pass
+def sum(l: list[float]) -> float:
+    total = 0
+    for v in l:
+        total += v
+    return total
 
-def filter_even(l):
+def filter_even(l: list[int]) -> list[int]:
     pass
