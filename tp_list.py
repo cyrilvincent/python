@@ -41,6 +41,10 @@ def remove_all(l: list[float], value: float) -> list[float]:
         l.remove(value)
     return l
 
+def double(l: list[float]) -> list[float]:
+    result = []
+    for v in l:
+        result.append(v * 2)
 
 if __name__ == '__main__':
     result = remove_all([1, 333, 2, 333, 3, 333], 333)
