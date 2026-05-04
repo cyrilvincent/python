@@ -10,6 +10,7 @@ print(double)
 sin = [math.sin(x) for x in l]
 print(sin)
 
+
 filter_even = [x ** 2 for x in l if x % 2 == 0]
 print(filter_even)
 
