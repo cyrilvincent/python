@@ -52,8 +52,10 @@ def fibo_rec(n: int) -> int:
     return fibo_rec(n - 1) + fibo_rec(n - 2)
 
 
-print(factorielle(5))
-print(factorielle_rec(5))
-print(is_prime(1223))
-print(fibo(10))
-print(fibo_rec(10))
+if __name__ == '__main__':
+    # print(factorielle(5))
+    # print(factorielle_rec(5))
+    # print(is_prime(1223))
+    # print(fibo(10))
+    # print(fibo_rec(10))
+    assert factorielle(5) == 121
