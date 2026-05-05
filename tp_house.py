@@ -10,3 +10,9 @@ surfaces = data["surfaces"]
 # Créer le tableau loyer_m2
 # Filtrer les surfaces > 200
 # Filtrer les loyers dont la surface > 200
+
+print(np.min(loyers), np.max(loyers), np.min(surfaces), np.max(surfaces))
+loyer_m2 = loyers / surfaces
+filter = surfaces > 200
+print(surfaces[filter])
+print(loyers[filter])
