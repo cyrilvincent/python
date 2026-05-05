@@ -1,6 +1,7 @@
 import pandas as pd
 import openpyxl
 import matplotlib.pyplot as plt
+import numpy as np
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
@@ -10,6 +11,8 @@ df["loyer_m2"] = df["loyer"] / df["surface"]
 print(df.describe())
 df.to_csv("data/house/house.txt", sep="\t", index=False)
 df.to_excel("data/house/house.xlsx", index=False)
+
+print(np.mean(df["loyer"]), np.std(df["loyer"]), np.median(df["loyer"]))
 
 print(df.corr())
 
