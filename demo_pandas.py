@@ -2,6 +2,7 @@ import pandas as pd
 import openpyxl
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy.stats as stats
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
@@ -18,7 +19,12 @@ print(df.corr())
 
 print(df[df["surface"] < 200])
 
+slope, intercept, rvalue, _, _ = stats.linregress(df["surface"], df["loyer"])
+print(rvalue)
+
 plt.scatter(df["surface"], df["loyer"])
+x = np.arange(400)
+plt.plot(x, slope * x + intercept, color="red")
 plt.show()
 
 df.hist(bins=10)
