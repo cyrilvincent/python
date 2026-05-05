@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 data = np.load("data/house/house.npz")
 print(data)
@@ -16,3 +17,10 @@ loyer_m2 = loyers / surfaces
 filter = surfaces > 200
 print(surfaces[filter])
 print(loyers[filter])
+
+plt.subplot(2,1,1)
+plt.scatter(surfaces, loyers)
+plt.subplot(2,1,2)
+plt.scatter(surfaces[surfaces < 175], loyers[surfaces < 175])
+
+plt.show()
