@@ -2,6 +2,12 @@ def f(x: float) -> float:
     return x + 1
 
 def add(x, y):
+    """
+    Docstring for add
+    
+    :param x: Description
+    :param y: Description
+    """
     return x + y
 
 def power(x, y):
@@ -27,5 +33,5 @@ print(power(x = 2,
 toto(3, 1)
 add(3, "4")
 result = f("3")
-power(2,)
+
 
