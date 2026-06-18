@@ -42,6 +42,7 @@ def is_prime(n: int) -> bool:
             return False
     return True
 
-print(factorielle(5))
-print(fibo(10))
-print(is_prime(7))
+if __name__ == "__main__":
+    assert factorielle(5) == 120
+    assert fibo(10) == 55
+    assert is_prime(7)

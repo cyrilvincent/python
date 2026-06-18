@@ -31,7 +31,15 @@ print(power(2, 3))
 print(power(x = 2, 
             y = 3))
 toto(3, 1)
-add(3, "4")
-result = f("3")
+# add(3, "4")
+# result = f("3")
+
+def sum(*kargs):
+    total = 0
+    for i in kargs:
+        total += i
+    return total
+
+print(sum(2,4,5,6))
 
 
