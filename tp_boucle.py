@@ -13,6 +13,7 @@ print(nb ** 2)
 #     facto *= i
 # print(f"F({nb})={facto}")
 
+
 f0 = 0
 f1 = 1
 fibo = 0
