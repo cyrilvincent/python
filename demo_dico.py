@@ -1024,5 +1024,11 @@ with open("books.json") as f:
 # Afficher les 10 premiers author
 # Afficher les 10 derniers link
 # Afficher les books de l'indice 10 à 20
-# Faire une liste en intention qui affiche tous les titre en French
+# Faire une liste en intention qui affiche tous les titres en French
 # Afficher tous les livres écrits dans les années 50
+
+print([book["author"] for book in books[:10]])
+print([book["link"] for book in books[-10:]])
+print(books[10:20])
+print([book["title"] for book in books if book["language"] == "French"])
+print([book["title"] for book in books if 1950 <= book["year"] < 1960])
