@@ -1,0 +1,50 @@
+# Créer une liste d'une dizaine de nb manuellement
+# Faire la fonction sum
+# Faire la fonction remove_all(l, nb)
+# Créer le fonction power2(nb) : power2(4) => [1, 2, 4, 8], [2**0, 2**1, 2**2, 2**3]
+# Créer la fonction filter_even(l) : filter_even([1,2,3,4]) => [2, 4]
+# Bonus : filter_prime(l) : filter_prime([1,2,3,4,5,6,7]) => [2,3,5,7]
+import tp_function
+
+def sum(l):
+    sum = 0
+    for v in l:
+        sum += v
+    return sum
+
+def remove_all(l, nb):
+    count = l.count(nb)
+    for i in range(count):
+        l.remove(nb)
+    return l
+
+def power2(nb):
+    result = []
+    for i in range(nb):
+        result.append(2 ** i)
+    return result
+
+def filter_even(l):
+    result = []
+    for v in l:
+        if v % 2 == 0:
+            result.append(v)
+    return result
+
+def filter_prime(l):
+    result = []
+    for v in l:
+        if tp_function.is_prime(v):
+            result.append(v)
+    return result
+
+if __name__ == "__main__":
+    l = [1,2,3,99,4,5,98,6,7,8,9]
+    assert 242 == sum(l)
+    l.append(99)
+    l.append(99)
+    print(l)
+    assert [1, 2, 3, 4, 5, 98, 6, 7, 8, 9] == remove_all(l.copy(), 99)
+    assert [1, 2, 4, 8] == power2(4)
+    assert [2,4,98,6,8] == filter_even(l)
+    assert [2,3,5,7] == filter_prime(l)
