@@ -40,6 +40,9 @@ class Cabine:
         if self.screen:
             total += 150
         return total
+    
+    def __del__(self):
+        print("DELETE")
 
 if __name__ == "__main__":
     c1 = Cabine(gamme="evo",
@@ -54,6 +57,9 @@ if __name__ == "__main__":
     c1.close_door()
     print(c1.is_open)
     print(c1.compute_max_weight())
+    c1 = None
+
+    
 
 
     
