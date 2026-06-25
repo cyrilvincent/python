@@ -13,6 +13,8 @@ gammes = {
 
 class Cabine:
 
+    nb = 0
+
     def __init__(self, gamme: str, model: str, capacity: int, screen: bool, skirack: bool, light: bool, color: tuple[int, int, int]):
         self.gamme = gamme
         self.model = model
@@ -23,6 +25,7 @@ class Cabine:
         self.color = color
         self.is_open = False
         self.seats_up = False
+        Cabine.nb += 1
 
     def open_door(self):
         self.is_open = True
@@ -42,7 +45,7 @@ class Cabine:
         return total
     
     def __del__(self):
-        print("DELETE")
+        Cabine.nb -= 1
 
 if __name__ == "__main__":
     c1 = Cabine(gamme="evo",
@@ -57,7 +60,17 @@ if __name__ == "__main__":
     c1.close_door()
     print(c1.is_open)
     print(c1.compute_max_weight())
-    c1 = None
+    print(f"Nb cabine: {Cabine.nb}")
+    c2 = Cabine(gamme="pure",
+                model="default",
+                capacity=10,
+                screen=True,
+                skirack=True,
+                light=False,
+                color=(255,0,0))
+    print(f"Nb cabine: {Cabine.nb}")
+    del(c2)
+    print(f"Nb cabine: {Cabine.nb}")
 
     
 
