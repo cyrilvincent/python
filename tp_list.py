@@ -6,13 +6,13 @@
 # Bonus : filter_prime(l) : filter_prime([1,2,3,4,5,6,7]) => [2,3,5,7]
 import tp_function
 
-def sum(l):
+def sum(l: list) -> float:
     sum = 0
     for v in l:
         sum += v
     return sum
 
-def remove_all(l, nb):
+def remove_all(l: list[float], nb: float) -> list[float]:
     count = l.count(nb)
     for i in range(count):
         l.remove(nb)
@@ -24,7 +24,7 @@ def power2(nb):
         result.append(2 ** i)
     return result
 
-def filter_even(l):
+def filter_even(l: list[int]) -> list[int]:
     result = []
     for v in l:
         if v % 2 == 0:
