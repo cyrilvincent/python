@@ -1032,3 +1032,13 @@ print([book["link"] for book in books[-10:]])
 print(books[10:20])
 print([book["title"] for book in books if book["language"] == "French"])
 print([book["title"] for book in books if 1950 <= book["year"] < 1960])
+
+volts = [220, 220, 221, 223, 220, 220, 220, 222, 219, 220]
+amps = [10,10,10,10,11,10,10,9,10,10]
+powers = []
+for v, a in zip(volts, amps):
+    power = v * a
+    powers.append(power)
+print(powers)
+
+print([v * a for v, a in zip(volts, amps)])
