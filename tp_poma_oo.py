@@ -73,6 +73,10 @@ if __name__ == "__main__":
     print(f"Nb cabine: {Cabine.nb}")
 
     
-
+# 1 Créer la classe Suspente avec 2 attributs (dont un poids) et 0 méthodes
+# 2 Créer la classe Vehicule qui contient 1 cabine + 1 suspente + la méthode total_weight
+# 3 Créer la classe Remontee qui contient * vehicule
+# 4 Dans Remontee créer la methode total_weight
+# Tester
 
     
