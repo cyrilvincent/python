@@ -54,27 +54,52 @@ class Cabine:
     def __del__(self):
         Cabine.nb -= 1
 
+class Siege:
 
-class Vehicle:
+    def __init__(self, model: str, weight: float):
+        self.model = model
+        self.weight = weight
+
+class VehiculeGeneric:
+
+    def __init__(self, name: str):
+        self.name = name
+
+    def total_weight(self):
+        pass
+
+class CabineVehicle(VehiculeGeneric):
 
     def __init__(self, name: str, cabine: Cabine, suspente: Suspente):
-        self.name = name
+        super().__init__(name)
         self.cabine = cabine
         self.suspente = suspente
 
     def total_weight(self):
         return self.cabine.compute_max_weight() + self.suspente.weight
-    
+
+
+
+class SiegeVehicle(VehiculeGeneric):
+
+    def __init__(self, name: str, siege: Siege, suspente: Suspente):
+        super().__init__(name)
+        self.siege = siege
+        self.suspente = suspente
+
+    def total_weight(self):
+        return self.siege.weight + self.suspente.weight
+
 
 class Lift:
 
-    def __init__(self, vehicles: list[Vehicle] = []):
+    def __init__(self, vehicles: list[VehiculeGeneric] = []):
         self.vehicles = vehicles
 
     def total_weight(self):
         return sum([v.total_weight() for v in self.vehicles])
     
-    def add_vehicule(self, vehicle: Vehicle):
+    def add_vehicule(self, vehicle: VehiculeGeneric):
         self.vehicles.append(vehicle)
      
 
@@ -103,11 +128,13 @@ if __name__ == "__main__":
     # del(c2)
     # print(f"Nb cabine: {Cabine.nb}")
     s1 = Suspente(200, 2.5)
-    v1 = Vehicle("Evo", c1, s1)
+    v1 = CabineVehicle("Evo", c1, s1)
     print(v1.total_weight())
-    v2 = Vehicle("Evo", c2, Suspente(200, 2.5))
+    v2 = CabineVehicle("Evo", c2, Suspente(200, 2.5))
     print(v2.total_weight())
-    l1 = Lift([v1, v2])
+    v3 = SiegeVehicle("Eezii", Siege("6pl", 250), Suspente(200, 2.5))
+    print(v3.total_weight())
+    l1 = Lift([v1, v2, v3])
     print(l1.total_weight())
 
 
