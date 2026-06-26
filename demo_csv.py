@@ -40,15 +40,21 @@ class House:
                 houses.append(house)
         return houses
     
-    
+
+    @staticmethod
+    def save_pickle(path, houses: list):
+        with open(path, "wb") as f:
+            pickle.dump(houses, f)
+
+    @staticmethod
+    def load_pickle(path):
+        with open(path, "rb") as f:
+            return pickle.load(f)
+
     
 if __name__ == "__main__":
     houses: list[House] = House.load("data/house/house.csv")
     print([h.loyer_m2() for h in houses])
-
-    with open("data/house/house.pkl", "wb") as f:
-        pickle.dump(houses, f)
-
-    with open("data/house/house.pkl", "rb") as f:
-        houses = pickle.load(f)
-
+    House.save_pickle("data/house/house.pkl", houses)
+    houses = House.load_pickle("data/house/house.pkl")
+    print(len(houses))
