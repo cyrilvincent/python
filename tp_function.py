@@ -1,7 +1,14 @@
 # Porter factorielle, fibo et is_prime en fonction
 # Bonus : typer les fonctions def factorielle(nb : int) -> int
 
+
+
 def factorielle(nb: int) -> int:
+    """
+    Factorielle
+    :param nb: nb
+    :return: nb!
+    """
     facto = 1
     for i in range(2, nb + 1):
         facto *= i
