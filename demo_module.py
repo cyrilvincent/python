@@ -8,7 +8,6 @@ import toto.titi
 print(tp.factorielle(5))
 
 
-
 # from math import sqrt, pi
 #
 # def sqrt(x):
