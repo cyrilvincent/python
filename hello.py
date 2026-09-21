@@ -21,6 +21,10 @@ print(type(x))
 # s.lower()
 
 nb = 3.14116
-print(f"Le résultat du calcul est {nb:.2d}")
+print(f"Le résultat du calcul est {nb:.2f}")
+
+condition = nb < 4
+if condition:
+    print("toto")
 
 
