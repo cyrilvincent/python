@@ -1,9 +1,24 @@
+class Point:
+
+    def __init__(self, x: float, y: float):
+        self.x = x
+        self.y = y
+
+    def move(self, x: float, y: float):
+        self.x = x
+        self.y = y
+
+    def move_relative(self, deltax: float, deltay: float):
+        self.x += deltax
+        self.y += deltay
+
 class Rectangle:
 
-    def __init__(self, length: float, width: float):
+    def __init__(self, length: float, width: float, origin: Point):
         # QUOI
         self.length = length
         self.width = width
+        self.origin = origin
 
     def area(self):
         return self.length * self.width
@@ -11,13 +26,29 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.length + self.width)
 
+
+class RectangleCollection:
+
+    def __init__(self, rectangles: list[Rectangle]):
+        self.rectangles = rectangles
+
+    def total_area(self):
+        return sum([r.area() for r in self.rectangles])
+
 if __name__ == '__main__':
     # Instanciation
-    r1 = Rectangle(3,2)
+    p1 = Point(3,2)
+    p1.move_relative(1,-1)
+    assert p1.x == 4
+    assert p1.y == 1
+    r1 = Rectangle(3,2, p1)
     print(r1.length, r1.width)
-    r2 = Rectangle(length=3, width=4)
+    r2 = Rectangle(length=3, width=4, origin=Point(0,0))
     print(r2.length, r2.width)
     print(r2.area())
     print(r2.perimeter())
     r2.area() # <=>
     Rectangle.area(r2) # Très peu utilisé
+    r2.origin.move_relative(1,-1)
+    collection = RectangleCollection([r1, r2])
+    print(collection.total_area())
