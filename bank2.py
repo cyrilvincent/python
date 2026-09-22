@@ -3,15 +3,25 @@
 # Comment deposit, withdraw
 # Robustesse
 # Tests
+from dataclasses import dataclass
 
+
+@dataclass
 class Account:
 
-    def __init__(self, id: str, owner: str, bank: str, devise = "EUR"):
-        self.id = id
-        self.balance = 0
-        self.owner = owner
-        self.bank = bank
-        self.devise = devise
+    id: str
+    owner: str
+    bank: str
+    balance: int = 0
+    devise: str = "EUR"
+
+
+    # def __init__(self, id: str, owner: str, bank: str, devise = "EUR"):
+    #     self.id = id
+    #     self.balance = 0
+    #     self.owner = owner
+    #     self.bank = bank
+    #     self.devise = devise
 
     def deposit(self, amount: float):
         if amount > 0:
@@ -27,9 +37,6 @@ class Account:
                 raise ValueError("The amount must be strictly positive")
         else:
             raise ValueError("Amount must be <= balance")
-
-    def __del__(self):
-        pass
 
 if __name__ == '__main__':
     a1 = Account("001", "Cyril", "CEA")
