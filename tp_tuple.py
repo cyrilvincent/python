@@ -1,0 +1,1 @@
+# Ecrire la fonction min_max_avg(l: list[int]) -> tuple[int, int, float] en une seule itération
