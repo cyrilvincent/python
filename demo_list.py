@@ -1,6 +1,6 @@
 l = [1,2,3,8,9,-1,99,0,66]
 print(l[0])
-print(l[1:5])
+print(l[1:5:2])
 print(l[2:-2])
 print(l[:5])
 print(l[5:])

@@ -44,4 +44,4 @@ if __name__ == '__main__':
     assert sum(l) == 275
     assert max(l) == 99
     assert filter_even(l) == [2,8,0,66,88]
-    assert filter_prime(l) == [2,3]
+    assert filter_prime(l) == [2, 3]
