@@ -13,7 +13,7 @@ def min_max_avg(l : list[int]) -> tuple[int, int, float]:
     return min, max, total / len(l)
 
 if __name__ == '__main__':
-    l = list(range(10))
+    l: list[int] = [1,2,3]
     min, max, avg = min_max_avg(l)
     print(min, max, avg)
     assert min_max_avg(l) == (0,9,4.5)
