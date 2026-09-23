@@ -26,6 +26,32 @@ class Rectangle:
     def perimeter(self):
         return 2 * (self.length + self.width)
 
+class Square(Rectangle):
+
+
+    def __init__(self, side: float, origin: Point):
+        super().__init__(side, side, origin)
+
+    def __repr__(self):
+        return f"Square: {self.width}"
+
+
+class TriangleRectangle(Rectangle):
+
+    def __init__(self, length: float, width: float, origin: Point):
+        super().__init__(length, width, origin)
+
+    def area(self):
+        return super().area() / 2
+
+    def hypothenuse(self):
+        return math.sqrt(self.length ** 2 + self.width ** 2)
+
+    def perimeter(self):
+        return self.width + self.length + self.hypothenuse()
+
+
+
 
 class RectangleCollection:
 
@@ -52,3 +78,6 @@ if __name__ == '__main__':
     r2.origin.move_relative(1,-1)
     collection = RectangleCollection([r1, r2])
     print(collection.total_area())
+    s1 = Square(3, p1)
+    print(s1)
+    assert s1.area() == 9
