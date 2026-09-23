@@ -53,3 +53,5 @@ if __name__ == '__main__':
     repo.compute_loyer_m2()
     print(repo.loyer_m2)
 
+
+

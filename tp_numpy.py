@@ -15,3 +15,5 @@ print(np.min(surfaces), surfaces.max())
 filter = surfaces > 200
 print(surfaces[filter])
 print(loyers[filter])
+
+# Afficher le scatter surfaces vs loyers
