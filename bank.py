@@ -61,6 +61,19 @@ class Account:
     def __del__(self):
         Account.nb -= 1
 
+class AccountInterest(Account):
+
+    def __init__(self, id: str, owner: Owner, bank: str, devise="EUR", rate: float=0.0):
+        super().__init__(id, owner, bank, devise)
+        self.rate = rate
+
+    def interest(self):
+        return self.balance * self.rate
+
+    def add_interest(self):
+        transaction = Transaction(self.interest(), datetime.datetime.now())
+        self.transactions.append(transaction)
+
 if __name__ == '__main__':
     o1 = Owner("Cyril", "Vincent", "Lans", "06", "contact@cyrilvincent.com")
     a1 = Account("001", o1, "CEA")
@@ -83,4 +96,8 @@ if __name__ == '__main__':
     assert Account.nb == 1
     a1 = None
     assert Account.nb == 0
+
+    a3 = AccountInterest("003", o1, "CEA", rate=0.1)
+    a3.deposit(100)
+    assert a3.interest() == 10
 
