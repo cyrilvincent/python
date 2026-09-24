@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 data = np.load("data/house/house.npz")
 print(data)
@@ -16,4 +17,9 @@ filter = surfaces > 200
 print(surfaces[filter])
 print(loyers[filter])
 
-# Afficher le scatter surfaces vs loyers
+filter2 = surfaces < 180
+plt.title("Surface / Loyer")
+plt.grid()
+plt.plot(surfaces[filter2], loyers[filter2], "rx", label="loyer")
+plt.legend()
+plt.show()
