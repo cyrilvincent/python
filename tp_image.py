@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 
 class ImageManagement:
 
+    # def __init__(self, array):
+    #     self.array = array
+
     def load(self, path):
         im = Image.open(path)
         array = np.asarray(im).astype(np.float64)
