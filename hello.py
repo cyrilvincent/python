@@ -18,6 +18,6 @@ print(type(a * b))
 s = "toto"
 print(s.upper())
 calcul = 3.999
-print(f"Le résultat du calcul est {calcul:.2f} km/h")
+print(f"Le résultat du calcul est {calcul} km/h")
 
 
