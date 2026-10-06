@@ -8,3 +8,5 @@ while True:
         print(f"Erreur lié à la valeur: {ve}")
     except ZeroDivisionError as zde:
         print(f"Ne peut pas être zéro: {zde}")
+
+
