@@ -31,3 +31,5 @@ for i in range(5,18,3):
 # Créer la factorielle n! = 1*2*3*4*...*n 5! = 5*4*3*2*1 = 120
 # Bonus : Fibonacci
 
+
+
