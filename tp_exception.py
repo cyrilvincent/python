@@ -11,7 +11,7 @@ while True:
     try:
         birth_year = int(input("Année de naissance: "))
         age = actual_year - birth_year
-        if not(0 < age < 120):
+        if not(0 <= age < 120): # age < 0 or age > 120
             raise ValueError("Age incompatible")
         break
     except ValueError as ex:
