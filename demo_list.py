@@ -11,7 +11,6 @@ for i in range(len(my_list)): # By index
     total += my_list[i]
 print(total)
 
-
 my_list[4] = 100 # Update
 print(my_list)
 my_list.append(999) # Add
